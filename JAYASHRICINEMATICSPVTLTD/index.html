@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jayashri Cinematics Private Limited</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#C0392B;
+  --red2:#E74C3C;
+  --dark:#1A0A0A;
+  --dark2:#2C1010;
+  --dark3:#3A1515;
+  --cream:#FAF6F0;
+  --cream2:#F5EDE0;
+  --cream3:#EFE4D0;
+  --text:#1A0A0A;
+  --muted:rgba(80,20,20,0.55);
+  --card:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Josefin Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 50px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,246,240,0.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(192,57,43,0.2);transition:padding .4s;box-shadow:0 2px 20px rgba(192,57,43,0.08)}
+nav.scrolled{padding:10px 50px;border-bottom-color:rgba(192,57,43,0.35)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:44px;height:44px;border:2px solid var(--red);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;color:var(--red);font-size:18px;font-weight:600;letter-spacing:1px;transition:background .3s}
+.logo:hover .logo-icon{background:rgba(192,57,43,0.08)}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--dark);letter-spacing:1px;line-height:1.1}
+.logo-text span{display:block;font-size:10px;font-weight:300;font-family:'Josefin Sans',sans-serif;color:var(--red);letter-spacing:3px;text-transform:uppercase}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(80,20,20,0.6);font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;font-weight:400;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--red);transition:width .3s}
+.nav-links a:hover{color:var(--red)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:transparent;color:var(--red)!important;border:1px solid var(--red);padding:8px 20px;letter-spacing:2px!important;transition:background .3s,color .3s!important}
+.nav-cta:hover{background:var(--red)!important;color:#fff!important}
+.nav-cta::after{display:none!important}
+
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:80px;background:linear-gradient(135deg,#FAF6F0 0%,#F5EDE0 40%,#EFE4D0 100%)}
+canvas#particles{position:absolute;inset:0;z-index:2}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(192,57,43,0.06) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(192,57,43,0.04) 0%,transparent 60%)}
+.film-strip-top,.film-strip-bottom{position:absolute;left:0;right:0;height:56px;z-index:3;display:flex;align-items:center;overflow:hidden}
+.film-strip-top{top:80px;background:rgba(192,57,43,0.06);border-bottom:1px solid rgba(192,57,43,0.18)}
+.film-strip-bottom{bottom:0;background:rgba(192,57,43,0.06);border-top:1px solid rgba(192,57,43,0.18)}
+.film-holes{display:flex;gap:0;align-items:center;animation:filmRoll 8s linear infinite}
+.film-hole{width:22px;height:32px;background:transparent;border:2px solid rgba(192,57,43,0.25);border-radius:3px;margin:0 10px;flex-shrink:0}
+@keyframes filmRoll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.film-frame-text{position:absolute;left:50%;transform:translateX(-50%);font-size:0.55rem;letter-spacing:5px;color:rgba(192,57,43,0.4);text-transform:uppercase;white-space:nowrap}
+.hero-content{position:relative;z-index:3;text-align:center;padding:60px 20px}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(192,57,43,0.3);padding:7px 20px;margin-bottom:32px;background:rgba(192,57,43,0.04);opacity:0;animation:fadeUp .8s .2s ease forwards}
+.hero-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--red);animation:blink 1.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-badge span{font-size:0.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--red)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,7.5rem);font-weight:300;color:var(--dark);line-height:1;margin-bottom:10px;opacity:0;animation:fadeUp .9s .3s ease forwards}
+.hero-title em{font-style:italic;color:var(--red)}
+.hero-title strong{font-weight:600;display:block;font-size:clamp(1.5rem,3vw,2.8rem);letter-spacing:8px;text-transform:uppercase;color:rgba(40,10,10,0.5);font-family:'Josefin Sans',sans-serif;margin-top:8px}
+.hero-tagline{font-size:0.72rem;letter-spacing:6px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;opacity:0;animation:fadeUp .8s .5s ease forwards}
+.hero-desc{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:rgba(80,20,20,0.55);max-width:540px;margin:0 auto 48px;line-height:1.9;font-style:italic;opacity:0;animation:fadeUp .8s .6s ease forwards;min-height:2.5rem}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .8s ease forwards}
+.btn-red{background:var(--red);color:#fff;padding:14px 36px;font-size:0.68rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .3s,transform .2s;font-family:'Josefin Sans',sans-serif}
+.btn-red:hover{background:var(--red2);transform:translateY(-3px)}
+.btn-ghost{background:transparent;color:var(--dark);padding:14px 36px;font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(40,10,10,0.25);cursor:pointer;transition:all .3s;font-family:'Josefin Sans',sans-serif}
+.btn-ghost:hover{border-color:var(--red);color:var(--red)}
+.hero-scroll{position:absolute;bottom:70px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;animation:scrollBounce 2s infinite}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(192,57,43,0.6),transparent)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.stats-bar{background:#fff;border-top:1px solid rgba(192,57,43,0.12);border-bottom:1px solid rgba(192,57,43,0.12);padding:24px 50px;display:flex;justify-content:center;gap:80px;flex-wrap:wrap;box-shadow:0 2px 20px rgba(192,57,43,0.05)}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--red);line-height:1;transition:transform .3s}
+.stat:hover .stat-num{transform:scale(1.1)}
+.stat-label{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+section{padding:100px 50px}
+.sec-tag{font-size:0.58rem;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:block}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:16px;color:var(--dark)}
+.sec-title em{font-style:italic;color:var(--red)}
+.sec-line{width:50px;height:2px;background:var(--red);margin-bottom:28px}
+.sec-line-center{margin:0 auto 28px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+.reveal-l{opacity:0;transform:translateX(-36px);transition:opacity .8s ease,transform .8s ease}
+.reveal-l.on{opacity:1;transform:translateX(0)}
+.reveal-r{opacity:0;transform:translateX(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal-r.on{opacity:1;transform:translateX(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+
+#about{background:var(--cream2);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1300px;margin:0 auto;padding:100px 50px}
+.about-visual{position:relative}
+.clapboard{background:#fff;border:1px solid rgba(192,57,43,0.15);border-radius:8px;padding:40px;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;box-shadow:0 8px 40px rgba(192,57,43,0.08)}
+.clapboard-stripe{position:absolute;top:0;left:0;right:0;height:60px;display:flex;overflow:hidden}
+.stripe{flex:1;height:60px;background:rgba(192,57,43,0.12);margin:0 2px}
+.stripe.dark{background:var(--dark)}
+.cb-body{padding-top:70px;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cb-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--dark);margin-bottom:12px}
+.cb-sub{font-size:13px;color:rgba(80,20,20,0.5);line-height:1.7}
+.cb-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.cb-meta-item{background:rgba(192,57,43,0.04);border:1px solid rgba(192,57,43,0.15);padding:12px;border-radius:4px}
+.cb-meta-label{font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.cb-meta-val{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--dark)}
+.about-float{position:absolute;bottom:-16px;right:-16px;background:var(--red);padding:16px 22px;border-radius:4px;box-shadow:0 8px 24px rgba(192,57,43,0.35)}
+.about-float-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#fff;line-height:1}
+.about-float-label{font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75)}
+.about-text p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(60,15,15,0.65);line-height:1.9;margin-bottom:16px}
+.about-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.about-list li{display:flex;gap:12px;font-size:13px;color:rgba(60,20,20,0.6);line-height:1.5;align-items:flex-start}
+.about-list li::before{content:'▸';color:var(--red);flex-shrink:0;margin-top:1px}
+
+#services{background:var(--cream);text-align:center}
+.services-sub{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--muted);max-width:520px;margin:0 auto 60px;line-height:1.8;font-style:italic}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;max-width:1200px;margin:0 auto;background:rgba(192,57,43,0.1)}
+.srv-card{background:var(--cream);padding:40px 30px;text-align:left;transition:background .3s,box-shadow .3s;position:relative;overflow:hidden}
+.srv-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--red);transition:width .4s}
+.srv-card:hover{background:#fff;box-shadow:0 8px 30px rgba(192,57,43,0.08)}
+.srv-card:hover::after{width:100%}
+.srv-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(192,57,43,0.1);line-height:1;margin-bottom:20px;transition:color .3s}
+.srv-card:hover .srv-num{color:rgba(192,57,43,0.3)}
+.srv-card h3{font-family:'Josefin Sans',sans-serif;font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--dark);margin-bottom:12px;font-weight:600}
+.srv-card p{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(60,20,20,0.55);line-height:1.75}
+.srv-icon{font-size:1.6rem;margin-bottom:14px;display:block}
+
+#legal{background:#fff}
+.legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1200px;margin:0 auto}
+.info-table{width:100%;border-collapse:collapse;margin-top:8px}
+.info-table tr{border-bottom:1px solid rgba(192,57,43,0.08);transition:background .2s}
+.info-table tr:hover{background:rgba(192,57,43,0.03)}
+.info-table td{padding:14px 0;vertical-align:top}
+.info-table td:first-child{font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--red);width:42%;font-weight:400}
+.info-table td:last-child{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(40,10,10,0.8)}
+.reg-box{background:var(--cream);border:1px solid rgba(192,57,43,0.12);padding:32px;margin-bottom:18px;transition:border-color .3s,transform .3s}
+.reg-box:hover{border-color:rgba(192,57,43,0.4);transform:translateX(5px)}
+.reg-box h4{font-size:0.58rem;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:18px}
+.reg-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(40,10,10,0.06)}
+.reg-row:last-child{border-bottom:none}
+.reg-k{font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.reg-v{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--dark)}
+
+#directors{background:var(--cream2);text-align:center}
+.directors-grid{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:60px}
+.dir-card{background:#fff;border:1px solid rgba(192,57,43,0.12);padding:48px 36px;width:310px;transition:transform .3s,border-color .3s,box-shadow .3s}
+.dir-card:hover{transform:translateY(-10px);border-color:rgba(192,57,43,0.4);box-shadow:0 20px 50px rgba(192,57,43,0.12)}
+.dir-avatar{width:84px;height:84px;border-radius:50%;border:2px solid var(--red);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--red);margin:0 auto 20px;background:rgba(192,57,43,0.05);transition:background .3s,transform .3s}
+.dir-card:hover .dir-avatar{background:rgba(192,57,43,0.12);transform:scale(1.05)}
+.dir-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--dark);margin-bottom:6px}
+.dir-role{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:20px}
+.dir-info{display:flex;flex-direction:column;gap:7px;text-align:left}
+.dir-info-row{display:flex;gap:10px;font-size:13px;color:rgba(60,20,20,0.55)}
+.dir-info-row strong{color:rgba(40,10,10,0.65);font-weight:500;min-width:38px;flex-shrink:0}
+.dir-shares{margin-top:16px;padding-top:16px;border-top:1px solid rgba(192,57,43,0.1);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+
+#udyam{background:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;padding:100px 50px}
+.udyam-badge-wrap{display:flex;align-items:center;justify-content:center}
+.udyam-badge{border:2px solid var(--red);padding:50px 40px;text-align:center;position:relative;max-width:340px;width:100%;background:#fff;box-shadow:0 8px 40px rgba(192,57,43,0.1)}
+.udyam-badge::before,.udyam-badge::after{content:'';position:absolute;width:20px;height:20px;border-color:var(--red2)}
+.udyam-badge::before{top:-2px;left:-2px;border-top:3px solid;border-left:3px solid}
+.udyam-badge::after{bottom:-2px;right:-2px;border-bottom:3px solid;border-right:3px solid}
+.udyam-icon{font-size:3rem;margin-bottom:16px;display:block}
+.udyam-num{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--red);letter-spacing:2px;margin-bottom:8px;word-break:break-all}
+.udyam-type{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.udyam-enterprise{display:inline-block;margin-top:16px;background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.25);padding:6px 16px;font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+.udyam-text p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(60,20,20,0.65);line-height:1.9;margin-bottom:16px}
+.nic-list{margin-top:20px;display:flex;flex-direction:column;gap:12px}
+.nic-item{display:flex;gap:14px;align-items:flex-start;padding:14px;background:#fff;border:1px solid rgba(192,57,43,0.1);border-radius:4px;box-shadow:0 2px 10px rgba(192,57,43,0.05)}
+.nic-code{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--red);min-width:44px;line-height:1}
+.nic-desc h5{font-size:0.65rem;letter-spacing:1px;text-transform:uppercase;color:var(--dark);font-weight:600;margin-bottom:3px}
+.nic-desc p{font-size:12px;color:var(--muted);line-height:1.5}
+
+#contact{background:#fff;padding:100px 50px}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-facts{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.c-fact{display:flex;gap:14px;padding:16px;border:1px solid rgba(192,57,43,0.1);background:var(--cream);align-items:flex-start;transition:border-color .3s,box-shadow .3s}
+.c-fact:hover{border-color:rgba(192,57,43,0.3);box-shadow:0 4px 16px rgba(192,57,43,0.06)}
+.c-fact-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;width:36px;text-align:center}
+.c-fact-label{font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.c-fact-val{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:rgba(40,10,10,0.75);line-height:1.5}
+.contact-form{background:var(--cream);border:1px solid rgba(192,57,43,0.12);padding:36px}
+.contact-form h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--dark);margin-bottom:24px;font-weight:400}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.fg input,.fg textarea{width:100%;background:#fff;border:1px solid rgba(192,57,43,0.15);padding:12px 16px;color:var(--dark);font-family:'Cormorant Garamond',serif;font-size:1rem;outline:none;transition:border-color .3s;resize:vertical}
+.fg input:focus,.fg textarea:focus{border-color:var(--red)}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(80,20,20,0.3)}
+.fg textarea{height:120px}
+.submit-btn{width:100%;padding:14px;background:var(--red);color:#fff;font-family:'Josefin Sans',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s,transform .2s;margin-top:6px}
+.submit-btn:hover{background:var(--red2);transform:translateY(-2px)}
+
+footer{background:var(--dark);padding:40px 50px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--red);letter-spacing:1px}
+.footer-logo span{color:rgba(255,200,200,0.5);font-weight:300;font-style:italic}
+.footer-copy{font-size:0.6rem;letter-spacing:2px;color:rgba(255,200,200,0.35);text-align:center}
+.footer-ids{font-size:0.58rem;letter-spacing:1px;color:rgba(255,200,200,0.25);text-align:right;line-height:1.8}
+
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  section{padding:70px 20px}
+  #about,#udyam,.contact-inner{grid-template-columns:1fr;gap:40px}
+  .legal-grid{grid-template-columns:1fr;gap:40px}
+  .hero-title{font-size:clamp(2.2rem,10vw,4rem)}
+  .stats-bar{gap:40px;padding:20px}
+  footer{flex-direction:column;text-align:center}
+  .footer-ids{text-align:center}
+  .directors-grid{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#hero" class="logo">
+    <div class="logo-icon">JC</div>
+    <div class="logo-text">Jayashri Cinematics<span>Private Limited · Est. 2025</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#legal">Company</a></li>
+    <li><a href="#directors">Team</a></li>
+    <li><a href="#udyam">MSME</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <canvas id="particles"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="film-strip-top">
+    <div class="film-holes" id="holes-top"></div>
+    <div class="film-frame-text">JAYASHRI CINEMATICS PRIVATE LIMITED · U59111PN2025PTC245223 · PUNE, MAHARASHTRA</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><div class="hero-badge-dot"></div><span>Incorporated 20 August 2025 · Pune, Maharashtra</span></div>
+    <h1 class="hero-title">
+      <em>Jayashri</em>
+      <strong>Cinematics</strong>
+    </h1>
+    <p class="hero-tagline">Motion Pictures · Web Series · OTT Content · Post Production</p>
+    <p class="hero-desc" id="typewriter"></p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-red">Our Services</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    </div>
+  </div>
+  <div class="film-strip-bottom">
+    <div class="film-holes" id="holes-bottom"></div>
+    <div class="film-frame-text">CIN: U59111PN2025PTC245223 · PAN: AAHCJ0177H · TAN: PNEJ17392E · UDYAM-MH-26-1121860</div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">2025</div><div class="stat-label">Year Founded</div></div>
+  <div class="stat"><div class="stat-num">Pvt. Ltd.</div><div class="stat-label">Company Type</div></div>
+  <div class="stat"><div class="stat-num">MSME</div><div class="stat-label">Udyam Registered</div></div>
+  <div class="stat"><div class="stat-num">OTT</div><div class="stat-label">Digital Content</div></div>
+  <div class="stat"><div class="stat-num">Pune</div><div class="stat-label">Maharashtra</div></div>
+</div>
+
+<section id="about" style="background:var(--cream2)">
+  <div class="about-visual reveal-l">
+    <div class="clapboard">
+      <div class="clapboard-stripe">
+        <div class="stripe"></div><div class="stripe dark"></div><div class="stripe"></div>
+        <div class="stripe dark"></div><div class="stripe"></div><div class="stripe dark"></div>
+        <div class="stripe"></div><div class="stripe dark"></div><div class="stripe"></div>
+        <div class="stripe dark"></div><div class="stripe"></div><div class="stripe dark"></div>
+      </div>
+      <div class="cb-body">
+        <div class="cb-title">Where Stories<br>Become Cinema</div>
+        <div class="cb-sub">From script to screen — Jayashri Cinematics brings compelling stories to life across theatrical, broadcast and digital platforms.</div>
+        <div class="cb-meta">
+          <div class="cb-meta-item"><div class="cb-meta-label">CIN</div><div class="cb-meta-val" style="font-size:0.85rem">U59111PN2025PTC245223</div></div>
+          <div class="cb-meta-item"><div class="cb-meta-label">Incorporated</div><div class="cb-meta-val">20 Aug 2025</div></div>
+          <div class="cb-meta-item"><div class="cb-meta-label">PAN</div><div class="cb-meta-val">AAHCJ0177H</div></div>
+          <div class="cb-meta-item"><div class="cb-meta-label">State</div><div class="cb-meta-val">Maharashtra</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-float">
+      <div class="about-float-num">Pvt.<br>Ltd.</div>
+      <div class="about-float-label">Company Limited<br>by Shares</div>
+    </div>
+  </div>
+  <div class="about-text reveal-r">
+    <span class="sec-tag">Who We Are</span>
+    <h2 class="sec-title">Crafting <em>Cinematic</em><br>Experiences</h2>
+    <div class="sec-line"></div>
+    <p>Jayashri Cinematics Private Limited is a Pune-based film and media production company incorporated on 20 August 2025 under the Companies Act, 2013. Registered as a Micro enterprise under MSME (Udyam No. UDYAM-MH-26-1121860), we are committed to producing world-class audio-visual content.</p>
+    <p>From blockbuster motion pictures to compelling web series, documentaries to television programs — we handle every stage of production with creative excellence and technical precision.</p>
+    <ul class="about-list">
+      <li>End-to-end film & web series production for theatrical and OTT release</li>
+      <li>Professional post-production: VFX, editing, sound, dubbing & subtitling</li>
+      <li>Event management, film festivals & talent coordination</li>
+      <li>IP acquisition — scripts, copyrights, trademarks, remake rights</li>
+      <li>Equipment import/export for filmmaking & digital content creation</li>
+    </ul>
+  </div>
+</section>
+
+<section id="services">
+  <span class="sec-tag reveal">What We Do</span>
+  <h2 class="sec-title reveal">Our <em>Services</em></h2>
+  <div class="sec-line sec-line-center reveal"></div>
+  <p class="services-sub reveal">A complete cinematic ecosystem — from concept to credits, we bring every frame to life.</p>
+  <div class="services-grid">
+    <div class="srv-card reveal d1"><span class="srv-icon">🎬</span><div class="srv-num">01</div><h3>Film Production</h3><p>End-to-end production of motion pictures, web series, documentaries and television programs for theatrical, broadcast and OTT platforms.</p></div>
+    <div class="srv-card reveal d2"><span class="srv-icon">🎞️</span><div class="srv-num">02</div><h3>Post Production</h3><p>Complete post-production services including VFX, video editing, color grading, sound mixing, dubbing and subtitling for all formats.</p></div>
+    <div class="srv-card reveal d3"><span class="srv-icon">🎵</span><div class="srv-num">03</div><h3>Music & Audio</h3><p>Music album production, sound recording studio services, background score composition and audio post-production for films and shows.</p></div>
+    <div class="srv-card reveal d4"><span class="srv-icon">📡</span><div class="srv-num">04</div><h3>Distribution & OTT</h3><p>Content distribution partnerships with OTT platforms, digital streaming aggregators, broadcasters and theatrical distributors.</p></div>
+    <div class="srv-card reveal d5"><span class="srv-icon">🏆</span><div class="srv-num">05</div><h3>Events & Promotions</h3><p>Film festivals, premieres, promotional campaigns, talent management, artist coordination and media relations for productions.</p></div>
+    <div class="srv-card reveal d6"><span class="srv-icon">🤝</span><div class="srv-num">06</div><h3>Co-Production & JV</h3><p>Joint ventures and co-production agreements with production houses, OTT platforms, music companies and international entities.</p></div>
+  </div>
+</section>
+
+<section id="legal" style="padding:100px 50px;background:#fff">
+  <div class="legal-grid">
+    <div class="reveal-l">
+      <span class="sec-tag">Registration Details</span>
+      <h2 class="sec-title">Official <em>Company</em><br>Information</h2>
+      <div class="sec-line"></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:rgba(60,20,20,0.55);line-height:1.9;margin-bottom:28px">All registration details of Jayashri Cinematics Private Limited as issued by the Ministry of Corporate Affairs and Income Tax Department, Government of India.</p>
+      <table class="info-table">
+        <tr><td>Company Name</td><td>Jayashri Cinematics Private Limited</td></tr>
+        <tr><td>CIN</td><td>U59111PN2025PTC245223</td></tr>
+        <tr><td>PAN</td><td>AAHCJ0177H</td></tr>
+        <tr><td>TAN</td><td>PNEJ17392E</td></tr>
+        <tr><td>Incorporated</td><td>20 August 2025</td></tr>
+        <tr><td>Company Type</td><td>Private Limited (Shares)</td></tr>
+        <tr><td>Industry Code</td><td>U59111 — Motion Pictures</td></tr>
+        <tr><td>Signed By (ROC)</td><td>Banwari Sharma, CRC</td></tr>
+        <tr><td>Share Capital</td><td>₹1,00,000 (10,000 Shares × ₹10)</td></tr>
+      </table>
+    </div>
+    <div class="reveal-r">
+      <div class="reg-box">
+        <h4>Registered Office Address</h4>
+        <div class="reg-row"><span class="reg-k">Block / Unit</span><span class="reg-v">B.N.A3</span></div>
+        <div class="reg-row"><span class="reg-k">Building</span><span class="reg-v">Siddeshwar Nagari</span></div>
+        <div class="reg-row"><span class="reg-k">Taluka</span><span class="reg-v">Khed, Rajgurunagar</span></div>
+        <div class="reg-row"><span class="reg-k">City</span><span class="reg-v">Pune</span></div>
+        <div class="reg-row"><span class="reg-k">State</span><span class="reg-v">Maharashtra</span></div>
+        <div class="reg-row"><span class="reg-k">PIN Code</span><span class="reg-v">410505</span></div>
+        <div class="reg-row"><span class="reg-k">Email</span><span class="reg-v" style="font-size:0.88rem">info.jayashridevelopers@gmail.com</span></div>
+        <div class="reg-row"><span class="reg-k">Phone</span><span class="reg-v">022-6897 6194</span></div>
+      </div>
+      <div class="reg-box">
+        <h4>Identity Numbers</h4>
+        <div class="reg-row"><span class="reg-k">CIN</span><span class="reg-v" style="font-size:0.9rem">U59111PN2025PTC245223</span></div>
+        <div class="reg-row"><span class="reg-k">PAN</span><span class="reg-v">AAHCJ0177H</span></div>
+        <div class="reg-row"><span class="reg-k">TAN</span><span class="reg-v">PNEJ17392E</span></div>
+        <div class="reg-row"><span class="reg-k">Udyam No.</span><span class="reg-v" style="font-size:0.88rem">UDYAM-MH-26-1121860</span></div>
+        <div class="reg-row"><span class="reg-k">NIC Code</span><span class="reg-v">59111, 59122</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="directors">
+  <span class="sec-tag reveal">Leadership</span>
+  <h2 class="sec-title reveal">Meet Our <em>Directors</em></h2>
+  <div class="sec-line sec-line-center reveal"></div>
+  <div class="directors-grid">
+    <div class="dir-card reveal d1">
+      <div class="dir-avatar">JM</div>
+      <div class="dir-name">Jayashri Nitin Mane</div>
+      <div class="dir-role">Director & Founder</div>
+      <div class="dir-info">
+        <div class="dir-info-row"><strong>Addr:</strong>C-2 Navale Residency, Pimple Saudagar, Pune, Maharashtra</div>
+        <div class="dir-info-row"><strong>Occ:</strong>Business</div>
+      </div>
+      <div class="dir-shares">500 Equity Shares</div>
+    </div>
+    <div class="dir-card reveal d2">
+      <div class="dir-avatar">AG</div>
+      <div class="dir-name">Aditya Dnyaneshwar Gurav</div>
+      <div class="dir-role">Director & Co-Founder</div>
+      <div class="dir-info">
+        <div class="dir-info-row"><strong>DIN:</strong>07037091</div>
+        <div class="dir-info-row"><strong>Addr:</strong>Omkar Plaza, A8, Ahilyadevi Chowk, Near Court, Rajgurunagar, Pune – 410505</div>
+        <div class="dir-info-row"><strong>Occ:</strong>Advocate</div>
+      </div>
+      <div class="dir-shares">500 Equity Shares</div>
+    </div>
+  </div>
+</section>
+
+<section id="udyam">
+  <div class="udyam-badge-wrap reveal-l">
+    <div class="udyam-badge">
+      <span class="udyam-icon">🏭</span>
+      <div style="font-size:0.58rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Govt. of India · MSME</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--dark);margin-bottom:12px">Udyam Registration</div>
+      <div class="udyam-num">UDYAM-MH-26-1121860</div>
+      <div class="udyam-type">Registration Number</div>
+      <div class="udyam-enterprise">Micro Enterprise · 2026-27</div>
+      <div style="margin-top:16px;font-size:0.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase">Registered: 17 April 2026</div>
+    </div>
+  </div>
+  <div class="udyam-text reveal-r">
+    <span class="sec-tag">MSME Recognition</span>
+    <h2 class="sec-title">Udyam <em>Registered</em><br>Enterprise</h2>
+    <div class="sec-line"></div>
+    <p>Jayashri Cinematics Private Limited is proudly registered as a Micro Enterprise under the Ministry of Micro, Small and Medium Enterprises (MSME), Government of India.</p>
+    <p>Our enterprise is classified under NIC codes related to Motion Picture Production and Post-Production Activities, reflecting our core business focus.</p>
+    <div class="nic-list">
+      <div class="nic-item">
+        <div class="nic-code">59111</div>
+        <div class="nic-desc"><h5>Motion Picture Production</h5><p>Production of motion pictures, video and television programme production activities</p></div>
+      </div>
+      <div class="nic-item">
+        <div class="nic-code">59122</div>
+        <div class="nic-desc"><h5>Post Production Services</h5><p>Post production activities of television programmes, commercials and other media content</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal-l">
+      <span class="sec-tag">Reach Us</span>
+      <h2 class="sec-title">Let's <em>Create</em><br>Together</h2>
+      <div class="sec-line"></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--muted);line-height:1.9;margin-bottom:32px">Whether you're a filmmaker, OTT platform, broadcaster, investor or creative partner — we'd love to collaborate.</p>
+      <div class="contact-facts">
+        <div class="c-fact"><div class="c-fact-icon">📍</div><div><div class="c-fact-label">Registered Address</div><div class="c-fact-val">B.N.A3, Siddeshwar Nagari, Tal: Khed, Rajgurunagar, Pune – 410505, Maharashtra</div></div></div>
+        <div class="c-fact"><div class="c-fact-icon">📧</div><div><div class="c-fact-label">Email</div><div class="c-fact-val">info.jayashridevelopers@gmail.com</div></div></div>
+        <div class="c-fact"><div class="c-fact-icon">📞</div><div><div class="c-fact-label">Phone</div><div class="c-fact-val">022-6897 6194</div></div></div>
+        <div class="c-fact"><div class="c-fact-icon">🏢</div><div><div class="c-fact-label">Office Address</div><div class="c-fact-val">Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane - 400703, Maharashtra</div></div></div>
+        <div class="c-fact"><div class="c-fact-icon">🪪</div><div><div class="c-fact-label">PAN / TAN</div><div class="c-fact-val">AAHCJ0177H · PNEJ17392E</div></div></div>
+        <div class="c-fact"><div class="c-fact-icon">🏭</div><div><div class="c-fact-label">Udyam Number</div><div class="c-fact-val">UDYAM-MH-26-1121860</div></div></div>
+      </div>
+    </div>
+    <div class="contact-form reveal-r">
+      <h3>Send a Message</h3>
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="Full Name"></div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 00000 00000"></div>
+      <div class="fg"><label>Subject</label><input type="text" placeholder="Film production, collaboration, etc."></div>
+      <div class="fg"><label>Message</label><textarea placeholder="Tell us about your project or inquiry..."></textarea></div>
+      <button class="submit-btn" onclick="alert('Thank you! We will get back to you shortly.')">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Jayashri <span>Cinematics Pvt. Ltd.</span></div>
+  <div class="footer-copy">© 2025 Jayashri Cinematics Private Limited. All rights reserved.<br>Incorporated under Companies Act, 2013 · Pune, Maharashtra</div>
+  <div class="footer-ids">CIN: U59111PN2025PTC245223<br>PAN: AAHCJ0177H · TAN: PNEJ17392E<br>UDYAM: UDYAM-MH-26-1121860</div>
+</footer>
+
+<script>
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+function makeHoles(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  let html = '';
+  for (let i = 0; i < 60; i++) html += '<div class="film-hole"></div>';
+  html += html;
+  el.innerHTML = html;
+}
+makeHoles('holes-top');
+makeHoles('holes-bottom');
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, parts = [];
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+class P {
+  constructor() { this.reset(); }
+  reset() { this.x = Math.random()*W; this.y = Math.random()*H; this.r = Math.random()*1.2+0.2; this.dx = (Math.random()-.5)*.35; this.dy = (Math.random()-.5)*.35; this.a = Math.random()*.15+.05; this.c = Math.random() > .6 ? `rgba(192,57,43,${this.a})` : `rgba(180,40,40,${this.a*0.5})`; }
+}
+for (let i = 0; i < 80; i++) parts.push(new P());
+function draw() {
+  ctx.clearRect(0,0,W,H);
+  parts.forEach(p => {
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=p.c; ctx.fill();
+    p.x+=p.dx; p.y+=p.dy;
+    if(p.x<0||p.x>W) p.dx*=-1;
+    if(p.y<0||p.y>H) p.dy*=-1;
+  });
+  for(let i=0;i<parts.length;i++) for(let j=i+1;j<parts.length;j++){
+    const dx=parts[i].x-parts[j].x, dy=parts[i].y-parts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+    if(d<90){ ctx.beginPath(); ctx.moveTo(parts[i].x,parts[i].y); ctx.lineTo(parts[j].x,parts[j].y); ctx.strokeStyle=`rgba(192,57,43,${.03*(1-d/90)})`; ctx.lineWidth=.4; ctx.stroke(); }
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+
+const phrases = ['Producing cinematic stories for the world...','From script to screen — we make it happen.','Motion pictures · Web series · OTT content.','Your vision. Our frames. One legacy.'];
+let pi=0,ci=0,del=false;
+const tw = document.getElementById('typewriter');
+function type() {
+  const cur = phrases[pi];
+  if (!del) { tw.textContent = cur.slice(0, ++ci); if (ci === cur.length) { del=true; setTimeout(type,2000); return; } }
+  else { tw.textContent = cur.slice(0, --ci); if (ci===0) { del=false; pi=(pi+1)%phrases.length; } }
+  setTimeout(type, del ? 35 : 65);
+}
+setTimeout(type, 1400);
+
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); }), { threshold: 0.12 });
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => obs.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+}));
+</script>
+</body>
+</html>

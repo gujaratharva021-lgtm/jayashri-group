@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gurav Advocates LLP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --maroon: #6B1A1A;
+      --maroon-light: #8B2222;
+      --maroon-pale: #FDF0F0;
+      --gold: #C4992A;
+      --gold-pale: #FBF5E6;
+      --dark: #1C1C1C;
+      --gray: #666666;
+      --light: #F8F6F2;
+      --white: #FFFFFF;
+      --border: #E2D9CC;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--maroon);
+      text-decoration: none;
+      line-height: 1.2;
+    }
+    .nav-logo span {
+      display: block;
+      font-size: 0.62rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--maroon); }
+    .nav-cta {
+      background: var(--maroon);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1.4rem;
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.84rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--maroon-light); }
+
+    /* HERO */
+    .hero {
+  min-height: 100vh;
+  background: linear-gradient(to right, rgba(107,26,26,0.85) 40%, rgba(107,26,26,0.2) 100%),
+            url('lady-justice.jpg') right center / contain no-repeat;
+background-color: var(--maroon);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100px 5% 0;
+  position: relative;
+  overflow: hidden;
+}
+    /* Subtle pattern */
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L100 50 L50 100 L0 50 Z' fill='none' stroke='%23ffffff' stroke-width='0.3' opacity='0.08'/%3E%3C/svg%3E");
+      background-size: 60px 60px;
+    }
+    /* Gold side accent */
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    }
+    .hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  padding-bottom: 3rem;
+}
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid rgba(196,153,42,0.5);
+      color: #E8C96B;
+      font-size: 0.72rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      margin-bottom: 1.75rem;
+      border-radius: 2px;
+    }
+    .scales-icon {
+      font-size: 0.9rem;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { color: #E8C96B; font-style: italic; }
+    .hero p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--dark);
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #D4A93A; }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      font-size: 0.88rem;
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: #E8C96B; color: #E8C96B; }
+
+    .hero-stats {
+  background: rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(196,153,42,0.3);
+  display: flex;
+  padding: 1.5rem 5%;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+    .stat { color: var(--white); }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: #E8C96B;
+      display: block;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 5%; }
+    .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      color: var(--gray);
+      font-size: 0.95rem;
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+    .divider {
+      width: 40px; height: 2px;
+      background: var(--gold);
+      margin: 0.75rem 0 2rem;
+    }
+
+    /* ABOUT */
+    #about { background: var(--light); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .reg-grid { display: grid; gap: 0.75rem; margin-top: 2rem; }
+    .reg-item {
+      display: flex; gap: 1rem;
+      align-items: flex-start;
+      padding: 0.85rem 1.1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--maroon);
+      border-radius: 2px;
+    }
+    .reg-icon { color: var(--maroon); font-size: 1rem; margin-top: 2px; flex-shrink: 0; }
+    .reg-item-label { font-size: 0.68rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.2rem; }
+    .reg-item-value { font-size: 0.88rem; font-weight: 500; color: var(--dark); }
+
+    /* Crest card */
+    .about-visual {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      position: sticky;
+      top: 88px;
+    }
+    .visual-header {
+      background: var(--maroon);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .crest-symbol {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .visual-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+    .visual-header p { font-size: 0.72rem; color: rgba(255,255,255,0.55); letter-spacing: 1.5px; text-transform: uppercase; }
+    .visual-body { padding: 1.5rem; }
+    .llp-fact {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .llp-fact:last-child { border-bottom: none; }
+    .llp-fact-label { color: var(--gray); }
+    .llp-fact-value { font-weight: 500; color: var(--dark); text-align: right; }
+
+    /* PRACTICE AREAS */
+    #practice { background: var(--white); }
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+    }
+    .practice-card {
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s, transform 0.2s;
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .practice-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--maroon);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .practice-card:hover { border-color: var(--maroon); transform: translateY(-2px); }
+    .practice-card:hover::after { transform: scaleX(1); }
+    .practice-icon {
+      width: 44px; height: 44px;
+      background: var(--maroon-pale);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.1rem;
+      font-size: 1.3rem;
+    }
+    .practice-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    .practice-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.65; }
+
+    /* WHY US */
+    #why { background: var(--dark); }
+    #why .section-title { color: var(--white); }
+    #why .section-sub { color: rgba(255,255,255,0.5); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .why-item {
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 2px solid var(--gold);
+      border-radius: 0 0 4px 4px;
+    }
+    .why-icon { font-size: 1.4rem; margin-bottom: 0.75rem; }
+    .why-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #E8C96B;
+    }
+    .why-item p { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+    /* PARTNERS */
+    #partners { background: var(--light); }
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+    .partner-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .partner-header {
+      background: var(--maroon);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .partner-avatar {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid #E8C96B;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: #E8C96B;
+      flex-shrink: 0;
+    }
+    .partner-title h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+    .partner-title .role {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .partner-body { padding: 1.25rem 1.5rem; }
+    .partner-detail {
+      display: flex; gap: 0.5rem;
+      font-size: 0.83rem;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+      align-items: flex-start;
+    }
+    .partner-detail strong { color: var(--dark); font-weight: 500; flex-shrink: 0; }
+    .dpin-badge {
+      display: inline-block;
+      background: var(--gold-pale);
+      color: var(--maroon);
+      border: 1px solid #E2C97B;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2px;
+      margin-top: 0.75rem;
+    }
+
+    /* MSME */
+    #msme { background: var(--white); border-top: 1px solid var(--border); }
+    .msme-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .msme-badge-block {
+      background: var(--maroon);
+      color: var(--white);
+      padding: 2rem 2.5rem;
+      border-radius: 4px;
+      text-align: center;
+      min-width: 160px;
+    }
+    .msme-badge-block .big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .msme-badge-block .small {
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      opacity: 0.65;
+      text-transform: uppercase;
+    }
+    .msme-num {
+      margin-top: 0.75rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+    .msme-details h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    .msme-table { width: 100%; border-collapse: collapse; }
+    .msme-table tr { border-bottom: 1px solid var(--border); }
+    .msme-table tr:last-child { border-bottom: none; }
+    .msme-table td { padding: 0.65rem 0; font-size: 0.87rem; vertical-align: top; }
+    .msme-table td:first-child { color: var(--gray); width: 200px; }
+    .msme-table td:last-child { font-weight: 500; color: var(--dark); }
+
+    /* CONTACT */
+    #contact { background: var(--light); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-item {
+      display: flex; gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 40px; height: 40px;
+      background: var(--maroon);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .contact-item h4 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray);
+      margin-bottom: 0.25rem;
+    }
+    .contact-item p { font-size: 0.9rem; color: var(--dark); line-height: 1.55; }
+    .contact-form { display: grid; gap: 0.85rem; }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      background: var(--white);
+      color: var(--dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus { border-color: var(--maroon); }
+    .contact-form textarea { resize: vertical; min-height: 130px; }
+    .contact-form button {
+      background: var(--maroon);
+      color: var(--white);
+      border: none;
+      padding: 0.85rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+      justify-self: start;
+    }
+    .contact-form button:hover { background: var(--maroon-light); }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      background: var(--gold-pale);
+      border: 1px solid #E2C97B;
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-top: 2rem;
+    }
+    .disclaimer strong { color: var(--maroon); }
+
+    /* FOOTER */
+    footer {
+      background: #0F0808;
+      color: rgba(255,255,255,0.35);
+      padding: 2rem 5%;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--white);
+      font-size: 1.15rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .footer-reg { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #E8C96B; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.76rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .about-grid, .contact-grid, .msme-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+      .nav-links { display: none; }
+      .about-visual { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#home" class="nav-logo">
+      Gurav Advocates LLP
+      <span>Legal &amp; Professional Services</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#practice">Practice Areas</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#msme">MSME</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Consult Us</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="scales-icon">⚖</span>
+        Est. April 2023 · Rajgurunagar, Pune
+      </div>
+      <h1>Justice Through<br><em>Expert Counsel</em></h1>
+      <p>Gurav Advocates LLP is a registered Limited Liability Partnership providing comprehensive legal services, professional consultation, and liaising before courts, tribunals, and government authorities across Maharashtra.</p>
+      <div class="hero-btns">
+        <a href="#practice" class="btn-primary">Practice Areas</a>
+        <a href="#contact" class="btn-outline">Book Consultation</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">2023</span>
+        <span class="stat-label">Established</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">LLP</span>
+        <span class="stat-label">MCA Registered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">Micro</span>
+        <span class="stat-label">MSME Certified</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">MH</span>
+        <span class="stat-label">Maharashtra</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">Who We Are</div>
+        <h2 class="section-title">A Trusted Legal Partnership in Pune</h2>
+        <div class="divider"></div>
+        <p style="color: var(--gray); margin-bottom: 1rem;">Gurav Advocates LLP was incorporated on 6th April 2023 under the Limited Liability Partnership Act, 2008. Headquartered at Siddheshwar Nagari, Rajgurunagar, Khed, Pune — we are a professionally managed firm providing legal services to individuals, businesses, and organisations.</p>
+        <p style="color: var(--gray); margin-bottom: 2rem;">We act as consultants, advisors, and advocates on all branches of law — appearing before courts, tribunals, and government authorities, and providing liaisoning services to clients across Central and State acts.</p>
+
+        <div class="reg-grid">
+          <div class="reg-item">
+            <span class="reg-icon">⚖</span>
+            <div>
+              <div class="reg-item-label">LLP Identification Number</div>
+              <div class="reg-item-value">ACA-4790</div>
+            </div>
+          </div>
+          <div class="reg-item">
+            <span class="reg-icon">📋</span>
+            <div>
+              <div class="reg-item-label">PAN</div>
+              <div class="reg-item-value">AAZFG4963B</div>
+            </div>
+          </div>
+          <div class="reg-item">
+            <span class="reg-icon">🏛</span>
+            <div>
+              <div class="reg-item-label">TAN</div>
+              <div class="reg-item-value">PNEG29606D</div>
+            </div>
+          </div>
+          <div class="reg-item">
+            <span class="reg-icon">📍</span>
+            <div>
+              <div class="reg-item-label">Registered Office</div>
+              <div class="reg-item-value">B. No. A-3, Siddheshwar Nagari, Behind District Court, Rajgurunagar, Khed, Pune – 410505</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual">
+        <div class="visual-header">
+          <span class="crest-symbol">⚖</span>
+          <h3>Gurav Advocates LLP</h3>
+          <p>Limited Liability Partnership</p>
+        </div>
+        <div class="visual-body">
+          <div class="llp-fact">
+            <span class="llp-fact-label">Entity Type</span>
+            <span class="llp-fact-value">Limited Liability Partnership</span>
+          </div>
+          <div class="llp-fact">
+            <span class="llp-fact-label">Incorporated</span>
+            <span class="llp-fact-value">6 April 2023</span>
+          </div>
+          <div class="llp-fact">
+            <span class="llp-fact-label">Capital</span>
+            <span class="llp-fact-value">Rs. 1,00,000/-</span>
+          </div>
+          <div class="llp-fact">
+            <span class="llp-fact-label">Profit Sharing</span>
+            <span class="llp-fact-value">50% : 50%</span>
+          </div>
+          <div class="llp-fact">
+            <span class="llp-fact-label">Jurisdiction</span>
+            <span class="llp-fact-value">Pune Courts</span>
+          </div>
+          <div class="llp-fact">
+            <span class="llp-fact-label">Registered Under</span>
+            <span class="llp-fact-value">LLP Act, 2008</span>
+          </div>
+          <div class="llp-fact">
+            <span class="llp-fact-label">MCA Registration</span>
+            <span class="llp-fact-value">Central Registration Centre</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICE AREAS -->
+  <section id="practice">
+    <div class="section-tag">Expertise</div>
+    <h2 class="section-title">Our Practice Areas</h2>
+    <div class="divider"></div>
+    <p class="section-sub">We provide expert legal counsel, representation, and advisory services across a broad spectrum of legal matters.</p>
+
+    <div class="practice-grid">
+      <div class="practice-card">
+        <div class="practice-icon">⚖️</div>
+        <h3>Legal Consultation</h3>
+        <p>Expert advisory services on all branches of law — civil, criminal, commercial, and administrative — for individuals and organisations.</p>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🏛️</div>
+        <h3>Court Representation</h3>
+        <p>Appearance and representation before courts, tribunals, and government authorities established under the Constitution of India.</p>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🤝</div>
+        <h3>Liaisoning Services</h3>
+        <p>Professional liaising with government offices, regulatory bodies, and administrative authorities under Central and State laws.</p>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🏢</div>
+        <h3>Corporate & Business Law</h3>
+        <p>Legal services for companies, LLPs, and businesses — including incorporation, agreements, compliance, and dispute resolution.</p>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🏘️</div>
+        <h3>Property & Real Estate Law</h3>
+        <p>Advice and representation in property disputes, title verification, conveyancing, and land-related matters across Maharashtra.</p>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">📜</div>
+        <h3>Drafting & Documentation</h3>
+        <p>Professional drafting of agreements, contracts, petitions, affidavits, and legal documents for all types of transactions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="section-tag">Why Choose Us</div>
+    <h2 class="section-title">Our Strengths</h2>
+    <div class="divider" style="background: #E8C96B;"></div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🏛️</div>
+        <h4>MCA Registered LLP</h4>
+        <p>Incorporated under the LLP Act, 2008 with a valid LLP Identification Number, PAN, and TAN — fully compliant with Indian law.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🏅</div>
+        <h4>MSME Certified</h4>
+        <p>Recognised as a Micro Enterprise under the Udyam Registration Scheme — NIC 69100 Legal Activities.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚖️</div>
+        <h4>Experienced Partners</h4>
+        <p>Led by Mr. Aditya Dnyaneshwar Gurav and Ms. Amruta Dnyaneshwar Gurav — both seasoned professionals in their domains.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📍</div>
+        <h4>Locally Rooted</h4>
+        <p>Located behind Rajgurunagar District Court — with deep knowledge of local courts, authorities, and procedures in Pune district.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🤝</div>
+        <h4>Client-Centric Approach</h4>
+        <p>We combine legal expertise with practical liaisoning skills to deliver real outcomes for our clients — not just legal advice.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔏</div>
+        <h4>Confidentiality</h4>
+        <p>All partners and employees are bound by strict confidentiality obligations — your matters remain fully private.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section id="partners">
+    <div class="section-tag">Leadership</div>
+    <h2 class="section-title">Our Designated Partners</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Gurav Advocates LLP is led by two designated partners who bring complementary expertise and deep commitment to the firm.</p>
+
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-header">
+          <div class="partner-avatar">AG</div>
+          <div class="partner-title">
+            <h3>Mr. Aditya Dnyaneshwar Gurav</h3>
+            <div class="role">Designated Partner · DPIN 07037091</div>
+          </div>
+        </div>
+        <div class="partner-body">
+          <div class="partner-detail">
+            <strong>PAN:</strong> APEPG5457N
+          </div>
+          <div class="partner-detail">
+            <strong>DOB:</strong> 29 July 1987
+          </div>
+          <div class="partner-detail">
+            <strong>Address:</strong> Survey No. 51/1, Panmala Tukaiwadi, Taluka Khed, Pune – 410505
+          </div>
+          <div class="partner-detail">
+            <strong>Capital:</strong> 50% (Rs. 50,000/-)
+          </div>
+          <div class="partner-detail">
+            <strong>Profit Share:</strong> 50%
+          </div>
+          <span class="dpin-badge">DPIN: 07037091</span>
+        </div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-header">
+          <div class="partner-avatar">AG</div>
+          <div class="partner-title">
+            <h3>Ms. Amruta Dnyaneshwar Gurav</h3>
+            <div class="role">Designated Partner · DPIN 08897265</div>
+          </div>
+        </div>
+        <div class="partner-body">
+          <div class="partner-detail">
+            <strong>PAN:</strong> APEPG5458D
+          </div>
+          <div class="partner-detail">
+            <strong>DOB:</strong> 31 May 1983
+          </div>
+          <div class="partner-detail">
+            <strong>Address:</strong> Omkar Plaza Apt., Wing A, Flat No. 3, Ahilyadevi Chowk, Near Savitribai Kanya Shala, Rajgurunagar, Pune – 410505
+          </div>
+          <div class="partner-detail">
+            <strong>Capital:</strong> 50% (Rs. 50,000/-)
+          </div>
+          <div class="partner-detail">
+            <strong>Profit Share:</strong> 50%
+          </div>
+          <span class="dpin-badge">DPIN: 08897265</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MSME -->
+  <section id="msme">
+    <div class="section-tag">Government Registration</div>
+    <h2 class="section-title">Udyam / MSME Details</h2>
+    <div class="divider"></div>
+
+    <div class="msme-grid">
+      <div class="msme-badge-block">
+        <span class="big">MSME</span>
+        <span class="small">Udyam Registered</span>
+        <div class="msme-num">UDYAM-MH-26-1123152</div>
+      </div>
+      <div class="msme-details">
+        <h3>Gurav Advocates LLP</h3>
+        <table class="msme-table">
+          <tr>
+            <td>Enterprise Type</td>
+            <td>Micro (2026-27, classified 18/04/2026)</td>
+          </tr>
+          <tr>
+            <td>Major Activity</td>
+            <td>Services</td>
+          </tr>
+          <tr>
+            <td>Social Category</td>
+            <td>General</td>
+          </tr>
+          <tr>
+            <td>NIC Code</td>
+            <td>69100 – Legal Activities</td>
+          </tr>
+          <tr>
+            <td>Date of Incorporation</td>
+            <td>6 April 2023</td>
+          </tr>
+          <tr>
+            <td>Udyam Registration Date</td>
+            <td>18 April 2026</td>
+          </tr>
+          <tr>
+            <td>Mobile</td>
+            <td>022-6897 6194</td>
+          </tr>
+          <tr>
+            <td>Assistance</td>
+            <td>DIC: Pune (MH) | MSME-DFO: Mumbai (MH)</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-tag">Reach Us</div>
+    <h2 class="section-title">Book a Consultation</h2>
+    <div class="divider"></div>
+
+    <div class="contact-grid">
+      <div>
+        <p style="color: var(--gray); margin-bottom: 2rem; font-size: 0.95rem;">We welcome enquiries from individuals and organisations seeking legal advice, representation, or professional consultation. Reach out and one of our partners will respond at the earliest.</p>
+
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Office Address</h4>
+            <p>Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane - 400703, Maharashtra</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:02268976194" style="color: var(--dark); text-decoration: none;">022-6897 6194</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:hrjayashridevelopers@gmail.com" style="color: var(--maroon);">hrjayashridevelopers@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h4>Working Hours</h4>
+            <p>Monday – Saturday: 10:00 AM – 6:00 PM<br>Sunday: By Appointment</p>
+          </div>
+        </div>
+
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> The information on this website is for general informational purposes only and does not constitute legal advice. Please consult one of our advocates for specific legal guidance. Gurav Advocates LLP is registered under the LLP Act, 2008 and is not a law firm soliciting clients through this medium.
+        </div>
+      </div>
+
+      <div>
+        <div class="contact-form">
+          <input type="text" placeholder="Your Full Name" />
+          <input type="email" placeholder="Email Address" />
+          <input type="tel" placeholder="Phone Number" />
+          <select>
+            <option value="" disabled selected>Nature of Legal Matter</option>
+            <option>Civil Law</option>
+            <option>Criminal Law</option>
+            <option>Property / Real Estate</option>
+            <option>Corporate & Business Law</option>
+            <option>Government Liaisoning</option>
+            <option>Documentation & Drafting</option>
+            <option>Other</option>
+          </select>
+          <textarea placeholder="Briefly describe your matter..."></textarea>
+          <button type="submit">Request Consultation →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <span class="footer-logo">Gurav Advocates LLP</span>
+        <div class="footer-reg">LLP ID: ACA-4790 &nbsp;·&nbsp; PAN: AAZFG4963B &nbsp;·&nbsp; UDYAM-MH-26-1123152</div>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#practice">Practice Areas</a>
+        <a href="#partners">Partners</a>
+        <a href="#msme">MSME</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2023–2026 Gurav Advocates LLP. All Rights Reserved.</span>
+      <span>B. No. A-3, Siddheshwar Nagari, Rajgurunagar, Pune 410505</span>
+    </div>
+  </footer>
+
+</body>
+</html>

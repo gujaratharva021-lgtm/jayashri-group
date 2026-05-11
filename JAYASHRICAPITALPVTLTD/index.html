@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jayashri Capital Private Limited</title>
+<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#0A0A0F;
+  --ink2:#12121A;
+  --ink3:#1C1C28;
+  --gold:#C9A84C;
+  --gold2:#E8C97A;
+  --gold3:#F5E0A0;
+  --cream:#F7F3EC;
+  --silver:#8A9BB0;
+  --text:#E8E4DC;
+  --muted:#6B7485;
+  --border:rgba(201,168,76,0.18);
+  --border2:rgba(201,168,76,0.08);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Didact Gothic',sans-serif;background:var(--ink);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 5vw;
+  background:rgba(10,10,15,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border2);
+  transition:padding 0.4s;
+}
+nav.scrolled{padding:0.9rem 5vw;}
+.nav-logo{
+  font-family:'Cinzel',serif;font-size:0.95rem;font-weight:600;
+  color:var(--gold2);letter-spacing:0.12em;text-decoration:none;line-height:1.2;
+}
+.nav-logo small{
+  display:block;font-family:'Didact Gothic',sans-serif;
+  font-size:0.5rem;letter-spacing:0.22em;color:var(--muted);
+  text-transform:uppercase;margin-top:2px;
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{
+  font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color 0.3s;
+  position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:1px;background:var(--gold);transition:width 0.3s;
+}
+.nav-links a:hover{color:var(--gold2);}
+.nav-links a:hover::after{width:100%;}
+.nav-btn{
+  border:1px solid var(--gold);color:var(--gold);
+  padding:0.5rem 1.4rem;font-size:0.7rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  text-decoration:none;transition:all 0.3s;
+}
+.nav-btn:hover{background:var(--gold);color:var(--ink);}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:8rem 5vw 6rem;position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 80% at 80% 20%, rgba(201,168,76,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(74,100,165,0.05) 0%, transparent 60%);
+}
+.hero-lines{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 80% 80% at 80% 30%, black 0%, transparent 70%);
+}
+
+/* Animated symbol */
+.hero-symbol{
+  position:absolute;right:6%;top:50%;transform:translateY(-50%);
+  width:400px;height:400px;pointer-events:none;
+}
+.symbol-ring{
+  position:absolute;top:50%;left:50%;
+  border-radius:50%;border:1px solid rgba(201,168,76,0.12);
+  transform:translate(-50%,-50%);
+}
+.symbol-ring:nth-child(1){width:150px;height:150px;border-color:rgba(201,168,76,0.3);animation:ringPulse 4s ease-in-out infinite;}
+.symbol-ring:nth-child(2){width:230px;height:230px;animation:spin1 22s linear infinite;}
+.symbol-ring:nth-child(3){width:320px;height:320px;animation:spin2 32s linear infinite;}
+.symbol-ring:nth-child(4){width:410px;height:410px;animation:spin1 48s linear infinite;}
+.symbol-ring::before{
+  content:'';position:absolute;top:-5px;left:50%;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--gold);transform:translateX(-50%);
+  box-shadow:0 0 14px var(--gold);
+}
+.symbol-ring:nth-child(1)::before{display:none;}
+.symbol-core{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:110px;height:110px;border-radius:50%;
+  border:1px solid rgba(201,168,76,0.4);
+  background:radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:2.8rem;font-weight:700;
+  color:var(--gold);animation:ringPulse 4s ease-in-out infinite;
+  text-shadow:0 0 30px rgba(201,168,76,0.6);
+}
+@keyframes spin1{to{transform:translate(-50%,-50%) rotate(360deg);}}
+@keyframes spin2{to{transform:translate(-50%,-50%) rotate(-360deg);}}
+@keyframes ringPulse{
+  0%,100%{box-shadow:0 0 20px rgba(201,168,76,0.15);}
+  50%{box-shadow:0 0 60px rgba(201,168,76,0.35);}
+}
+
+.hero-eyebrow{
+  display:flex;align-items:center;gap:1rem;margin-bottom:2rem;
+  opacity:0;animation:slideUp 1s 0.2s ease forwards;
+}
+.hero-eyebrow-dash{width:40px;height:1px;background:var(--gold);}
+.hero-eyebrow-text{font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);}
+.hero h1{
+  font-family:'Cormorant',serif;
+  font-size:clamp(3rem,7vw,6.5rem);
+  font-weight:300;line-height:1.05;max-width:700px;
+  opacity:0;animation:slideUp 1s 0.4s ease forwards;
+}
+.hero h1 em{font-style:italic;color:var(--gold2);display:block;}
+.hero-sub{
+  margin-top:2rem;max-width:480px;
+  font-size:0.95rem;line-height:1.9;color:var(--muted);
+  opacity:0;animation:slideUp 1s 0.6s ease forwards;
+}
+.hero-actions{
+  margin-top:3rem;display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:slideUp 1s 0.8s ease forwards;
+}
+.btn-gold{
+  background:var(--gold);color:var(--ink);
+  padding:1rem 2.5rem;font-size:0.78rem;
+  letter-spacing:0.14em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:all 0.3s;
+  text-decoration:none;display:inline-block;font-weight:600;
+}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-border{
+  background:transparent;color:var(--text);
+  padding:1rem 2.5rem;font-size:0.78rem;
+  letter-spacing:0.14em;text-transform:uppercase;
+  border:1px solid var(--border);cursor:pointer;transition:all 0.3s;
+  text-decoration:none;display:inline-block;
+}
+.btn-border:hover{border-color:var(--gold);color:var(--gold);}
+
+/* Marquee */
+.hero-marquee{
+  position:absolute;bottom:0;left:0;right:0;
+  border-top:1px solid var(--border2);padding:1rem 0;
+  overflow:hidden;opacity:0;animation:fadeIn 1s 1.2s forwards;
+}
+.marquee-track{display:flex;animation:marquee 30s linear infinite;width:max-content;}
+.marquee-item{
+  padding:0 3rem;font-size:0.62rem;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;
+  border-right:1px solid var(--border2);
+}
+.marquee-item span{color:var(--gold);margin-right:0.5rem;}
+@keyframes marquee{to{transform:translateX(-50%);}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* STATS */
+.stats{
+  background:var(--ink2);
+  border-top:1px solid var(--border2);
+  border-bottom:1px solid var(--border2);
+  display:flex;flex-wrap:wrap;
+}
+.stat{
+  flex:1;min-width:160px;padding:3rem 2rem;
+  text-align:center;border-right:1px solid var(--border2);
+  position:relative;overflow:hidden;
+}
+.stat::after{
+  content:'';position:absolute;bottom:0;left:50%;
+  width:0;height:2px;background:var(--gold);
+  transform:translateX(-50%);transition:width 0.5s;
+}
+.stat:hover::after{width:60%;}
+.stat:last-child{border-right:none;}
+.stat-val{
+  font-family:'Cormorant',serif;font-size:2.5rem;font-weight:600;
+  color:var(--gold2);line-height:1;display:block;margin-bottom:0.5rem;
+}
+.stat-lbl{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+
+/* SECTIONS */
+section{padding:7rem 5vw;}
+.sec-tag{display:flex;align-items:center;gap:1rem;margin-bottom:0.8rem;}
+.sec-tag-dash{width:28px;height:1px;background:var(--gold);}
+.sec-tag-txt{font-size:0.62rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);}
+.sec-title{
+  font-family:'Cormorant',serif;
+  font-size:clamp(2rem,4vw,3.5rem);
+  font-weight:300;line-height:1.15;margin-bottom:1rem;
+}
+.sec-title em{font-style:italic;color:var(--gold2);}
+.sec-sub{color:var(--muted);max-width:520px;line-height:1.9;font-size:0.9rem;}
+.gold-rule{width:60px;height:1px;background:var(--gold);margin:1.5rem 0;}
+
+/* ABOUT */
+#about{background:var(--ink);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:4rem;}
+.about-card{
+  background:var(--ink2);border:1px solid var(--border);
+  border-top:2px solid var(--gold);padding:3rem;
+  position:relative;overflow:hidden;
+}
+.about-card::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:250px;height:250px;border-radius:50%;
+  background:rgba(201,168,76,0.04);
+}
+.cin-lbl{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
+.cin-val{
+  font-family:'Cormorant',serif;font-size:1.1rem;
+  color:var(--gold2);font-weight:600;margin-bottom:1.8rem;word-break:break-all;
+}
+.data-row{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:0.9rem 0;border-bottom:1px solid var(--border2);font-size:0.82rem;
+}
+.data-row:last-child{border-bottom:none;}
+.data-key{color:var(--muted);}
+.data-val{color:var(--text);text-align:right;max-width:55%;}
+
+.about-features{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.2rem;}
+.feat{
+  display:flex;gap:1.2rem;align-items:flex-start;
+  padding:1.2rem;border:1px solid var(--border2);
+  transition:border-color 0.3s,background 0.3s;
+}
+.feat:hover{border-color:var(--border);background:var(--ink2);}
+.feat-ico{
+  width:44px;height:44px;flex-shrink:0;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+.feat h4{font-size:0.88rem;color:var(--text);margin-bottom:3px;}
+.feat p{font-size:0.8rem;color:var(--muted);line-height:1.6;}
+
+/* SERVICES */
+#services{background:var(--ink2);}
+.svc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;margin-top:4rem;background:var(--border2);
+}
+.svc{
+  background:var(--ink2);padding:2.8rem 2.2rem;
+  transition:background 0.3s;position:relative;overflow:hidden;
+}
+.svc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform 0.5s;
+}
+.svc:hover{background:var(--ink3);}
+.svc:hover::before{transform:scaleX(1);}
+.svc-num{
+  font-family:'Cormorant',serif;font-size:4rem;font-weight:700;
+  color:rgba(201,168,76,0.08);line-height:1;margin-bottom:1.5rem;transition:color 0.3s;
+}
+.svc:hover .svc-num{color:rgba(201,168,76,0.2);}
+.svc h3{font-family:'Cormorant',serif;font-size:1.15rem;font-weight:600;margin-bottom:0.75rem;color:var(--text);}
+.svc p{color:var(--muted);font-size:0.83rem;line-height:1.8;}
+.svc-tag{
+  display:inline-block;margin-top:1.2rem;font-size:0.6rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);border-bottom:1px solid rgba(201,168,76,0.3);padding-bottom:2px;
+}
+
+/* COMPLIANCE */
+#compliance{background:var(--ink);}
+.comp-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;margin-top:4rem;align-items:start;}
+.comp-list{display:flex;flex-direction:column;gap:1rem;}
+.comp-item{
+  display:flex;align-items:center;gap:1.2rem;
+  padding:1.2rem 1.5rem;border:1px solid var(--border2);
+  transition:border-color 0.3s,background 0.3s;
+}
+.comp-item:hover{border-color:var(--border);background:var(--ink2);}
+.comp-ico{
+  width:42px;height:42px;flex-shrink:0;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.comp-item h4{font-size:0.85rem;color:var(--text);margin-bottom:2px;}
+.comp-item p{font-size:0.75rem;color:var(--muted);}
+.comp-check{
+  margin-left:auto;width:26px;height:26px;
+  border:1px solid rgba(201,168,76,0.3);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:0.75rem;flex-shrink:0;
+}
+.detail-blocks{display:flex;flex-direction:column;gap:1.2rem;}
+.dblock{background:var(--ink2);border:1px solid var(--border2);padding:2rem;}
+.dblock h4{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.dlist{list-style:none;}
+.dlist li{display:flex;justify-content:space-between;font-size:0.84rem;padding:7px 0;border-bottom:1px solid var(--border2);}
+.dlist li:last-child{border-bottom:none;}
+.dlist .k{color:var(--muted);}
+.dlist .v{color:var(--text);text-align:right;}
+
+/* CONTACT */
+#contact{background:var(--ink2);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;margin-top:4rem;align-items:start;}
+.contact-items{display:flex;flex-direction:column;}
+.ci{
+  display:flex;gap:1.2rem;align-items:flex-start;
+  padding:1.5rem 0;border-bottom:1px solid var(--border2);
+  transition:transform 0.3s;
+}
+.ci:first-child{border-top:1px solid var(--border2);}
+.ci:hover{transform:translateX(6px);}
+.ci-icon{
+  width:38px;height:38px;flex-shrink:0;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.ci-lbl{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.ci-val{font-size:0.88rem;color:var(--text);line-height:1.6;}
+.contact-form{display:flex;flex-direction:column;gap:1rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.contact-form input,
+.contact-form textarea{
+  background:var(--ink3);border:1px solid var(--border2);
+  color:var(--text);padding:0.9rem 1.1rem;
+  font-family:'Didact Gothic',sans-serif;font-size:0.85rem;
+  outline:none;transition:border-color 0.3s;width:100%;
+}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--gold);}
+.contact-form textarea{height:130px;resize:none;}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--muted);}
+
+/* FOOTER */
+footer{padding:3rem 5vw 2rem;border-top:1px solid var(--border2);background:var(--ink);}
+.footer-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  flex-wrap:wrap;gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border2);
+}
+.footer-brand-name{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold2);letter-spacing:0.08em;}
+.footer-brand-sub{font-size:0.6rem;color:var(--muted);letter-spacing:0.16em;text-transform:uppercase;margin-top:0.4rem;}
+.footer-ids{display:flex;flex-direction:column;gap:0.3rem;text-align:right;}
+.footer-ids p{font-size:0.72rem;color:var(--muted);}
+.footer-ids strong{color:var(--gold);}
+.footer-bottom{padding-top:1.5rem;text-align:center;font-size:0.7rem;color:var(--muted);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-left{opacity:0;transform:translateX(-36px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal-left.visible{opacity:1;transform:none;}
+.reveal-right{opacity:0;transform:translateX(36px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal-right.visible{opacity:1;transform:none;}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+.d4{transition-delay:0.4s;}.d5{transition-delay:0.5s;}.d6{transition-delay:0.6s;}
+
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .about-grid,.comp-layout,.contact-grid{grid-template-columns:1fr;gap:3rem;}
+  .svc-grid{grid-template-columns:1fr 1fr;}
+  .hero-symbol{display:none;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-ids{text-align:left;}
+  .stat{flex:0 0 50%;border-right:none;border-bottom:1px solid var(--border2);}
+}
+@media(max-width:600px){
+  .svc-grid{grid-template-columns:1fr;}
+  section{padding:5rem 5vw;}
+  .stat{flex:0 0 100%;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    JAYASHRI CAPITAL
+    <small>Private Limited · Est. 2026</small>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#compliance">Compliance</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">Enquire Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-symbol">
+    <div class="symbol-ring"></div>
+    <div class="symbol-ring"></div>
+    <div class="symbol-ring"></div>
+    <div class="symbol-ring"></div>
+    <div class="symbol-core">₹</div>
+  </div>
+  <div class="hero-eyebrow">
+    <div class="hero-eyebrow-dash"></div>
+    <span class="hero-eyebrow-text">Capital · Finance · Investment · Pune, Maharashtra</span>
+  </div>
+  <h1>Where Capital<br/><em>Meets Purpose.</em></h1>
+  <p class="hero-sub">Jayashri Capital Private Limited is a Maharashtra-incorporated financial services company — committed to delivering excellence in capital management, investment advisory, and financial solutions.</p>
+  <div class="hero-actions">
+    <a href="#services" class="btn-gold">Our Services</a>
+    <a href="#contact" class="btn-border">Get in Touch</a>
+  </div>
+  <div class="hero-marquee">
+    <div class="marquee-track">
+      <span class="marquee-item"><span>✦</span> Jayashri Capital Private Limited</span>
+      <span class="marquee-item"><span>✦</span> CIN: U64990PN2026PTC253077</span>
+      <span class="marquee-item"><span>✦</span> PAN: AAHCJ3135F</span>
+      <span class="marquee-item"><span>✦</span> TAN: PNEJ18026B</span>
+      <span class="marquee-item"><span>✦</span> Incorporated: 10 March 2026</span>
+      <span class="marquee-item"><span>✦</span> MCA Registered · Maharashtra</span>
+      <span class="marquee-item"><span>✦</span> Jayashri Capital Private Limited</span>
+      <span class="marquee-item"><span>✦</span> CIN: U64990PN2026PTC253077</span>
+      <span class="marquee-item"><span>✦</span> PAN: AAHCJ3135F</span>
+      <span class="marquee-item"><span>✦</span> TAN: PNEJ18026B</span>
+      <span class="marquee-item"><span>✦</span> Incorporated: 10 March 2026</span>
+      <span class="marquee-item"><span>✦</span> MCA Registered · Maharashtra</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat reveal d1"><span class="stat-val">2026</span><span class="stat-lbl">Year Incorporated</span></div>
+  <div class="stat reveal d2"><span class="stat-val">Pvt. Ltd.</span><span class="stat-lbl">Company Structure</span></div>
+  <div class="stat reveal d3"><span class="stat-val">MCA</span><span class="stat-lbl">Govt. Registered</span></div>
+  <div class="stat reveal d4"><span class="stat-val">₹1L</span><span class="stat-lbl">Authorised Capital</span></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-tag reveal"><div class="sec-tag-dash"></div><span class="sec-tag-txt">About the Company</span></div>
+  <h2 class="sec-title reveal">A New <em>Capital Venture</em><br/>from Maharashtra</h2>
+  <div class="about-grid">
+    <div class="about-card reveal-left">
+      <div class="cin-lbl">Corporate Identity Number</div>
+      <div class="cin-val">U64990PN2026PTC253077</div>
+      <div class="data-row"><span class="data-key">Company Name</span><span class="data-val">Jayashri Capital Private Limited</span></div>
+      <div class="data-row"><span class="data-key">PAN</span><span class="data-val">AAHCJ3135F</span></div>
+      <div class="data-row"><span class="data-key">TAN</span><span class="data-val">PNEJ18026B</span></div>
+      <div class="data-row"><span class="data-key">Type</span><span class="data-val">Company Limited by Shares</span></div>
+      <div class="data-row"><span class="data-key">Incorporated</span><span class="data-val">10 March 2026</span></div>
+      <div class="data-row"><span class="data-key">Registered State</span><span class="data-val">Maharashtra, India</span></div>
+      <div class="data-row"><span class="data-key">Phone</span><span class="data-val">022-6897 6194</span></div>
+      <div class="data-row"><span class="data-key">Office</span><span class="data-val">Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane – 400703</span></div>
+    </div>
+    <div class="reveal-right">
+      <p style="color:var(--muted);line-height:1.95;font-size:0.92rem;margin-bottom:1.2rem;">
+        Incorporated on 10th March 2026 under the Companies Act 2013, Jayashri Capital Private Limited is a company limited by shares, registered in Maharashtra. We are built to serve individuals, businesses, and institutions seeking expert capital and financial guidance.
+      </p>
+      <p style="color:var(--muted);line-height:1.95;font-size:0.92rem;">
+        With a commitment to transparency, compliance, and client-centric service, we aim to become a trusted name in the capital and financial services sector across India.
+      </p>
+      <div class="about-features" style="margin-top:2rem;">
+        <div class="feat">
+          <div class="feat-ico">💼</div>
+          <div><h4>Capital Management</h4><p>Strategic allocation and management of capital for optimal returns and risk control.</p></div>
+        </div>
+        <div class="feat">
+          <div class="feat-ico">📊</div>
+          <div><h4>Investment Advisory</h4><p>Expert advisory services for individuals and businesses on investment decisions.</p></div>
+        </div>
+        <div class="feat">
+          <div class="feat-ico">🏛️</div>
+          <div><h4>MCA Compliant</h4><p>Fully registered and compliant with Ministry of Corporate Affairs, Govt. of India.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-tag reveal"><div class="sec-tag-dash"></div><span class="sec-tag-txt">What We Do</span></div>
+  <h2 class="sec-title reveal">Our <em>Service Offerings</em></h2>
+  <p class="sec-sub reveal">Comprehensive financial and capital services tailored for every stage of your business and personal financial journey.</p>
+  <div class="svc-grid">
+    <div class="svc reveal d1">
+      <div class="svc-num">01</div>
+      <h3>Capital Advisory</h3>
+      <p>Strategic guidance on capital structuring, fundraising, and deployment for businesses and high-net-worth individuals.</p>
+      <span class="svc-tag">Core Service</span>
+    </div>
+    <div class="svc reveal d2">
+      <div class="svc-num">02</div>
+      <h3>Investment Management</h3>
+      <p>Portfolio construction, management, and monitoring across asset classes to achieve your financial goals.</p>
+      <span class="svc-tag">Investment</span>
+    </div>
+    <div class="svc reveal d3">
+      <div class="svc-num">03</div>
+      <h3>Financial Planning</h3>
+      <p>Holistic financial planning services — from wealth creation to succession planning and risk management.</p>
+      <span class="svc-tag">Planning</span>
+    </div>
+    <div class="svc reveal d4">
+      <div class="svc-num">04</div>
+      <h3>Corporate Finance</h3>
+      <p>Mergers, acquisitions, valuations, and structured finance solutions for corporates and SMEs.</p>
+      <span class="svc-tag">Corporate</span>
+    </div>
+    <div class="svc reveal d5">
+      <div class="svc-num">05</div>
+      <h3>Regulatory Compliance</h3>
+      <p>End-to-end support for financial regulatory compliance, statutory filings, and government liaison.</p>
+      <span class="svc-tag">Compliance</span>
+    </div>
+    <div class="svc reveal d6">
+      <div class="svc-num">06</div>
+      <h3>Business Consulting</h3>
+      <p>Strategic business consulting to help organizations navigate financial complexity and drive sustainable growth.</p>
+      <span class="svc-tag">Consulting</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section id="compliance">
+  <div class="sec-tag reveal"><div class="sec-tag-dash"></div><span class="sec-tag-txt">Registrations</span></div>
+  <h2 class="sec-title reveal">Fully Registered &amp; <em>Compliant</em></h2>
+  <p class="sec-sub reveal">All statutory registrations in place — ensuring full credibility and legal standing.</p>
+  <div class="comp-layout">
+    <div class="comp-list">
+      <div class="comp-item reveal d1">
+        <div class="comp-ico">📄</div>
+        <div><h4>Certificate of Incorporation</h4><p>Ministry of Corporate Affairs — 10 March 2026</p></div>
+        <div class="comp-check">✓</div>
+      </div>
+      <div class="comp-item reveal d2">
+        <div class="comp-ico">💳</div>
+        <div><h4>PAN Card</h4><p>Income Tax Department — AAHCJ3135F</p></div>
+        <div class="comp-check">✓</div>
+      </div>
+      <div class="comp-item reveal d3">
+        <div class="comp-ico">📋</div>
+        <div><h4>TAN — Tax Deduction Account</h4><p>Income Tax Department — PNEJ18026B</p></div>
+        <div class="comp-check">✓</div>
+      </div>
+      <div class="comp-item reveal d4">
+        <div class="comp-ico">📑</div>
+        <div><h4>Memorandum of Association</h4><p>e-MOA · Form INC-33 Filed</p></div>
+        <div class="comp-check">✓</div>
+      </div>
+      <div class="comp-item reveal d5">
+        <div class="comp-ico">📃</div>
+        <div><h4>Articles of Association</h4><p>e-AOA · Form INC-34 Filed</p></div>
+        <div class="comp-check">✓</div>
+      </div>
+    </div>
+    <div class="detail-blocks reveal-right">
+      <div class="dblock">
+        <h4>Company Registration Details</h4>
+        <ul class="dlist">
+          <li><span class="k">CIN</span><span class="v">U64990PN2026PTC253077</span></li>
+          <li><span class="k">PAN</span><span class="v">AAHCJ3135F</span></li>
+          <li><span class="k">TAN</span><span class="v">PNEJ18026B</span></li>
+          <li><span class="k">Incorporation Date</span><span class="v">10 March 2026</span></li>
+          <li><span class="k">Registered in</span><span class="v">Maharashtra, India</span></li>
+          <li><span class="k">Signed By</span><span class="v">Shivraj Ranjeri (ROC)</span></li>
+        </ul>
+      </div>
+      <div class="dblock">
+        <h4>Share Capital Structure</h4>
+        <ul class="dlist">
+          <li><span class="k">Authorised Capital</span><span class="v">₹1,00,000</span></li>
+          <li><span class="k">Total Shares</span><span class="v">10,000 Equity Shares</span></li>
+          <li><span class="k">Face Value</span><span class="v">₹10 per share</span></li>
+          <li><span class="k">Liability</span><span class="v">Limited by Shares</span></li>
+          <li><span class="k">Company Type</span><span class="v">Private Limited</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-tag reveal"><div class="sec-tag-dash"></div><span class="sec-tag-txt">Get in Touch</span></div>
+  <h2 class="sec-title reveal">Let's Work <em>Together</em></h2>
+  <p class="sec-sub reveal">Reach out for capital advisory, investment guidance, or any financial enquiry.</p>
+  <div class="contact-grid">
+    <div class="contact-items reveal-left">
+      <div class="ci">
+        <div class="ci-icon">📍</div>
+        <div>
+          <div class="ci-lbl">Office Address</div>
+          <div class="ci-val">Office No. 3074 A, 3rd Floor, V Wing,<br/>Akshar Business Park, Sector No. 25,<br/>Vashi, Near Turbhe Station,<br/>Thane – 400703, Maharashtra</div>
+        </div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">📞</div>
+        <div>
+          <div class="ci-lbl">Phone</div>
+          <div class="ci-val">022-6897 6194</div>
+        </div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">🏢</div>
+        <div>
+          <div class="ci-lbl">CIN</div>
+          <div class="ci-val">U64990PN2026PTC253077</div>
+        </div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">🌐</div>
+        <div>
+          <div class="ci-lbl">MCA Verification</div>
+          <div class="ci-val">mca.gov.in</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal-right">
+      <div class="form-row">
+        <input type="text" placeholder="Full Name"/>
+        <input type="text" placeholder="Company / Organization"/>
+      </div>
+      <div class="form-row">
+        <input type="email" placeholder="Email Address"/>
+        <input type="tel" placeholder="Phone Number"/>
+      </div>
+      <input type="text" placeholder="Subject / Nature of Inquiry"/>
+      <textarea placeholder="Your message..."></textarea>
+      <button class="btn-gold" style="border:none;cursor:pointer;width:fit-content;" onclick="alert('Thank you! We will get back to you shortly.')">Send Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Jayashri Capital Private Limited</div>
+      <div class="footer-brand-sub">Est. 10 March 2026 · Pune, Maharashtra · Companies Act 2013</div>
+    </div>
+    <div class="footer-ids">
+      <p><strong>CIN:</strong> U64990PN2026PTC253077</p>
+      <p><strong>PAN:</strong> AAHCJ3135F</p>
+      <p><strong>TAN:</strong> PNEJ18026B</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Jayashri Capital Private Limited. All rights reserved. · Incorporated under the Companies Act, 2013
+  </div>
+</footer>
+
+<script>
+// NAV scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
