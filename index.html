@@ -19,17 +19,24 @@
     .cursor-dot { position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); }
     .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid rgba(184,134,11,0.6); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, border-color 0.3s, transform 0.12s ease-out; }
     body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 56px; height: 56px; border-color: var(--gold); }
-    #loader { position: fixed; inset: 0; z-index: 10000; background: var(--cream); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
-    #loader.hide { opacity: 0; visibility: hidden; }
-    .loader-logo { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--gold); letter-spacing: 8px; text-transform: uppercase; animation: loaderPulse 1.5s ease-in-out infinite; }
-    .loader-bar-wrap { width: 200px; height: 2px; background: rgba(184,134,11,0.2); margin-top: 28px; overflow: hidden; }
+
+    /* LOADER — Curtain Split */
+    #loader { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease; }
+    #loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-curtain-left, .loader-curtain-right { position: absolute; top: 0; bottom: 0; width: 50%; background: var(--cream); transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1); }
+    .loader-curtain-left { left: 0; transform-origin: left; }
+    .loader-curtain-right { right: 0; transform-origin: right; }
+    #loader.hide .loader-curtain-left { transform: translateX(-100%); }
+    #loader.hide .loader-curtain-right { transform: translateX(100%); }
+    .loader-center { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; animation: loaderZoomIn 0.8s cubic-bezier(0.34,1.56,0.64,1) both; }
+    @keyframes loaderZoomIn { from{opacity:0;transform:scale(0.5);} to{opacity:1;transform:scale(1);} }
+    .loader-logo-img { width: 90px; height: 90px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; margin-bottom: 20px; animation: loaderGlow 1.5s ease-in-out infinite; }
+    @keyframes loaderGlow { 0%,100%{box-shadow:0 0 20px rgba(184,134,11,0.2);} 50%{box-shadow:0 0 60px rgba(184,134,11,0.5);} }
+    .loader-logo { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); letter-spacing: 10px; text-transform: uppercase; margin-bottom: 6px; }
+    .loader-sub { font-size: 0.5rem; letter-spacing: 6px; color: rgba(184,134,11,0.5); text-transform: uppercase; margin-bottom: 28px; }
+    .loader-bar-wrap { width: 160px; height: 1px; background: rgba(184,134,11,0.15); overflow: hidden; }
     .loader-bar { height: 100%; width: 0; background: var(--gold); animation: loadBar 1.8s ease forwards; }
-    .loader-sub { font-size: 0.55rem; letter-spacing: 5px; color: rgba(184,134,11,0.5); margin-top: 16px; text-transform: uppercase; }
-    @keyframes loaderPulse { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
     @keyframes loadBar { to { width: 100%; } }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); }
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 18px 60px; background: rgba(250,247,242,0.92); border-bottom: 1px solid rgba(184,134,11,0.25); backdrop-filter: blur(20px); }
@@ -81,6 +88,9 @@
     .scroll-wheel { width: 3px; height: 6px; background: var(--gold); border-radius: 2px; animation: scrollWheel 1.5s ease-in-out infinite; }
     @keyframes scrollWheel { 0%{transform:translateY(0);opacity:1;} 100%{transform:translateY(10px);opacity:0;} }
 
+    /* ABOUT */
+    #about { padding: 100px 60px; background: var(--white); }
+
     /* WHEEL */
     #wheel { padding: 100px 20px 120px; background: linear-gradient(180deg, var(--cream) 0%, var(--navy) 100%); text-align: center; position: relative; overflow: hidden; }
     .wheel-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,134,11,0.08) 0%, transparent 70%); }
@@ -109,10 +119,6 @@
     @media (max-width: 900px) { .cnode-label { font-size: 0.26rem; max-width: 38px; margin-top: 2px; } }
     .cnode:hover .cnode-label { color: var(--gold); }
     .connector-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-    .wheel-tooltip { position: fixed; pointer-events: none; z-index: 5000; background: rgba(250,247,242,0.97); border: 1px solid rgba(184,134,11,0.3); padding: 10px 16px; backdrop-filter: blur(20px); transform: translate(-50%, -120%); opacity: 0; transition: opacity 0.2s; white-space: nowrap; box-shadow: 0 8px 32px rgba(184,134,11,0.1); }
-    .wheel-tooltip.show { opacity: 1; }
-    .wt-sector { font-size: 0.48rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
-    .wt-name { font-family: 'Playfair Display', serif; font-size: 0.85rem; color: var(--text); margin-top: 3px; }
 
     /* COMPANIES */
     #companies { padding: 100px 60px; background: var(--navy2); }
@@ -153,16 +159,9 @@
     .map-wrap { margin-top: 40px; border: 1px solid rgba(184,134,11,0.2); overflow: hidden; position: relative; }
     .map-wrap::before { content: ''; position: absolute; inset: 0; z-index: 1; border: 3px solid rgba(184,134,11,0.15); pointer-events: none; }
     .map-wrap iframe { width: 100%; height: 220px; display: block; border: none; filter: sepia(20%) saturate(0.8); }
-
-    /* FORM */
     .contact-form { display: flex; flex-direction: column; gap: 20px; margin-top: 40px; }
     .form-group { position: relative; }
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%; padding: 14px 16px; background: var(--white);
-      border: 1px solid rgba(184,134,11,0.2); color: var(--text);
-      font-family: 'Raleway', sans-serif; font-size: 0.8rem; letter-spacing: 1px;
-      outline: none; transition: border-color 0.3s, box-shadow 0.3s; resize: none;
-    }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 16px; background: var(--white); border: 1px solid rgba(184,134,11,0.2); color: var(--text); font-family: 'Raleway', sans-serif; font-size: 0.8rem; letter-spacing: 1px; outline: none; transition: border-color 0.3s, box-shadow 0.3s; resize: none; }
     .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(26,26,26,0.3); letter-spacing: 1px; font-size: 0.75rem; }
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184,134,11,0.08); }
     .form-group textarea { height: 130px; }
@@ -185,7 +184,7 @@
     .popup-sector { font-size: 0.55rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(184,134,11,0.6); margin-bottom: 10px; }
     .popup-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
     .popup-type { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(26,26,26,0.3); margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid rgba(184,134,11,0.12); }
-    .popup-link { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--white); padding: 12px 32px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; font-weight: 700; transition: all 0.3s; position: relative; overflow: hidden; }
+    .popup-link { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--white); padding: 12px 32px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; font-weight: 700; transition: all 0.3s; }
     .popup-link:hover { background: var(--gold2); box-shadow: 0 8px 30px rgba(184,134,11,0.3); }
 
     /* FOOTER */
@@ -199,6 +198,8 @@
 
     @media (max-width: 900px) {
       nav { padding: 14px 20px; } nav ul { display: none; }
+      #about { padding: 60px 20px; }
+      #about > div:nth-child(2) { grid-template-columns: 1fr !important; }
       #companies { padding: 60px 16px; }
       #contact { padding: 60px 20px; }
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
@@ -214,12 +215,19 @@
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- LOADER -->
 <div id="loader">
-  <div class="loader-logo">Jayashri</div>
-  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-  <div class="loader-sub">Group & Companies</div>
+  <div class="loader-curtain-left"></div>
+  <div class="loader-curtain-right"></div>
+  <div class="loader-center">
+    <img class="loader-logo-img" src="ChatGPT Image May 11, 2026, 03_32_50 PM.png" alt="JG" />
+    <div class="loader-logo">Jayashri</div>
+    <div class="loader-sub">Group & Companies</div>
+    <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  </div>
 </div>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="logo-wrap">
     <div class="logo-circle">
@@ -228,12 +236,14 @@
     <div class="logo-text">Jayashri <span>Group</span></div>
   </a>
   <ul>
+    <li><a href="#about">About</a></li>
     <li><a href="#wheel">Sectors</a></li>
     <li><a href="#companies">Companies</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="aurora">
     <div class="aurora-orb"></div>
@@ -262,6 +272,50 @@
   </div>
 </section>
 
+<!-- ABOUT US -->
+<section id="about">
+  <div style="text-align:center; margin-bottom:64px;">
+    <p class="sec-tag">Who We Are</p>
+    <h2 class="sec-title">About <em>Jayashri Group</em></h2>
+    <div class="sec-line"></div>
+    <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:1.05rem; color:rgba(26,26,26,0.5); max-width:600px; margin:0 auto; line-height:1.9;">
+      Born in Pune, built for India — a conglomerate of 23 companies spanning 15+ sectors, united by one purpose.
+    </p>
+  </div>
+
+  <!-- Vision Mission Values -->
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; max-width:1100px; margin:0 auto 80px; background:rgba(184,134,11,0.1);">
+    <div style="background:var(--white); padding:48px 36px; text-align:center; transition:background 0.3s;" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='var(--white)'">
+      <div style="width:60px;height:60px;border-radius:50%;background:rgba(184,134,11,0.08);border:1px solid rgba(184,134,11,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.4rem;">🎯</div>
+      <div style="font-size:0.55rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Our Vision</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:16px;">To Build a <em style="color:var(--gold);font-style:italic;">Better India</em></h3>
+      <p style="font-size:0.85rem;color:rgba(26,26,26,0.5);line-height:1.9;">To be India's most trusted and diversified business group — creating lasting value across sectors, communities, and generations.</p>
+    </div>
+    <div style="background:var(--gold);padding:48px 36px;text-align:center;">
+      <div style="width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.4rem;">🚀</div>
+      <div style="font-size:0.55rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:12px;">Our Mission</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:#fff;margin-bottom:16px;">Impact Through <em style="font-style:italic;">Innovation</em></h3>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.8);line-height:1.9;">To deliver innovative, ethical, and impactful solutions across technology, infrastructure, energy, fashion, and beyond — empowering every stakeholder we serve.</p>
+    </div>
+    <div style="background:var(--white);padding:48px 36px;text-align:center;transition:background 0.3s;" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='var(--white)'">
+      <div style="width:60px;height:60px;border-radius:50%;background:rgba(184,134,11,0.08);border:1px solid rgba(184,134,11,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.4rem;">⚖️</div>
+      <div style="font-size:0.55rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Our Values</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:16px;">Integrity <em style="color:var(--gold);font-style:italic;">First</em></h3>
+      <p style="font-size:0.85rem;color:rgba(26,26,26,0.5);line-height:1.9;">Integrity, transparency, and excellence are the cornerstones of every company under the Jayashri umbrella. We build trust — one venture at a time.</p>
+    </div>
+  </div>
+
+  <!-- Core Values Pills -->
+  <div style="max-width:800px; margin:0 auto 80px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+    <span style="padding:10px 24px;border:1px solid rgba(184,134,11,0.25);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">🤝 Trust</span>
+    <span style="padding:10px 24px;border:1px solid rgba(184,134,11,0.25);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">💡 Innovation</span>
+    <span style="padding:10px 24px;border:1px solid rgba(184,134,11,0.25);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">🌱 Sustainability</span>
+    <span style="padding:10px 24px;border:1px solid rgba(184,134,11,0.25);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">⚡ Excellence</span>
+    <span style="padding:10px 24px;border:1px solid rgba(184,134,11,0.25);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">🏛️ Compliance</span>
+    <span style="padding:10px 24px;border:1px solid rgba(184,134,11,0.25);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">🇮🇳 Made in India</span>
+  </div>
+
+<!-- WHEEL -->
 <section id="wheel">
   <div class="wheel-bg"></div>
   <p class="sec-tag">Our Ecosystem</p>
@@ -277,11 +331,8 @@
     </div>
   </div>
 </section>
-<div class="wheel-tooltip" id="wheelTooltip">
-  <div class="wt-sector" id="wtSector"></div>
-  <div class="wt-name" id="wtName"></div>
-</div>
 
+<!-- COMPANIES -->
 <section id="companies">
   <div class="companies-header">
     <p class="sec-tag">Our Portfolio</p>
@@ -298,7 +349,7 @@
   <div class="grid" id="compGrid"></div>
 </section>
 
-<!-- CONTACT — FIXED: sirf ek form, formspree connected -->
+<!-- CONTACT -->
 <section id="contact">
   <div style="text-align:center; margin-bottom:0; position:relative; z-index:1;">
     <p class="sec-tag">Get In Touch</p>
@@ -306,8 +357,6 @@
     <div class="sec-line"></div>
   </div>
   <div class="contact-inner">
-
-    <!-- LEFT -->
     <div class="contact-left">
       <div class="contact-info-items">
         <div class="contact-item">
@@ -340,20 +389,14 @@
         </div>
       </div>
       <div class="map-wrap">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.5!2d73.0097!3d19.0759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c0e4e9b9b9b9%3A0x1234567890abcdef!2sAkshar%20Business%20Park%2C%20Vashi%2C%20Navi%20Mumbai!5e0!3m2!1sen!2sin!4v1234567890"
-          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.5!2d73.0097!3d19.0759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c0e4e9b9b9b9%3A0x1234567890abcdef!2sAkshar%20Business%20Park%2C%20Vashi%2C%20Navi%20Mumbai!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
-
-    <!-- RIGHT — SIRF EK FORM -->
     <div class="contact-right">
       <div style="position:relative; z-index:1;">
         <p class="sec-tag" style="text-align:left;">Send A Message</p>
         <h3 style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:400; color:var(--text); line-height:1.3; margin-bottom:0;">We'd love to<br/><em style="color:var(--gold); font-style:italic;">hear from you</em></h3>
       </div>
-
       <form class="contact-form" action="https://formspree.io/f/xlgzalgg" method="POST">
         <div class="form-row">
           <div class="form-group"><input type="text" name="name" placeholder="Your Name" required /></div>
@@ -382,22 +425,21 @@
         <div class="form-group">
           <textarea name="message" placeholder="Your Message" required></textarea>
         </div>
-        <button type="submit" class="btn-submit">
-          Send Message &nbsp;<i class="fa-solid fa-paper-plane"></i>
-        </button>
+        <button type="submit" class="btn-submit">Send Message &nbsp;<i class="fa-solid fa-paper-plane"></i></button>
         <p class="form-note">We typically respond within 1–2 business days.</p>
       </form>
     </div>
-
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer id="footer">
   <div class="footer-logo">Jayashri <span>Group & Companies</span></div>
   <div class="footer-copy">© 2025 Jayashri Group & Companies<br/>All Rights Reserved · Vashi, Maharashtra, India</div>
   <div class="footer-ids">23 Companies · 15+ Sectors<br/>Maharashtra, India</div>
 </footer>
 
+<!-- POPUP -->
 <div class="popup-overlay" id="popup">
   <div class="popup">
     <button class="popup-close" onclick="closePopup()">✕</button>
@@ -464,7 +506,6 @@ function animateCounters(){
 }
 
 function shortName(name){ return name.replace(' Private Limited','').replace(' Pvt. Ltd.','').replace(' LLP','').replace(' Association','').replace(' Foundation','').replace(' Pvt Ltd',''); }
-const tooltip = document.getElementById('wheelTooltip');
 
 function buildWheel(){
   const outer=document.getElementById('wheelOuter');
