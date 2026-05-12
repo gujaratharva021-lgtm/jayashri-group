@@ -196,7 +196,7 @@
 
     @keyframes fadeUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
 
-    @media (max-width: 900px) {
+  @media (max-width: 900px) {
   nav { padding: 14px 20px; } nav ul { display: none; }
   #about { padding: 60px 20px; }
   #about > div:nth-child(2) { grid-template-columns: 1fr !important; }
@@ -208,15 +208,14 @@
   .footer-ids { text-align: center; }
   body { cursor: auto; } .cursor-dot, .cursor-ring { display: none; }
 
-  /* WHEEL FIX */
-  #wheel { padding: 60px 0 80px; overflow: hidden; }
-  .wheel-outer { width: 320px; height: 320px; }
-  .wheel-center { width: 72px; height: 72px; }
-  .ring-el:nth-child(1) { width: 118px; height: 118px; }
-  .ring-el:nth-child(2) { width: 228px; height: 228px; }
-  .ring-el:nth-child(3) { width: 316px; height: 316px; }
-  .cnode-circle { width: 22px; height: 22px; font-size: 0.48rem; }
-  .cnode-label { font-size: 0.2rem; max-width: 32px; margin-top: 2px; }
+  #wheel { padding: 40px 0 60px; overflow: hidden; }
+  .wheel-outer { width: 300px !important; height: 300px !important; }
+  .wheel-center { width: 65px; height: 65px; }
+  .ring-el:nth-child(1) { width: 108px; height: 108px; }
+  .ring-el:nth-child(2) { width: 210px; height: 210px; }
+  .ring-el:nth-child(3) { width: 296px; height: 296px; }
+  .cnode-circle { width: 20px; height: 20px; font-size: 0.42rem; }
+  .cnode-label { font-size: 0.18rem; max-width: 28px; margin-top: 1px; }
 }
   </style>
 </head>
@@ -520,9 +519,11 @@ function shortName(name){ return name.replace(' Private Limited','').replace(' P
 function buildWheel(){
   const outer=document.getElementById('wheelOuter');
   const svg=document.getElementById('connectorSvg');
-  const isMob=window.innerWidth<=900;
-  const SIZE=isMob?320 :820;
-  const cx=SIZE/2, cy=SIZE/2, R=isMob ? 135 : 345, nSize=isMob ? 11 : 26;
+  const isMob=window.innerWidth<=768;
+  const SIZE=isMob?300:820;
+  const cx=SIZE/2,cy=SIZE/2,R=isMob?118:345,nSize=isMob?10:26;
+  outer.style.width=SIZE+'px';
+  outer.style.height=SIZE+'px';
   outer.querySelectorAll('.cnode').forEach(n=>n.remove());
   svg.innerHTML='';
   companies.forEach((c,i)=>{
