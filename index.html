@@ -197,17 +197,27 @@
     @keyframes fadeUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
 
     @media (max-width: 900px) {
-      nav { padding: 14px 20px; } nav ul { display: none; }
-      #about { padding: 60px 20px; }
-      #about > div:nth-child(2) { grid-template-columns: 1fr !important; }
-      #companies { padding: 60px 16px; }
-      #contact { padding: 60px 20px; }
-      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-      .form-row { grid-template-columns: 1fr; }
-      footer { flex-direction: column; text-align: center; padding: 32px 20px; }
-      .footer-ids { text-align: center; }
-      body { cursor: auto; } .cursor-dot, .cursor-ring { display: none; }
-    }
+  nav { padding: 14px 20px; } nav ul { display: none; }
+  #about { padding: 60px 20px; }
+  #about > div:nth-child(2) { grid-template-columns: 1fr !important; }
+  #companies { padding: 60px 16px; }
+  #contact { padding: 60px 20px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; padding: 32px 20px; }
+  .footer-ids { text-align: center; }
+  body { cursor: auto; } .cursor-dot, .cursor-ring { display: none; }
+
+  /* WHEEL FIX */
+  #wheel { padding: 60px 0 80px; overflow: hidden; }
+  .wheel-outer { width: 320px; height: 320px; }
+  .wheel-center { width: 72px; height: 72px; }
+  .ring-el:nth-child(1) { width: 118px; height: 118px; }
+  .ring-el:nth-child(2) { width: 228px; height: 228px; }
+  .ring-el:nth-child(3) { width: 316px; height: 316px; }
+  .cnode-circle { width: 22px; height: 22px; font-size: 0.48rem; }
+  .cnode-label { font-size: 0.2rem; max-width: 32px; margin-top: 2px; }
+}
   </style>
 </head>
 <body>
@@ -511,8 +521,8 @@ function buildWheel(){
   const outer=document.getElementById('wheelOuter');
   const svg=document.getElementById('connectorSvg');
   const isMob=window.innerWidth<=900;
-  const SIZE=isMob?360:820;
-  const cx=SIZE/2,cy=SIZE/2,R=isMob?155:345,nSize=isMob?13:26;
+  const SIZE=isMob?320 :820;
+  const cx=SIZE/2, cy=SIZE/2, R=isMob ? 135 : 345, nSize=isMob ? 11 : 26;
   outer.querySelectorAll('.cnode').forEach(n=>n.remove());
   svg.innerHTML='';
   companies.forEach((c,i)=>{
