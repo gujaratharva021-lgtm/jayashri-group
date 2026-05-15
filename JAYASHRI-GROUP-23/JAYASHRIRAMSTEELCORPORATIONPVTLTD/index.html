@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jayashri Ram Steel Corporation Private Limited</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark: #1A1A1A;
+      --dark-mid: #2C2C2C;
+      --dark-light: #3A3A3A;
+      --steel: #B8860B;
+      --steel-bright: #C8960D;
+      --orange: #E8650A;
+      --bg: #EFEFEF;
+      --bg2: #E5E5E5;
+      --bg3: #DCDCDC;
+      --white: #FFFFFF;
+      --card: #F5F5F5;
+      --text: #1A1A1A;
+      --gray: #666666;
+      --silver: #888888;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px;
+      background: rgba(239,239,239,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184,134,11,0.25);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; letter-spacing: 2px; color: var(--steel);
+    }
+    .nav-logo span { color: var(--dark-mid); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--gray); text-decoration: none;
+      font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--steel); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #EFEFEF 0%, #E5E5E5 50%, #DCDCDC 100%);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 72% 50%, rgba(184,134,11,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 15% 75%, rgba(232,101,10,0.05) 0%, transparent 60%);
+    }
+
+    .steel-graphic {
+      position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+      width: 320px; height: 320px;
+    }
+    .steel-ring {
+      position: absolute; top: 50%; left: 50%;
+      border-radius: 50%; border: 2px solid rgba(184,134,11,0.2);
+      transform: translate(-50%, -50%);
+      animation: spinRing 25s linear infinite;
+    }
+    .steel-ring:nth-child(1) { width: 200px; height: 200px; border-color: rgba(184,134,11,0.3); animation-duration: 20s; }
+    .steel-ring:nth-child(2) { width: 280px; height: 280px; border-color: rgba(184,134,11,0.2); animation-direction: reverse; animation-duration: 30s; }
+    .steel-ring:nth-child(3) { width: 340px; height: 340px; border-color: rgba(232,101,10,0.15); animation-duration: 40s; }
+    .steel-ring::before {
+      content: ''; position: absolute; top: -6px; left: 50%;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--steel); transform: translateX(-50%);
+      box-shadow: 0 0 10px var(--steel);
+    }
+    @keyframes spinRing { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+    .steel-core {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px; height: 120px; border-radius: 50%;
+      background: radial-gradient(circle, #E8D080 0%, #C8960D 40%, #8B6000 100%);
+      border: 3px solid rgba(184,134,11,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      box-shadow: 0 0 40px rgba(184,134,11,0.25), 0 8px 32px rgba(0,0,0,0.15);
+      animation: corePulse 4s ease-in-out infinite;
+    }
+    @keyframes corePulse {
+      0%,100% { box-shadow: 0 0 40px rgba(184,134,11,0.25), 0 8px 32px rgba(0,0,0,0.15); }
+      50% { box-shadow: 0 0 70px rgba(184,134,11,0.45), 0 8px 32px rgba(0,0,0,0.15); }
+    }
+
+    .spark {
+      position: absolute; border-radius: 50%;
+      background: var(--steel);
+      animation: sparkFloat linear infinite;
+      opacity: 0;
+    }
+    .spark:nth-child(1) { width:4px; height:4px; top:20%; left:78%; animation-duration:3s; animation-delay:0s; }
+    .spark:nth-child(2) { width:3px; height:3px; top:35%; left:85%; animation-duration:4s; animation-delay:1s; }
+    .spark:nth-child(3) { width:5px; height:5px; top:60%; left:75%; animation-duration:3.5s; animation-delay:0.5s; }
+    .spark:nth-child(4) { width:3px; height:3px; top:75%; left:88%; animation-duration:2.5s; animation-delay:1.5s; }
+    .spark:nth-child(5) { width:4px; height:4px; top:50%; left:92%; animation-duration:3.8s; animation-delay:0.8s; }
+    @keyframes sparkFloat {
+      0% { opacity: 0; transform: translateY(0) scale(1); }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.3; }
+      100% { opacity: 0; transform: translateY(-60px) scale(0.2); }
+    }
+
+    .hero-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--steel); margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.2rem, 7.5vw, 6.5rem);
+      line-height: 0.95; letter-spacing: 2px; max-width: 680px;
+      color: var(--dark);
+      opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+    }
+    .hero h1 .highlight { color: var(--steel); }
+    .hero h1 .highlight2 { color: var(--orange); }
+    .hero-sub {
+      margin-top: 24px; max-width: 480px;
+      font-size: 1rem; line-height: 1.75; color: var(--gray);
+      opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+    }
+    .hero-cta {
+      margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
+    }
+    .btn-primary {
+      padding: 14px 36px; background: var(--steel); color: #fff;
+      font-weight: 500; font-size: 0.9rem; letter-spacing: 0.5px;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.3s, transform 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
+    .btn-outline {
+      padding: 14px 36px; background: transparent; color: var(--dark);
+      font-size: 0.9rem; letter-spacing: 0.5px;
+      border: 1px solid rgba(26,26,26,0.3); cursor: pointer; text-decoration: none;
+      transition: border-color 0.3s, color 0.3s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--steel); color: var(--steel); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--white);
+      border-top: 1px solid rgba(184,134,11,0.2);
+      border-bottom: 1px solid rgba(184,134,11,0.2);
+      padding: 36px 48px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; text-align: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem; color: var(--steel); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--gray); margin-top: 6px;
+    }
+
+    /* SECTIONS */
+    section { padding: 100px 48px; }
+    .section-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--steel); margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: 1px; line-height: 1.05; margin-bottom: 16px;
+      color: var(--dark);
+    }
+    .section-desc { color: var(--gray); line-height: 1.8; max-width: 560px; }
+
+    /* ABOUT */
+    #about { background: var(--bg); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; margin-top: 60px;
+    }
+    .about-info-box {
+      background: var(--white);
+      border: 1px solid rgba(184,134,11,0.2);
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .info-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-key {
+      font-size: 0.72rem; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--gray); flex: 0 0 44%;
+    }
+    .info-val {
+      font-size: 0.85rem; color: var(--dark);
+      text-align: right; font-family: 'Space Mono', monospace;
+    }
+    .info-val.highlight { color: var(--steel); }
+
+    /* PRODUCTS */
+    #products { background: var(--bg2); }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 60px;
+    }
+    .product-card {
+      background: var(--white); padding: 40px 32px;
+      border-top: 3px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s; cursor: default;
+    }
+    .product-card:hover {
+      border-color: var(--steel);
+      box-shadow: 0 8px 32px rgba(184,134,11,0.1);
+    }
+    .product-icon { font-size: 2.2rem; margin-bottom: 20px; }
+    .product-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; letter-spacing: 1px; margin-bottom: 12px;
+      color: var(--dark);
+    }
+    .product-desc { color: var(--gray); font-size: 0.88rem; line-height: 1.7; }
+
+    /* REGISTRATION */
+    #registration { background: var(--bg); }
+    .reg-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px; margin-top: 60px;
+    }
+    .reg-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 28px 32px;
+      display: flex; align-items: flex-start; gap: 20px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .reg-card:hover { border-color: rgba(184,134,11,0.4); box-shadow: 0 4px 20px rgba(184,134,11,0.08); }
+    .reg-badge {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(184,134,11,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .reg-label {
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--gray); margin-bottom: 6px;
+    }
+    .reg-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem; color: var(--steel);
+    }
+    .reg-sub { font-size: 0.78rem; color: var(--gray); margin-top: 4px; }
+
+    /* DIRECTORS */
+    #directors { background: var(--bg2); }
+    .directors-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 32px; margin-top: 60px; max-width: 800px;
+    }
+    .director-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 36px; position: relative; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .director-card:hover { box-shadow: 0 12px 40px rgba(184,134,11,0.12); transform: translateY(-4px); }
+    .director-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--steel), var(--orange));
+    }
+    .director-initial {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(184,134,11,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; color: var(--steel); margin-bottom: 16px;
+      border: 2px solid rgba(184,134,11,0.2);
+    }
+    .director-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem; letter-spacing: 1px; margin-bottom: 4px;
+      color: var(--dark);
+    }
+    .director-role {
+      font-size: 0.72rem; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--steel); margin-bottom: 14px;
+    }
+    .director-shares { font-size: 0.8rem; color: var(--gray); }
+    .director-shares strong { color: var(--steel); }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; margin-top: 60px;
+    }
+    .contact-detail { margin-bottom: 32px; }
+    .contact-detail-label {
+      font-size: 0.68rem; text-transform: uppercase;
+      letter-spacing: 2.5px; color: var(--steel); margin-bottom: 8px;
+    }
+    .contact-detail-val { font-size: 0.95rem; line-height: 1.6; color: var(--dark); }
+    .contact-detail-val a { color: var(--steel); text-decoration: none; }
+    .contact-detail-val a:hover { text-decoration: underline; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--gray); margin-bottom: 8px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 12px 16px;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.12);
+      color: var(--dark); font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; outline: none; transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--steel); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray); opacity: 0.6; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,134,11,0.3), transparent);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(184,134,11,0.25);
+      padding: 40px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem; color: var(--steel); letter-spacing: 2px;
+    }
+    .footer-copy { font-size: 0.75rem; color: #888; }
+    .footer-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; color: #888;
+      text-align: right; line-height: 1.8;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .steel-graphic { right: 2%; opacity: 0.2; width: 200px; height: 200px; }
+      .steel-core { width: 80px; height: 80px; font-size: 2rem; }
+      .steel-ring:nth-child(1) { width: 120px; height: 120px; }
+      .steel-ring:nth-child(2) { width: 170px; height: 170px; }
+      .steel-ring:nth-child(3) { width: 210px; height: 210px; }
+      .stats-bar { grid-template-columns: repeat(2,1fr); padding: 28px 24px; }
+      section { padding: 70px 24px; }
+      .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .reg-grid { grid-template-columns: 1fr; }
+      .directors-grid { grid-template-columns: 1fr; max-width: 100%; }
+      footer { flex-direction: column; align-items: flex-start; padding: 32px 24px; }
+      .footer-meta { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">JRSCPL <span>⚙</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#registration">Compliance</a></li>
+      <li><a href="#directors">Directors</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="spark"></div>
+    <div class="spark"></div>
+    <div class="spark"></div>
+    <div class="spark"></div>
+    <div class="spark"></div>
+    <div class="steel-graphic">
+      <div class="steel-ring"></div>
+      <div class="steel-ring"></div>
+      <div class="steel-ring"></div>
+      <div class="steel-core">⚙</div>
+    </div>
+    <p class="hero-tag">Est. December 2025 · Pune, Maharashtra</p>
+    <h1>
+      FORGING<br/>
+      <span class="highlight">INDIA'S</span><br/>
+      <span class="highlight2">STEEL</span> FUTURE
+    </h1>
+    <p class="hero-sub">
+      Jayashri Ram Steel Corporation Private Limited is a Maharashtra-based steel manufacturing company specialising in iron & steel products — from billets and ingots to wire rods, coils, sheets, bars, and structural steel for industrial and infrastructure applications.
+    </p>
+    <div class="hero-cta">
+      <a href="#products" class="btn-primary">Our Products</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div>
+      <div class="stat-num">2025</div>
+      <div class="stat-label">Year Founded</div>
+    </div>
+    <div>
+      <div class="stat-num">MSME</div>
+      <div class="stat-label">Manufacturing Enterprise</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-tag">// Who We Are</p>
+    <h2 class="section-title">STRENGTH IN STEEL,<br/>BUILT TO LAST</h2>
+    <p class="section-desc">
+      Incorporated under the Companies Act 2013, Jayashri Ram Steel Corporation Private Limited is a Maharashtra-based steel manufacturing company committed to producing high-quality iron and steel products for India's growing industrial and infrastructure sectors.
+    </p>
+    <div class="about-grid">
+      <div>
+        <p style="color:var(--gray); line-height:1.9; font-size:0.95rem;">
+          We carry on the business of manufacturing, processing, melting, refining, rolling, drawing, casting, converting, alloying, fabricating, producing, treating and finishing all kinds of iron and steel products — including billets, ingots, slabs, hot-rolled and cold-rolled steel, wire rods, steel wires, coils, sheets, plates, bars, rods, and structural steel.<br/><br/>
+          Registered as a Micro Manufacturing Enterprise under MSME (NIC code 24109 — Manufacture of Other Basic Iron and Steel), we operate with a focus on quality, compliance, and industrial excellence.
+        </p>
+      </div>
+      <div class="about-info-box">
+        <div class="info-row"><span class="info-key">Company Name</span><span class="info-val">Jayashri Ram Steel Corp. Pvt. Ltd.</span></div>
+        <div class="info-row"><span class="info-key">CIN</span><span class="info-val highlight">U24100PN2025PTC249118</span></div>
+        <div class="info-row"><span class="info-key">PAN</span><span class="info-val highlight">AAHCJ1674M</span></div>
+        <div class="info-row"><span class="info-key">TAN</span><span class="info-val highlight">PNEJ17686E</span></div>
+        <div class="info-row"><span class="info-key">UDYAM No.</span><span class="info-val highlight">UDYAM-MH-26-1122193</span></div>
+        <div class="info-row"><span class="info-key">Incorporation Date</span><span class="info-val">10 December 2025</span></div>
+        <div class="info-row"><span class="info-key">Registered State</span><span class="info-val">Maharashtra</span></div>
+        <div class="info-row"><span class="info-key">Enterprise Type</span><span class="info-val">Micro · Manufacturing (MSME)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <p class="section-tag">// What We Make</p>
+    <h2 class="section-title">IRON & STEEL<br/>PRODUCTS & PROCESSES</h2>
+    <p class="section-desc">From raw melting to finished structural steel, we cover the complete spectrum of iron and steel manufacturing processes and products.</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🏗</div>
+        <div class="product-title">Billets, Ingots & Slabs</div>
+        <p class="product-desc">Manufacturing of basic steel semi-finished products including billets, ingots, slabs, and blooms used as raw material for downstream rolling and fabrication.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔩</div>
+        <div class="product-title">Hot & Cold Rolled Products</div>
+        <p class="product-desc">Production of hot-rolled and cold-rolled steel sheets, coils, plates, and strips for construction, automotive, and general engineering applications.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🌀</div>
+        <div class="product-title">Wire Rods & Steel Wires</div>
+        <p class="product-desc">Manufacturing of wire rods, cold-drawn wires, binding wire, fencing wire, barbed wire, industrial wire, and other ferrous wire products through cold drawing and stretching processes.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏭</div>
+        <div class="product-title">Structural Steel & Bars</div>
+        <p class="product-desc">Production of bars, rods, angles, channels, and structural steel sections for building construction, bridges, and heavy engineering projects.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">⚗️</div>
+        <div class="product-title">Melting, Refining & Alloying</div>
+        <p class="product-desc">Operations covering melting, refining, and alloying of steel — including operation of furnaces, rolling mills, and finishing facilities for diverse steel grades.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🔧</div>
+        <div class="product-title">Surface Treatment & Finishing</div>
+        <p class="product-desc">Galvanizing, coating, annealing, cutting, slitting, and straightening services to deliver finished steel products meeting industry specifications.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- REGISTRATION -->
+  <section id="registration">
+    <p class="section-tag">// Compliance & Registration</p>
+    <h2 class="section-title">FULLY REGISTERED &amp;<br/>COMPLIANT ENTITY</h2>
+    <p class="section-desc">Jayashri Ram Steel Corporation Private Limited holds all key statutory registrations to operate as a compliant steel manufacturing private limited company in India.</p>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <div class="reg-badge">🏛</div>
+        <div>
+          <div class="reg-label">Certificate of Incorporation</div>
+          <div class="reg-value">U24100PN2025PTC249118</div>
+          <div class="reg-sub">Ministry of Corporate Affairs · 10 December 2025</div>
+        </div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">💳</div>
+        <div>
+          <div class="reg-label">Permanent Account Number (PAN)</div>
+          <div class="reg-value">AAHCJ1674M</div>
+          <div class="reg-sub">Income Tax Department · 10 December 2025</div>
+        </div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">📄</div>
+        <div>
+          <div class="reg-label">Tax Deduction Account (TAN)</div>
+          <div class="reg-value">PNEJ17686E</div>
+          <div class="reg-sub">Income Tax Department · 10 December 2025</div>
+        </div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">🏭</div>
+        <div>
+          <div class="reg-label">MSME / Udyam Registration</div>
+          <div class="reg-value">UDYAM-MH-26-1122193</div>
+          <div class="reg-sub">Manufacturing · NIC 24109 · 17 April 2026</div>
+        </div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">📃</div>
+        <div>
+          <div class="reg-label">Memorandum of Association</div>
+          <div class="reg-value">INC-33 Filed</div>
+          <div class="reg-sub">Company limited by shares · Table A · 11 Dec 2025</div>
+        </div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">📋</div>
+        <div>
+          <div class="reg-label">Articles of Association</div>
+          <div class="reg-value">INC-34 Filed</div>
+          <div class="reg-sub">F — Company limited by shares · Table F</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- DIRECTORS -->
+  <section id="directors">
+    <p class="section-tag">// Leadership</p>
+    <h2 class="section-title">MEET THE<br/>FOUNDERS</h2>
+    <p class="section-desc">Jayashri Ram Steel Corporation is led by two founding directors bringing entrepreneurial vision and industrial commitment to India's steel manufacturing sector.</p>
+    <div class="directors-grid">
+      <div class="director-card">
+        <div class="director-initial">AG</div>
+        <div class="director-name">Aditya Dnyaneshwar Gurav</div>
+        <div class="director-role">Co-Founder & Director</div>
+        <div class="director-shares">
+          <span style="font-size:0.75rem; color:var(--gray);">Rajgurunagar, Pune · 410505</span>
+        </div>
+      </div>
+      <div class="director-card">
+        <div class="director-initial">JM</div>
+        <div class="director-name">Jayashri Nitin Mane</div>
+        <div class="director-role">Co-Founder & Director</div>
+        <div class="director-shares">
+          <span style="font-size:0.75rem; color:var(--gray);">Pimple Saudagar, Pune · 411027</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-tag">// Get In Touch</p>
+    <h2 class="section-title">BUILD WITH US —<br/>STEEL FOR INDIA</h2>
+    <p class="section-desc">Reach out for steel product enquiries, manufacturing partnerships, bulk supply, or any industrial requirement.</p>
+    <div class="contact-wrap">
+      <div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Registered Address</div>
+          <div class="contact-detail-val">
+            Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park,<br/>
+            Sector No. 25, Vashi, Near Turbhe Station,<br/>
+            Thane – 400703, Maharashtra
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Phone</div>
+          <div class="contact-detail-val"><a href="tel:02268976194">022-6897 6194</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Email</div>
+          <div class="contact-detail-val"><a href="mailto:ramsteel@jayashrigroups.com">ramsteel@jayashrigroups.com</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Major Activity</div>
+          <div class="contact-detail-val" style="color:var(--steel);">Manufacturing · Basic Iron & Steel (NIC 24109)</div>
+        </div>
+      </div>
+      <div>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name"/>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@example.com"/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX"/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your steel product requirements…"></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%; cursor:pointer;" onclick="alert('Thank you! We will contact you shortly.')">Send Enquiry</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">JAYASHRI RAM STEEL CORPORATION ⚙</div>
+    <div class="footer-copy">© 2025 Jayashri Ram Steel Corporation Private Limited. All rights reserved.</div>
+    <div class="footer-meta">
+      CIN: U24100PN2025PTC249118<br/>
+      PAN: AAHCJ1674M · TAN: PNEJ17686E
+    </div>
+  </footer>
+
+</body>
+</html>

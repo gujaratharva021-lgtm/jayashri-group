@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jayashri Fashion House Pvt. Ltd.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9607a;
+      --gold-light: #e08fa4;
+      --dark: #2a0d18;
+      --dark2: #3b1525;
+      --cream: #fff0f4;
+      --cream2: #fce4eb;
+      --text: #2a0d18;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 60px;
+      background: rgba(42,13,24,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,96,122,0.25);
+      transition: padding 0.4s, box-shadow 0.4s;
+    }
+
+    nav.scrolled {
+      padding: 10px 60px;
+      box-shadow: 0 4px 30px rgba(201,96,122,0.15);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    .logo:hover { transform: scale(1.03); }
+    .logo span { color: var(--white); font-weight: 300; font-style: italic; }
+
+    nav ul { list-style: none; display: flex; gap: 36px; }
+
+    nav ul a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 300;
+      transition: color 0.3s, letter-spacing 0.3s;
+      position: relative;
+    }
+    nav ul a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    nav ul a:hover { color: var(--gold); letter-spacing: 4px; }
+    nav ul a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      font-weight: 600 !important;
+      letter-spacing: 2px !important;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-2px) !important; }
+    .nav-cta::after { display: none !important; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    canvas#particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(201,96,122,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 70%, rgba(201,96,122,0.1) 0%, transparent 60%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,96,122,0.45);
+      padding: 6px 20px;
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s 0.2s ease forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s 0.4s ease forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+
+    .hero-subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s ease forwards;
+    }
+
+    .hero-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      margin: 0 auto 48px;
+      line-height: 1.8;
+      font-style: italic;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s ease forwards;
+      min-height: 2.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s ease forwards;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      padding: 14px 36px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 0; height: 0;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s, height 0.5s;
+    }
+    .btn-primary:hover::before { width: 300px; height: 300px; }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(201,96,122,0.4); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 36px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: border-color 0.3s, color 0.3s, transform 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+
+    /* STATS */
+    .stats-strip {
+      background: var(--gold);
+      padding: 20px 60px;
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1;
+      transition: transform 0.3s;
+    }
+    .stat:hover .stat-num { transform: scale(1.1); }
+
+    .stat-label {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-top: 4px;
+    }
+
+    /* SECTIONS */
+    section { padding: 100px 60px; }
+
+    .section-tag {
+      font-size: 0.6rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    .section-line {
+      width: 60px; height: 1px;
+      background: var(--gold);
+      margin-bottom: 30px;
+      transition: width 0.6s;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+
+    /* ABOUT */
+    #about {
+      background: var(--dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-left .section-title { color: var(--white); }
+
+    .about-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    .about-right { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .about-card {
+      background: rgba(201,96,122,0.1);
+      border: 1px solid rgba(201,96,122,0.2);
+      padding: 28px 24px;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+    }
+    .about-card:hover {
+      border-color: var(--gold);
+      background: rgba(201,96,122,0.16);
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .about-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .about-card:hover .about-card-icon { transform: rotate(10deg) scale(1.2); }
+
+    .about-card h4 {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .about-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    /* SERVICES */
+    #services { background: var(--cream); text-align: center; }
+    #services .section-title { color: var(--dark); }
+    #services .section-line { margin: 0 auto 20px; }
+
+    .services-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: rgba(42,13,24,0.6);
+      max-width: 560px;
+      margin: 0 auto 60px;
+      line-height: 1.8;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid rgba(201,96,122,0.18);
+      padding: 40px 32px;
+      text-align: left;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--gold);
+      transition: height 0.4s;
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(201,96,122,0.15); border-color: var(--gold); }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(201,96,122,0.22);
+      line-height: 1;
+      margin-bottom: 16px;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .service-card:hover .service-num { color: rgba(201,96,122,0.5); transform: scale(1.1); }
+
+    .service-card h3 {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .service-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: rgba(42,13,24,0.58);
+      line-height: 1.75;
+    }
+
+    /* COMPANY INFO */
+    #info {
+      background: var(--dark2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .info-left .section-title { color: var(--white); }
+
+    .info-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.9;
+      margin-bottom: 32px;
+    }
+
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table tr { border-bottom: 1px solid rgba(201,96,122,0.12); transition: background 0.3s; }
+    .info-table tr:hover { background: rgba(201,96,122,0.05); }
+    .info-table td { padding: 14px 0; font-size: 0.8rem; }
+    .info-table td:first-child {
+      font-family: 'Josefin Sans', sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 300;
+      width: 45%;
+    }
+    .info-table td:last-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .reg-card {
+      background: rgba(201,96,122,0.08);
+      border: 1px solid rgba(201,96,122,0.22);
+      padding: 36px;
+      margin-bottom: 20px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .reg-card:hover { transform: translateX(6px); border-color: var(--gold); }
+
+    .reg-card h4 {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .reg-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(201,96,122,0.1);
+    }
+    .reg-row:last-child { border-bottom: none; }
+
+    .reg-key {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .reg-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    /* DIRECTORS */
+    #directors { background: var(--cream2); text-align: center; }
+    #directors .section-line { margin: 0 auto 20px; }
+
+    .directors-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 60px;
+    }
+
+    .director-card {
+      background: var(--white);
+      border: 1px solid rgba(201,96,122,0.18);
+      padding: 48px 40px;
+      width: 300px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .director-card:hover { transform: translateY(-10px); box-shadow: 0 24px 60px rgba(201,96,122,0.18); }
+
+    .director-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--white);
+      margin: 0 auto 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .director-card:hover .director-avatar { transform: scale(1.1); box-shadow: 0 8px 20px rgba(201,96,122,0.4); }
+
+    .director-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .director-card .role {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .director-card .shares {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: rgba(42,13,24,0.5);
+    }
+
+    /* MSME */
+    #msme { background: var(--dark); text-align: center; padding: 80px 60px; }
+
+    .msme-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(201,96,122,0.12);
+      border: 1px solid var(--gold);
+      padding: 24px 48px;
+      margin-bottom: 40px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .msme-badge:hover { transform: scale(1.03); box-shadow: 0 0 30px rgba(201,96,122,0.2); }
+
+    .msme-badge .badge-icon { font-size: 2rem; }
+    .msme-badge .badge-label {
+      font-size: 0.6rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .msme-badge .badge-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      font-weight: 300;
+    }
+
+    .msme-details { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+    .msme-item { text-align: center; }
+    .msme-item .mi-label {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 6px;
+    }
+    .msme-item .mi-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    #contact .section-title { color: var(--dark); }
+
+    .contact-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: rgba(42,13,24,0.6);
+      line-height: 1.9;
+      margin-bottom: 40px;
+    }
+
+    .contact-info { list-style: none; }
+    .contact-info li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(201,96,122,0.15);
+      transition: transform 0.3s;
+    }
+    .contact-info li:hover { transform: translateX(6px); }
+    .contact-info li:last-child { border-bottom: none; }
+
+    .ci-icon { font-size: 1.2rem; margin-top: 2px; flex-shrink: 0; }
+    .ci-label { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .ci-val { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--dark); line-height: 1.6; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(42,13,24,0.5);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid rgba(201,96,122,0.22);
+      padding: 14px 18px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--dark);
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,96,122,0.1);
+      transform: translateY(-2px);
+    }
+    .form-group textarea { height: 120px; resize: vertical; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-top: 1px solid rgba(201,96,122,0.18);
+    }
+
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); font-weight: 600; }
+    .footer-logo span { color: rgba(255,255,255,0.5); font-weight: 300; font-style: italic; }
+    .footer-copy { font-size: 0.65rem; letter-spacing: 2px; color: rgba(255,255,255,0.25); text-align: center; }
+    .footer-ids { font-size: 0.6rem; letter-spacing: 1px; color: rgba(255,255,255,0.2); text-align: right; line-height: 1.8; }
+
+    /* PULSE GLOW on section lines */
+    @keyframes lineGrow {
+      from { width: 0; }
+      to { width: 60px; }
+    }
+    .section-line.visible { animation: lineGrow 0.6s ease forwards; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201,96,122,0.4); }
+      50%       { box-shadow: 0 0 0 12px rgba(201,96,122,0); }
+    }
+    .msme-badge { animation: pulse 3s infinite; }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav ul { display: none; }
+      section { padding: 70px 24px; }
+      #about, #info, #contact { grid-template-columns: 1fr; gap: 40px; }
+      .stats-strip { gap: 40px; padding: 20px 24px; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-ids { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="#hero" class="logo">Jayashri <span>Fashion House</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#info">Company</a></li>
+      <li><a href="#directors">Team</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <canvas id="particles"></canvas>
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Est. 16 July 2025 · Pune, Maharashtra</div>
+      <h1 class="hero-title">Jayashri<br /><em>Fashion House</em></h1>
+      <p class="hero-subtitle">Private Limited · CIN U74101PN2025PTC243958</p>
+      <p class="hero-desc" id="typewriter"></p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-strip">
+    <div class="stat"><div class="stat-num">2025</div><div class="stat-label">Year Founded</div></div>
+    <div class="stat"><div class="stat-num">MSME</div><div class="stat-label">Udyam Registered</div></div>
+    <div class="stat"><div class="stat-num">Micro</div><div class="stat-label">Enterprise Type</div></div>
+    <div class="stat"><div class="stat-num">Pvt. Ltd.</div><div class="stat-label">Company Type</div></div>
+  </div>
+
+  <section id="about">
+    <div class="about-left reveal-left">
+      <p class="section-tag">Who We Are</p>
+      <h2 class="section-title">Fashion <em>Reimagined</em><br />for Every Season</h2>
+      <div class="section-line"></div>
+      <p class="about-text">Jayashri Fashion House Private Limited is a Pune-based fashion company incorporated under the Companies Act, 2013. We operate as a Micro Enterprise registered under Udyam (MSME), committed to making quality fashion accessible across India.</p>
+      <p class="about-text">From design to delivery — we handle manufacturing, sourcing, wholesale, and retail of apparel, garments, textiles, footwear, and lifestyle accessories.</p>
+    </div>
+    <div class="about-right reveal-right">
+      <div class="about-card delay-1 reveal"><div class="about-card-icon">👗</div><h4>Fashion Design</h4><p>Crafting unique styles rooted in Indian sensibility with modern aesthetics.</p></div>
+      <div class="about-card delay-2 reveal"><div class="about-card-icon">🏭</div><h4>Manufacturing</h4><p>In-house production of high-quality garments and apparel.</p></div>
+      <div class="about-card delay-3 reveal"><div class="about-card-icon">🌐</div><h4>Import &amp; Export</h4><p>Global sourcing and export of fashion products and textiles.</p></div>
+      <div class="about-card delay-4 reveal"><div class="about-card-icon">🏷️</div><h4>Brand Building</h4><p>Developing proprietary and licensed fashion brands for the market.</p></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <p class="section-tag reveal">What We Offer</p>
+    <h2 class="section-title reveal">Our <em>Services</em></h2>
+    <div class="section-line reveal"></div>
+    <p class="services-desc reveal">A complete fashion ecosystem — from raw material to retail shelf, we cover every step of the value chain.</p>
+    <div class="services-grid">
+      <div class="service-card reveal delay-1"><div class="service-num">01</div><h3>Designing &amp; Manufacturing</h3><p>Full-cycle garment manufacturing from concept to finished product — apparel, garments, textiles and clothing accessories.</p></div>
+      <div class="service-card reveal delay-2"><div class="service-num">02</div><h3>Wholesale &amp; Retail</h3><p>Supply to wholesale distributors and direct retail operations for fashion apparel, footwear and lifestyle products.</p></div>
+      <div class="service-card reveal delay-3"><div class="service-num">03</div><h3>Import &amp; Export</h3><p>International sourcing of fabrics and accessories, and export of finished fashion products to global markets.</p></div>
+      <div class="service-card reveal delay-4"><div class="service-num">04</div><h3>Fashion Consulting</h3><p>Styling, visual merchandising, event planning and brand development services for individuals and businesses.</p></div>
+      <div class="service-card reveal delay-5"><div class="service-num">05</div><h3>Brand Development</h3><p>Building proprietary fashion brands and working with licensed third-party brands for market expansion.</p></div>
+      <div class="service-card reveal delay-6"><div class="service-num">06</div><h3>Marketing &amp; Promotions</h3><p>End-to-end marketing, promotional services and event management for fashion launches and brand campaigns.</p></div>
+    </div>
+  </section>
+
+  <section id="info">
+    <div class="info-left reveal-left">
+      <p class="section-tag">Company Details</p>
+      <h2 class="section-title" style="color:var(--white);">Official <em>Registration</em><br />Information</h2>
+      <div class="section-line"></div>
+      <p class="info-body">All registration details of Jayashri Fashion House Private Limited as issued by the Government of India, Ministry of Corporate Affairs and Income Tax Department.</p>
+      <table class="info-table">
+        <tr><td>Company Name</td><td>Jayashri Fashion House Private Limited</td></tr>
+        <tr><td>CIN</td><td>U74101PN2025PTC243958</td></tr>
+        <tr><td>PAN</td><td>AAGCJ9674A</td></tr>
+        <tr><td>TAN</td><td>PNEJ17286D</td></tr>
+        <tr><td>Incorporation Date</td><td>16 July 2025</td></tr>
+        <tr><td>Registered State</td><td>Maharashtra</td></tr>
+        <tr><td>Company Type</td><td>Private Limited (Shares)</td></tr>
+      </table>
+    </div>
+    <div class="info-right reveal-right">
+      <div class="reg-card">
+        <h4>Registered Office Address</h4>
+        <div class="reg-row"><span class="reg-key">Premises</span><span class="reg-val">B N A3, Siddeshwar Nagari</span></div>
+        <div class="reg-row"><span class="reg-key">Area</span><span class="reg-val">Rajgurunagar, Khed</span></div>
+        <div class="reg-row"><span class="reg-key">City</span><span class="reg-val">Pune</span></div>
+        <div class="reg-row"><span class="reg-key">State</span><span class="reg-val">Maharashtra</span></div>
+        <div class="reg-row"><span class="reg-key">PIN Code</span><span class="reg-val">410505</span></div>
+        <div class="reg-row"><span class="reg-key">Phone</span><span class="reg-val">022-6897 6194</span></div>
+      </div>
+      <div class="reg-card">
+        <h4>MSME / Udyam Registration</h4>
+        <div class="reg-row"><span class="reg-key">Udyam No.</span><span class="reg-val">UDYAM-MH-26-1122624</span></div>
+        <div class="reg-row"><span class="reg-key">Enterprise Type</span><span class="reg-val">Micro Enterprise</span></div>
+        <div class="reg-row"><span class="reg-key">Major Activity</span><span class="reg-val">Manufacturing</span></div>
+        <div class="reg-row"><span class="reg-key">NIC Code</span><span class="reg-val">14101 — Textile Garments</span></div>
+        <div class="reg-row"><span class="reg-key">Udyam Date</span><span class="reg-val">18 April 2026</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="directors">
+    <p class="section-tag reveal">Leadership</p>
+    <h2 class="section-title reveal" style="color:var(--dark);">Meet Our <em>Directors</em></h2>
+    <div class="section-line reveal"></div>
+    <div class="directors-grid">
+      <div class="director-card reveal delay-1">
+        <div class="director-avatar">JM</div>
+        <h3>Jayashri Nitin Mane</h3>
+        <p class="role">Director &amp; Co-Founder</p>
+      </div>
+      <div class="director-card reveal delay-2">
+        <div class="director-avatar">AG</div>
+        <h3>Aditya Dnyaneshwar Gurav</h3>
+        <p class="role">Director &amp; Co-Founder</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="msme">
+    <p class="section-tag reveal" style="margin-bottom:24px;">Government Recognition</p>
+    <div class="msme-badge reveal">
+      <span class="badge-icon">🏅</span>
+      <div>
+        <div class="badge-label">MSME Udyam Registered</div>
+        <div class="badge-val">UDYAM-MH-26-1122624</div>
+      </div>
+    </div>
+    <div class="msme-details">
+      <div class="msme-item reveal delay-1"><div class="mi-label">Classification Year</div><div class="mi-val">2026–27</div></div>
+      <div class="msme-item reveal delay-2"><div class="mi-label">Enterprise Type</div><div class="mi-val">Micro</div></div>
+      <div class="msme-item reveal delay-3"><div class="mi-label">Social Category</div><div class="mi-val">General</div></div>
+      <div class="msme-item reveal delay-4"><div class="mi-label">DIC Office</div><div class="mi-val">Pune, Maharashtra</div></div>
+      <div class="msme-item reveal delay-5"><div class="mi-label">MSME-DFO</div><div class="mi-val">Mumbai, Maharashtra</div></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="reveal-left">
+      <p class="section-tag">Reach Us</p>
+      <h2 class="section-title">Let's <em>Connect</em></h2>
+      <div class="section-line"></div>
+      <p class="contact-desc">Whether you're a retailer, wholesaler, or want to collaborate — we'd love to hear from you.</p>
+      <ul class="contact-info">
+        <li><span class="ci-icon">📍</span><div><div class="ci-label">Registered Address</div><div class="ci-val">Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park,<br />Sector No. 25, Vashi, Near Turbhe Station,<br />Thane – 400703, Maharashtra</div></div></li>
+        <li><span class="ci-icon">📞</span><div><div class="ci-label">Phone</div><div class="ci-val">022-6897 6194</div></div></li>
+        <li><span class="ci-icon">✉️</span><div><div class="ci-label">Email</div><div class="ci-val">fashionhouse@jayashrigroups.com</div></div></li>
+        <li><span class="ci-icon">🏢</span><div><div class="ci-label">CIN</div><div class="ci-val">U74101PN2025PTC243958</div></div></li>
+      </ul>
+    </div>
+    <div class="reveal-right">
+      <div class="form-group"><label>Your Name</label><input type="text" placeholder="Full Name" /></div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com" /></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 00000 00000" /></div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your requirements..."></textarea></div>
+      <button class="btn-primary" style="width:100%;border:none;cursor:pointer;" onclick="alert('Thank you! We will get back to you shortly.')">Send Message</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Jayashri <span>Fashion House Pvt. Ltd.</span></div>
+    <div class="footer-copy">© 2025 Jayashri Fashion House Private Limited. All rights reserved.<br />Incorporated under Companies Act, 2013 · Pune, Maharashtra</div>
+    <div class="footer-ids">CIN: U74101PN2025PTC243958<br />PAN: AAGCJ9674A · TAN: PNEJ17286D<br />UDYAM-MH-26-1122624</div>
+  </footer>
+
+  <script>
+    // NAVBAR SCROLL EFFECT
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // PARTICLE CANVAS
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function Particle() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = Math.random() * 1.5 + 0.3;
+      this.dx = (Math.random() - 0.5) * 0.4;
+      this.dy = (Math.random() - 0.5) * 0.4;
+      this.alpha = Math.random() * 0.5 + 0.1;
+    }
+
+    for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(201,96,122,${p.alpha})`;
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > W) p.dx *= -1;
+        if (p.y < 0 || p.y > H) p.dy *= -1;
+      });
+
+      // draw connecting lines
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(201,96,122,${0.08 * (1 - dist / 100)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    // TYPEWRITER
+    const phrases = [
+      'Designing, manufacturing & trading fashion apparel...',
+      'Garments, textiles and lifestyle products...',
+      'Crafted for the modern India.'
+    ];
+    let pi = 0, ci = 0, deleting = false;
+    const tw = document.getElementById('typewriter');
+
+    function type() {
+      const current = phrases[pi];
+      if (!deleting) {
+        tw.textContent = current.slice(0, ++ci);
+        if (ci === current.length) { deleting = true; setTimeout(type, 1800); return; }
+      } else {
+        tw.textContent = current.slice(0, --ci);
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+      }
+      setTimeout(type, deleting ? 40 : 70);
+    }
+    setTimeout(type, 1200);
+
+    // SCROLL REVEAL
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

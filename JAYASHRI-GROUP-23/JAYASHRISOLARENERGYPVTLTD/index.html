@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jayashri Solar Energy Private Limited</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sun: #F5A623;
+      --sun-bright: #FFD055;
+      --sky: #0A1628;
+      --sky-mid: #112240;
+      --sky-light: #1A3A5C;
+      --white: #F0EDE6;
+      --gray: #8A9BB0;
+      --accent: #00D4AA;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--sky);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px;
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245,166,35,0.15);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: var(--sun);
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--gray); text-decoration: none;
+      font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--sun); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(245,166,35,0.12) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(0,212,170,0.06) 0%, transparent 60%);
+    }
+    .sun-circle {
+      position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+      width: 340px; height: 340px; border-radius: 50%;
+      background: radial-gradient(circle, #FFD055 0%, #F5A623 45%, rgba(245,166,35,0.1) 70%, transparent 100%);
+      animation: pulse 4s ease-in-out infinite;
+      box-shadow: 0 0 80px 20px rgba(245,166,35,0.25);
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.9; }
+      50% { transform: translateY(-50%) scale(1.04); opacity: 1; }
+    }
+    .sun-ring {
+      position: absolute; right: 8%; top: 50%; transform: translate(50%, -50%);
+      width: 500px; height: 500px; border-radius: 50%;
+      border: 1px solid rgba(245,166,35,0.15);
+      animation: spin 30s linear infinite;
+    }
+    .sun-ring::before {
+      content: ''; position: absolute; top: -4px; left: 50%;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--sun); transform: translateX(-50%);
+    }
+    @keyframes spin { to { transform: translate(50%, -50%) rotate(360deg); } }
+
+    .hero-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.95; letter-spacing: 2px;
+      max-width: 700px;
+      opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+    }
+    .hero h1 .highlight { color: var(--sun); }
+    .hero-sub {
+      margin-top: 24px; max-width: 480px;
+      font-size: 1rem; line-height: 1.7; color: var(--gray);
+      opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+    }
+    .hero-cta {
+      margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
+    }
+    .btn-primary {
+      padding: 14px 36px;
+      background: var(--sun); color: var(--sky);
+      font-weight: 500; font-size: 0.9rem; letter-spacing: 0.5px;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--sun-bright); transform: translateY(-2px); }
+    .btn-outline {
+      padding: 14px 36px;
+      background: transparent; color: var(--white);
+      font-size: 0.9rem; letter-spacing: 0.5px;
+      border: 1px solid rgba(240,237,230,0.3); cursor: pointer; text-decoration: none;
+      transition: border-color 0.3s, color 0.3s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--sun); color: var(--sun); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--sky-mid);
+      border-top: 1px solid rgba(245,166,35,0.12);
+      border-bottom: 1px solid rgba(245,166,35,0.12);
+      padding: 36px 48px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; text-align: center;
+    }
+    
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem; color: var(--sun); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--gray); margin-top: 6px;
+    }
+
+    /* SECTION COMMON */
+    section { padding: 100px 48px; }
+    .section-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: 1px; line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      color: var(--gray); line-height: 1.8; max-width: 560px;
+    }
+
+    /* ABOUT */
+    #about { background: var(--sky); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; margin-top: 60px;
+    }
+    .about-info-box {
+      background: var(--sky-mid);
+      border: 1px solid rgba(245,166,35,0.15);
+      padding: 32px;
+    }
+    .info-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-key {
+      font-size: 0.72rem; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--gray); flex: 0 0 44%;
+    }
+    .info-val {
+      font-size: 0.85rem; color: var(--white);
+      text-align: right; font-family: 'Space Mono', monospace;
+    }
+    .info-val.highlight { color: var(--sun); }
+
+    /* SERVICES */
+    #services { background: var(--sky-mid); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 60px;
+    }
+    .service-card {
+      background: var(--sky);
+      padding: 40px 32px;
+      border-top: 3px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+      cursor: default;
+    }
+    .service-card:hover {
+      border-color: var(--sun);
+      background: rgba(245,166,35,0.04);
+    }
+    .service-icon {
+      font-size: 2.2rem; margin-bottom: 20px;
+    }
+    .service-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .service-desc {
+      color: var(--gray); font-size: 0.88rem; line-height: 1.7;
+    }
+
+    /* REGISTRATION */
+    #registration { background: var(--sky); }
+    .reg-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px; margin-top: 60px;
+    }
+    .reg-card {
+      background: var(--sky-mid);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 32px;
+      display: flex; align-items: flex-start; gap: 20px;
+      transition: border-color 0.3s;
+    }
+    .reg-card:hover { border-color: rgba(245,166,35,0.4); }
+    .reg-badge {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(245,166,35,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    
+    .reg-label {
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--gray); margin-bottom: 6px;
+    }
+    .reg-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem; color: var(--sun);
+    }
+    .reg-sub {
+      font-size: 0.78rem; color: var(--gray); margin-top: 4px;
+    }
+
+    /* DIRECTORS */
+    #directors { background: var(--sky-mid); }
+    .directors-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 32px; margin-top: 60px; max-width: 800px;
+    }
+    .director-card {
+      background: var(--sky);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 36px;
+      position: relative; overflow: hidden;
+    }
+    .director-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--sun), var(--accent));
+    }
+    .director-initial {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(245,166,35,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; color: var(--sun);
+      margin-bottom: 16px;
+    }
+    .director-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem; letter-spacing: 1px; margin-bottom: 4px;
+    }
+    .director-role {
+      font-size: 0.72rem; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .director-shares {
+      font-size: 0.8rem; color: var(--gray);
+    }
+    .director-shares strong { color: var(--sun); }
+
+    /* CONTACT */
+    #contact { background: var(--sky); }
+    .contact-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; margin-top: 60px;
+    }
+    .contact-detail { margin-bottom: 32px; }
+    .contact-detail-label {
+      font-size: 0.68rem; text-transform: uppercase;
+      letter-spacing: 2.5px; color: var(--accent); margin-bottom: 8px;
+    }
+    .contact-detail-val {
+      font-size: 0.95rem; line-height: 1.6;
+    }
+    .contact-detail-val a { color: var(--sun); text-decoration: none; }
+    .contact-detail-val a:hover { text-decoration: underline; }
+
+    
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--gray); margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%; padding: 12px 16px;
+      background: var(--sky-mid);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white); font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--sun); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      background: #060E1A;
+      border-top: 1px solid rgba(245,166,35,0.15);
+      padding: 40px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem; color: var(--sun); letter-spacing: 2px;
+    }
+    .footer-copy {
+      font-size: 0.75rem; color: var(--gray);
+    }
+    .footer-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; color: var(--gray);
+      text-align: right; line-height: 1.8;
+    }
+
+    /* DIVIDER LINE */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,166,35,0.3), transparent);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .sun-circle { width: 200px; height: 200px; right: 4%; opacity: 0.5; }
+      .stats-bar { grid-template-columns: repeat(2,1fr); padding: 28px 24px; }
+      section { padding: 70px 24px; }
+      .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .reg-grid { grid-template-columns: 1fr; }
+      .directors-grid { grid-template-columns: 1fr; max-width: 100%; }
+      footer { flex-direction: column; align-items: flex-start; padding: 32px 24px; }
+      .footer-meta { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">JSEPL <span>☀</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#registration">Compliance</a></li>
+      <li><a href="#directors">Directors</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="sun-ring"></div>
+    <div class="sun-circle"></div>
+
+    <p class="hero-tag">Est. July 2025 · Pune, Maharashtra</p>
+    <h1>
+      POWERING<br/>
+      <span class="highlight">INDIA'S</span><br/>
+      SOLAR FUTURE
+    </h1>
+    <p class="hero-sub">
+      Jayashri Solar Energy Private Limited delivers end-to-end solar energy solutions — from design and installation to maintenance and consultancy — for a cleaner, greener tomorrow.
+    </p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">2025</div>
+      <div class="stat-label">Year Founded</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">MSME</div>
+      <div class="stat-label">Registered Micro Enterprise</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-tag">// Who We Are</p>
+    <h2 class="section-title">BUILT ON CLEAN ENERGY,<br/>DRIVEN BY PURPOSE</h2>
+    <p class="section-desc">
+      Incorporated under the Companies Act 2013, Jayashri Solar Energy Private Limited is a Maharashtra-based company committed to accelerating India's transition to renewable energy through solar power solutions.
+    </p>
+    <div class="about-grid">
+      <div>
+        <p style="color:var(--gray); line-height:1.9; font-size:0.95rem;">
+          Our mission is to generate, develop, and supply solar energy and renewable energy solutions — covering the full spectrum from installation and operation to manufacturing, trading, and consultancy. We partner with individuals, businesses, and institutions to deliver solar infrastructure that is reliable, efficient, and future-ready.<br/><br/>
+          Registered as a Micro Enterprise under the MSME framework, we combine the agility of a focused team with the rigour of a formally incorporated private limited company.
+        </p>
+      </div>
+      <div class="about-info-box">
+        <div class="info-row">
+          <span class="info-key">Company Name</span>
+          <span class="info-val">Jayashri Solar Energy Pvt. Ltd.</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">CIN</span>
+          <span class="info-val highlight">U43222PN2025PTC243956</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">PAN</span>
+          <span class="info-val highlight">AAGCJ9672G</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">TAN</span>
+          <span class="info-val highlight">PNEJ17284B</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">UDYAM No.</span>
+          <span class="info-val highlight">UDYAM-MH-26-1122891</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Incorporation Date</span>
+          <span class="info-val">16 July 2025</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Registered State</span>
+          <span class="info-val">Maharashtra</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Enterprise Type</span>
+          <span class="info-val">Micro (MSME)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="section-tag">// What We Do</p>
+    <h2 class="section-title">COMPREHENSIVE SOLAR<br/>ENERGY SOLUTIONS</h2>
+    <p class="section-desc">
+      From generation to consultancy, we offer the complete ecosystem of solar services for residential, commercial, and industrial clients.
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <div class="service-title">Solar Power Generation</div>
+        <p class="service-desc">Design, installation, and commissioning of solar power plants and rooftop systems for homes, businesses, and industrial units.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <div class="service-title">Operations & Maintenance</div>
+        <p class="service-desc">End-to-end O&M services ensuring peak performance of solar installations with regular monitoring, cleaning, and preventive maintenance.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏭</div>
+        <div class="service-title">Solar Equipment Supply</div>
+        <p class="service-desc">Manufacturing, trading, import and export of solar panels, inverters, batteries, charge controllers, and all related solar infrastructure.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-title">Project Consultancy</div>
+        <p class="service-desc">Expert advisory on solar project development — from feasibility studies and site assessment to regulatory compliance and financing guidance.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌱</div>
+        <div class="service-title">Renewable Energy Solutions</div>
+        <p class="service-desc">Broader renewable energy strategy, system integration, and sustainability planning for organisations moving towards green energy goals.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📡</div>
+        <div class="service-title">Training & Development</div>
+        <p class="service-desc">Workshops, training programs, and knowledge sessions for individuals, institutions, and enterprises in the solar energy sector.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- REGISTRATION / COMPLIANCE -->
+  <section id="registration">
+    <p class="section-tag">// Compliance & Registration</p>
+    <h2 class="section-title">FULLY REGISTERED &amp;<br/>COMPLIANT ENTITY</h2>
+    <p class="section-desc">
+      Jayashri Solar Energy Private Limited holds all key statutory registrations required to operate as a private limited company in India.
+    </p>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <div class="reg-badge">🏛</div>
+        <div class="reg-info">
+          <div class="reg-label">Certificate of Incorporation</div>
+          <div class="reg-value">U43222PN2025PTC243956</div>
+          <div class="reg-sub">Ministry of Corporate Affairs · 16 July 2025</div>
+        </div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">💳</div>
+        <div class="reg-info">
+          <div class="reg-label">Permanent Account Number (PAN)</div>
+          <div class="reg-value">AAGCJ9672G</div>
+          <div class="reg-sub">Income Tax Department · 16 July 2025</div>
+        </div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">📄</div>
+        <div class="reg-info">
+          <div class="reg-label">Tax Deduction Account (TAN)</div>
+          <div class="reg-value">PNEJ17284B</div>
+          <div class="reg-sub">Income Tax Department · 16 July 2025</div>
+        </div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">🏭</div>
+        <div class="reg-info">
+          <div class="reg-label">MSME / Udyam Registration</div>
+          <div class="reg-value">UDYAM-MH-26-1122891</div>
+          <div class="reg-sub">Micro Enterprise Classification · 18 April 2026</div>
+        </div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">📃</div>
+        <div class="reg-info">
+          <div class="reg-label">Memorandum of Association</div>
+          <div class="reg-value">INC-33 Filed</div>
+          <div class="reg-sub">Company limited by shares · Table A</div>
+        </div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-badge">📋</div>
+        <div class="reg-info">
+          <div class="reg-label">Articles of Association</div>
+          <div class="reg-value">INC-34 Filed</div>
+          <div class="reg-sub">F — Company limited by shares · Table F</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- DIRECTORS -->
+  <section id="directors">
+    <p class="section-tag">// Leadership</p>
+    <h2 class="section-title">MEET THE<br/>FOUNDERS</h2>
+    <p class="section-desc">
+      Jayashri Solar Energy is led by two founding directors who bring entrepreneurial drive and commitment to the renewable energy sector.
+    </p>
+    <div class="directors-grid">
+      <div class="director-card">
+        <div class="director-initial">AG</div>
+        <div class="director-name">Aditya Dnyaneshwar Gurav</div>
+        <div class="director-role">Co-Founder & Director</div>
+        <div class="director-shares">
+          <span style="font-size:0.75rem; color:var(--gray);">Rajgurunagar, Pune · 410505</span>
+        </div>
+      </div>
+      <div class="director-card">
+        <div class="director-initial">JM</div>
+        <div class="director-name">Jayashri Nitin Mane</div>
+        <div class="director-role">Co-Founder & Director</div>
+        <div class="director-shares">
+          <span style="font-size:0.75rem; color:var(--gray);">Pimple Saudagar, Pune · 411027</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-tag">// Get In Touch</p>
+    <h2 class="section-title">LET'S BUILD YOUR<br/>SOLAR PROJECT</h2>
+    <p class="section-desc">
+      Reach out to us for solar installations, equipment supply, project consultancy, or any renewable energy enquiry.
+    </p>
+    <div class="contact-wrap">
+      <div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Registered Address</div>
+          <div class="contact-detail-val">
+            Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park,<br/>
+            Sector No. 25, Vashi, Near Turbhe Station,<br/>
+            Thane – 400703, Maharashtra
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Phone</div>
+          <div class="contact-detail-val">
+            <a href="tel:02268976194">022-6897 6194</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Email</div>
+          <div class="contact-detail-val">
+            <a href="mailto:solarenergy@jayashrigroups.com">solarenergy@jayashrigroups.com</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Major Activity</div>
+          <div class="contact-detail-val" style="color:var(--sun);">Services — Solar & Renewable Energy</div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name"/>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@example.com"/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX"/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your solar project requirements…"></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%; cursor:pointer;" onclick="alert('Thank you! We will contact you shortly.')">Send Enquiry</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">JAYASHRI SOLAR ENERGY ☀</div>
+    <div class="footer-copy">© 2025 Jayashri Solar Energy Private Limited. All rights reserved.</div>
+    <div class="footer-meta">
+      CIN: U43222PN2025PTC243956<br/>
+      PAN: AAGCJ9672G · TAN: PNEJ17284B
+    </div>
+  </footer>
+
+</body>
+</html>
