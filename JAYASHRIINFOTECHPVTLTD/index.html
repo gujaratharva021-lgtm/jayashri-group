@@ -76,16 +76,18 @@ nav{
 .hero{
   min-height:100vh;
   background:var(--navy);
+  background-image:url('hero.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
   display:flex;align-items:center;
   padding:120px 48px 80px;
   position:relative;overflow:hidden;
 }
 .hero-grid-bg{
   position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(6,182,212,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6,182,212,0.07) 1px, transparent 1px);
-  background-size:50px 50px;
+  background:rgba(10,15,46,0.45);
+  z-index:1;
 }
 .hero-glow{
   position:absolute;
@@ -249,7 +251,7 @@ section{padding:96px 48px;}
 /* ── ABOUT ── */
 .about{background:var(--white);}
 .about-grid{
-  display:grid;grid-template-columns:1fr 1fr;
+  display:grid;grid-template-columns:1fr;
   gap:80px;align-items:center;
 }
 .about-text p{
@@ -353,7 +355,9 @@ section{padding:96px 48px;}
 .srv-card p{font-size:0.93rem;color:var(--gray);line-height:1.7;}
 
 /* ── TECH STACK ── */
-.tech{background:var(--navy);padding:96px 48px;}
+.tech{background:var(--navy);background-image:url('tech.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;padding:96px 48px;position:relative;}
+.tech::before{content:'';position:absolute;inset:0;background:rgba(10,15,46,0.88);z-index:0;}
+.tech-inner{position:relative;z-index:1;}
 .tech-inner{max-width:1200px;margin:0 auto;}
 .tech .section-title{color:#fff;}
 .tech .section-tag{color:var(--cyan);}
@@ -410,6 +414,10 @@ section{padding:96px 48px;}
 .founders-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:28px;max-width:800px;margin:0 auto;
+  justify-items:center;
+}
+.founder-card{
+  width:100%;max-width:340px;
 }
 .founder-card{
   background:var(--white);border-radius:16px;
@@ -473,19 +481,22 @@ section{padding:96px 48px;}
   line-height:1.8;margin-bottom:48px;
 }
 .contact-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:16px;margin-bottom:40px;
+  display:flex;flex-direction:column;
+  max-width:700px;margin:0 auto 40px;
+  text-align:left;
 }
 .c-item{
-  background:rgba(255,255,255,0.07);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:12px;padding:22px 16px;
+  padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  display:flex;align-items:center;gap:16px;
+  text-align:left;flex-wrap:nowrap;
 }
 .c-item .c-lbl{
   font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;
-  color:var(--cyan);display:block;margin-bottom:6px;
+  color:var(--cyan);display:block;
+  flex-shrink:0;width:200px;
 }
-.c-item .c-val{font-size:0.9rem;font-weight:600;color:#fff;word-break:break-all;}
+.c-item .c-val{font-size:0.9rem;font-weight:500;color:rgba(255,255,255,0.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .contact-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 .c-btn{
   display:inline-block;
@@ -546,8 +557,7 @@ footer p{font-size:0.8rem;color:rgba(255,255,255,0.35);}
 <!-- NAV -->
 <nav>
   <div class="nav-brand">
-    <div class="nav-logo-box">JI</div>
-    <span class="nav-name">Jayashri <span>Infotech</span></span>
+    <img src="logo.png" style="width:75px;height:75px;border-radius:50%;object-fit:cover;border:2px solid rgba(6,182,212,0.4);" />
   </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -575,24 +585,7 @@ footer p{font-size:0.8rem;color:rgba(255,255,255,0.35);}
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-card">
-        <div class="hc-label">Incorporated</div>
-        <div class="hc-val">30 July 2024</div>
-        <div class="hc-sub">Companies Act 2013 · Maharashtra</div>
-      </div>
-      <div class="hero-card">
-        <div class="hc-label">CIN</div>
-        <div class="hc-val" style="font-size:0.95rem;font-family:'Space Mono',monospace;">U70200PN2024PTC233156</div>
-        <div class="hc-sub">MCA Registered · Pune</div>
-      </div>
-      <div class="hero-card">
-        <div class="hc-label">Enterprise Status</div>
-        <div class="hero-badges">
-          <span class="badge badge-green">✓ MSME Registered</span>
-          <span class="badge badge-blue">Micro Enterprise</span>
-          <span class="badge badge-amber">UDYAM Certified</span>
-        </div>
-      </div>
+      
     </div>
   </div>
 </section>
@@ -603,10 +596,6 @@ footer p{font-size:0.8rem;color:rgba(255,255,255,0.35);}
     <div class="stat">
       <span class="stat-num">2024</span>
       <span class="stat-label">Year Founded</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">3+</span>
-      <span class="stat-label">NIC Service Codes</span>
     </div>
     <div class="stat">
       <span class="stat-num">PAN-IN</span>
@@ -627,10 +616,6 @@ footer p{font-size:0.8rem;color:rgba(255,255,255,0.35);}
         <p>As a certified MSME Micro Enterprise, we combine the agility of a startup with the credibility of a registered private limited company — delivering reliable, scalable tech solutions.</p>
         <div class="info-grid">
           <div class="info-item">
-            <span class="lbl">CIN</span>
-            <span class="val">U70200PN2024PTC233156</span>
-          </div>
-          <div class="info-item">
             <span class="lbl">PAN</span>
             <span class="val">AAGCJ5330B</span>
           </div>
@@ -639,32 +624,30 @@ footer p{font-size:0.8rem;color:rgba(255,255,255,0.35);}
             <span class="val">PNEJ16235C</span>
           </div>
           <div class="info-item">
+            <span class="lbl">CIN</span>
+            <span class="val">U70200PN2024PTC233156</span>
+          </div>
+          <div class="info-item">
             <span class="lbl">Udyam No.</span>
             <span class="val">UDYAM-MH-26-1121886</span>
           </div>
         </div>
-      </div>
-      <div class="about-visual-side reveal">
-        <div class="tech-card">
-          <h3>🏢 Registered Office</h3>
-          <p style="margin-top:8px;">Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane – 400703, Maharashtra</p>
-        </div>
-        <div class="udyam-box">
-          <div class="udyam-icon">🏅</div>
-          <div class="udyam-text">
-            <h4>MSME Micro Enterprise</h4>
-            <p>Classified for FY 2026-27</p>
-            <span class="udyam-num">UDYAM-MH-26-1121886</span>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;">
+          <div style="background:var(--light);border-radius:10px;padding:16px 20px;border-left:3px solid var(--electric);flex:1;min-width:180px;">
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--electric);margin-bottom:6px;">Incorporated</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--navy);">30 July 2024</div>
+            <div style="font-size:0.8rem;color:va r(--gray);margin-top:2px;">Companies Act 2013 · Maharashtra</div>
+          </div>
+          <div style="background:var(--light);border-radius:10px;padding:16px 20px;border-left:3px solid var(--cyan);flex:1;min-width:180px;">
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--electric);margin-bottom:8px;">Enterprise Status</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="background:rgba(16,185,129,0.15);color:#059669;border:1px solid rgba(16,185,129,0.3);padding:4px 12px;border-radius:100px;font-size:0.75rem;font-weight:600;">✓ MSME Registered</span>
+              <span style="background:rgba(37,99,235,0.15);color:var(--electric);border:1px solid rgba(37,99,235,0.3);padding:4px 12px;border-radius:100px;font-size:0.75rem;font-weight:600;">Micro Enterprise</span>
+            </div>
           </div>
         </div>
-        <div style="background:var(--light);border-radius:14px;padding:24px;border:1px solid #DBEAFE;">
-          <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">
-            📧 <strong>info.jayashridevelopers@gmail.com</strong><br>
-            📞 <strong>022-6897 6194</strong><br>
-            <br>NIC Codes: Computer Programming (6201) · IT Consultancy (6202) · Other IT Services (6209)
-          </p>
-        </div>
       </div>
+      
     </div>
   </div>
 </section>
@@ -804,22 +787,16 @@ footer p{font-size:0.8rem;color:rgba(255,255,255,0.35);}
     </div>
     <div class="founders-grid">
       <div class="founder-card reveal">
-        <div class="f-avatar">J</div>
-        <h3>Jayashri Nitin Mane</h3>
-        <span class="f-role">Director & Co-Founder</span>
-        <p>Advocate by profession, entrepreneur by vision. Jayashri brings legal expertise and strategic leadership to drive Jayashri Infotech's growth and compliance.</p>
-        <p style="margin-top:10px;font-size:0.85rem;color:#94A3B8;">C-2 Navale Residency, Pimple Saudagar, Pune – 411027</p>
+        <div class="f-avatar">JM</div>
+        <h3>Jayashri Mane</h3>
+        <span class="f-role">Director</span>
+        <p>DIN: 10121732</p>
       </div>
       <div class="founder-card reveal">
-        <div class="f-avatar">N</div>
-        <h3>Namrata Nitin Mane</h3>
-        <span class="f-role">Director & Co-Founder</span>
-        <p>A dynamic businessperson bringing operational acumen and business development expertise to scale Jayashri Infotech's service delivery across markets.</p>
-        <p style="margin-top:10px;font-size:0.85rem;color:#94A3B8;">Flat No. 2, Navale Residency, S.No.4/2, Pimple Saudagar, Pune – 411027</p>
-        <div class="f-shares">
-          <span>Equity Shares</span>
-          <span>4,900 shares (49%)</span>
-        </div>
+        <div class="f-avatar">AG</div>
+        <h3>Aditya Gurav</h3>
+        <span class="f-role">Director</span>
+        <p>DIN: 02037091</p>
       </div>
     </div>
   </div>
@@ -834,8 +811,12 @@ footer p{font-size:0.8rem;color:rgba(255,255,255,0.35);}
     <p class="contact-sub">Whether you need software development, IT outsourcing, or technology consultancy — our team is ready to deliver world-class solutions for your business.</p>
     <div class="contact-grid">
       <div class="c-item">
-        <span class="c-lbl">📍 Address</span>
+        <span class="c-lbl">📍 Additional place of business </span>
         <span class="c-val">Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane – 400703, Maharashtra</span>
+      </div>
+      <div class="c-item">
+        <span class="c-lbl">🏢 Registered Office</span>
+        <span class="c-val">B N A3, Siddeshwar Nagari, Taluka Khed, Rajgurunagar, Khed, Pune – 410505, Maharashtra</span>
       </div>
       <div class="c-item">
         <span class="c-lbl">📞 Phone</span>
@@ -843,15 +824,11 @@ footer p{font-size:0.8rem;color:rgba(255,255,255,0.35);}
       </div>
       <div class="c-item">
         <span class="c-lbl">📧 Email</span>
-        <span class="c-val">info.jayashridevelopers@gmail.com</span>
-      </div>
-      <div class="c-item">
-        <span class="c-lbl">🏢 State</span>
-        <span class="c-val">Maharashtra, India</span>
+        <span class="c-val">jayashriinfotechpvtltd@gmail.com</span>
       </div>
     </div>
     <div class="contact-btns">
-      <a href="mailto:info.jayashridevelopers@gmail.com" class="c-btn">Send Us a Message</a>
+      <a href="mailto:jayashriinfotechpvtltd@gmail.com" class="c-btn">Send Us a Message</a>
       <a href="tel:02268976194" class="c-btn-ghost">Call Us Now</a>
     </div>
   </div>
@@ -860,7 +837,7 @@ footer p{font-size:0.8rem;color:rgba(255,255,255,0.35);}
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">Jayashri <span>Infotech</span> Pvt. Ltd.</div>
-  <p>CIN: U70200PN2024PTC233156 · UDYAM-MH-26-1121886 · Pune, Maharashtra</p>
+  <p>Pune, Maharashtra</p>
   <p>© 2024 Jayashri Infotech Private Limited. All rights reserved.</p>
 </footer>
 
