@@ -36,16 +36,19 @@
     .hero {
       min-height: 100vh;
       background: linear-gradient(135deg, #0a1628 0%, #1a3a6b 100%);
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 0 6%;
+      background-image: url('hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex; align-items: center; justify-content: flex-start;
+      text-align: left; padding: 0 6%;
       position: relative; overflow: hidden;
     }
     .hero::before {
       content: '';
-      position: absolute; width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(232,160,32,0.15) 0%, transparent 70%);
-      top: 50%; left: 50%; transform: translate(-50%, -50%);
-      animation: pulse 4s ease-in-out infinite;
+      position: absolute; inset: 0;
+      background: rgba(10,22,40,0.65);
+      z-index: 0;
     }
     @keyframes pulse {
       0%, 100% { transform: translate(-50%, -50%) scale(1); }
@@ -175,12 +178,12 @@
 </head>
 <body>
 
-  <!-- WHATSAPP BUTTON -->
-  <a href="https://wa.me/919960002836" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">💬</a>
-
   <!-- NAV -->
   <nav>
-    <div class="logo">Jayashri <span>Data</span> System</div>
+    <div class="logo" style="display:flex;align-items:center;gap:10px;">
+      <img src="logo.png" style="width:70px;height:70px;border-radius:50%;object-fit:cover;border:2px solid #e8a020;" />
+      Jayashri <span>Data</span> System
+    </div>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
@@ -261,38 +264,35 @@
       <div class="director-card">
         <div class="director-avatar">👩</div>
         <h3>Jayashri Nitin Mane</h3>
-        <p>Pimple Saudagar, Pune</p>
+        <p>Din: 10121732</p>
         <div class="role">Director & Co-Founder</div>
       </div>
       <div class="director-card">
         <div class="director-avatar">👨</div>
         <h3>Aditya Dnyaneshwar Gurav</h3>
-        <p>Rajgurunagar, Pune</p>
+        <p>Din: 02037091</p>
         <div class="role">Director & Co-Founder</div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="contact-section">
+  <section id="contact" class="contact-section" style="background-image:url('contact.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;">
+  <div style="position:absolute;inset:0;background:rgba(10,22,40,0.60);z-index:0;"></div>
+  <div style="position:relative;z-index:1;">
     <div class="section-title">Contact Us</div>
     <div class="underline"></div>
     <div class="contact-grid">
       <div class="contact-info">
         <p>Get in touch with us for data solutions, partnerships, or any queries about our services.</p>
-        <div class="contact-item"><span class="icon">📍</span><span>Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane - 400703, Maharashtra</span></div>
+        <div class="contact-item"><span class="icon">📍</span><span><strong>Additional Place of Business:</strong> Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane - 400703, Maharashtra</span></div>
+        <div class="contact-item"><span class="icon">📍</span><span><strong>Registered Office:</strong> B N A3, Siddeshwar Nagari, Taluka Khed, Rajgurunagar, Khed, Pune - 410505, MH, IN</span></div>
         <div class="contact-item"><span class="icon">📞</span><span>022-6897 6194</span></div>
         <div class="contact-item"><span class="icon">✉️</span><span>datasystem@jayashrigroups.com</span></div>        
         <div class="contact-item"><span class="icon">💬</span><span>WhatsApp: +91 88304 74909</span></div>
       </div>
-      <form class="contact-form" onsubmit="sendMessage(event)">
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="email" id="email" placeholder="Your Email" required />
-        <input type="text" id="subject" placeholder="Subject" />
-        <textarea id="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message 🚀</button>
-      </form>
     </div>
+  </div>
   </section>
 
   <!-- MAP -->

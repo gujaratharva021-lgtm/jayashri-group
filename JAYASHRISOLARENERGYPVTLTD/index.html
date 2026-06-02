@@ -62,8 +62,8 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(245,166,35,0.12) 0%, transparent 70%),
-                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(0,212,170,0.06) 0%, transparent 60%);
+      background: linear-gradient(rgba(10,22,40,0.7), rgba(10,22,40,0.7)),
+                  url('Solar enegy.webp') center/cover no-repeat;
     }
     .sun-circle {
       position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
@@ -385,7 +385,7 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">JSEPL <span>☀</span></div>
+    <div class="nav-logo" style="display:flex;align-items:center;gap:12px;"><img src="logo.png" alt="Logo" style="height:48px;width:48px;object-fit:contain;border-radius:50%;border:2px solid var(--sun);"/><span style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--white);">Jayashri <span style="color:var(--sun);">Solar</span> Energy</span></div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
@@ -398,8 +398,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="sun-ring"></div>
-    <div class="sun-circle"></div>
+    
 
     <p class="hero-tag">Est. July 2025 · Pune, Maharashtra</p>
     <h1>
@@ -443,10 +442,6 @@
         </p>
       </div>
       <div class="about-info-box">
-        <div class="info-row">
-          <span class="info-key">Company Name</span>
-          <span class="info-val">Jayashri Solar Energy Pvt. Ltd.</span>
-        </div>
         <div class="info-row">
           <span class="info-key">CIN</span>
           <span class="info-val highlight">U43222PN2025PTC243956</span>
@@ -564,21 +559,6 @@
           <div class="reg-sub">Micro Enterprise Classification · 18 April 2026</div>
         </div>
       </div>
-      <div class="reg-card">
-        <div class="reg-badge">📃</div>
-        <div class="reg-info">
-          <div class="reg-label">Memorandum of Association</div>
-          <div class="reg-value">INC-33 Filed</div>
-          <div class="reg-sub">Company limited by shares · Table A</div>
-        </div>
-      </div>
-      <div class="reg-card">
-        <div class="reg-badge">📋</div>
-        <div class="reg-info">
-          <div class="reg-label">Articles of Association</div>
-          <div class="reg-value">INC-34 Filed</div>
-          <div class="reg-sub">F — Company limited by shares · Table F</div>
-        </div>
       </div>
     </div>
   </section>
@@ -598,7 +578,7 @@
         <div class="director-name">Aditya Dnyaneshwar Gurav</div>
         <div class="director-role">Co-Founder & Director</div>
         <div class="director-shares">
-          <span style="font-size:0.75rem; color:var(--gray);">Rajgurunagar, Pune · 410505</span>
+          <span style="font-size:0.75rem; color:var(--gray);">Din: 02037091</span>
         </div>
       </div>
       <div class="director-card">
@@ -606,7 +586,7 @@
         <div class="director-name">Jayashri Nitin Mane</div>
         <div class="director-role">Co-Founder & Director</div>
         <div class="director-shares">
-          <span style="font-size:0.75rem; color:var(--gray);">Pimple Saudagar, Pune · 411027</span>
+          <span style="font-size:0.75rem; color:var(--gray);">Din: 10121732</span>
         </div>
       </div>
     </div>
@@ -624,11 +604,19 @@
     <div class="contact-wrap">
       <div>
         <div class="contact-detail">
-          <div class="contact-detail-label">Registered Address</div>
+          <div class="contact-detail-label">Additional place of Business</div>
           <div class="contact-detail-val">
             Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park,<br/>
             Sector No. 25, Vashi, Near Turbhe Station,<br/>
             Thane – 400703, Maharashtra
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Registered Office</div>
+          <div class="contact-detail-val">
+            B N A3, Siddeshwar Nagari, Taluka Khed,<br/>
+            Rajgurunagar, Khed, Pune – 410505,<br/>
+            Maharashtra, India
           </div>
         </div>
         <div class="contact-detail">
@@ -648,7 +636,7 @@
           <div class="contact-detail-val" style="color:var(--sun);">Services — Solar & Renewable Energy</div>
         </div>
       </div>
-      <div class="contact-form">
+      <div class="contact-form" style="display:none;">
         <div class="form-group">
           <label>Your Name</label>
           <input type="text" placeholder="Full name"/>

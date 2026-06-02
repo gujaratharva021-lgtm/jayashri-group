@@ -9,14 +9,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --gold: #C9A84C;
-      --gold-light: #E8C97A;
-      --dark: #0B0C10;
-      --dark2: #13141A;
-      --dark3: #1C1E27;
-      --text: #E8E4DC;
-      --muted: #8A8578;
-      --border: rgba(201,168,76,0.2);
+      --gold: #4A90D9;
+      --gold-light: #A8C8E8;
+      --dark: #0A0E1A;
+      --dark2: #111827;
+      --dark3: #1A2235;
+      --text: #E4E8F0;
+      --muted: #7A8A9A;
+      --border: rgba(74,144,217,0.2);
     }
 
     html { scroll-behavior: smooth; }
@@ -68,6 +68,7 @@
       display: flex; flex-direction: column; justify-content: center;
       padding: 8rem 5vw 5rem;
       position: relative; overflow: hidden;
+      background: linear-gradient(rgba(10,14,26,0.50), rgba(10,14,26,0.65)), url('oligarch.png') center center / cover no-repeat;
     }
     .hero::before {
       content: '';
@@ -177,7 +178,7 @@
     .service-num {
       font-family: 'Playfair Display', serif;
       font-size: 3rem; font-weight: 900;
-      color: rgba(201,168,76,0.15);
+      color: rgba(201,168,76,0.45);
       line-height: 1; margin-bottom: 1.5rem;
     }
     .service-card h3 {
@@ -300,10 +301,8 @@
 <!-- NAVBAR -->
 <nav>
   <div class="nav-logo">
-    <div class="nav-logo-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
+    <div class="nav-logo-icon" style="border:none; width:65px; height:65px;">
+      <img src="logo.png" style="width:65px; height:65px; object-fit:contain; border-radius:50%;" />
     </div>
     <div class="nav-brand">
       Oligarch Consilium
@@ -406,10 +405,6 @@
         <span class="about-info-label">Incorporated</span>
         <span class="about-info-value">25th June 2025, Maharashtra</span>
       </div>
-      <div class="about-info-row">
-        <span class="about-info-label">Registered Office</span>
-        <span class="about-info-value">B.N.A3, Siddeshwar Nagari, Rajgurunagar, Khed, Pune — 410505, Maharashtra</span>
-      </div>
     </div>
   </div>
 </section>
@@ -473,20 +468,15 @@
       <div class="team-avatar">AG</div>
       <h3>Aditya Dnyaneshwar Gurav</h3>
       <p class="team-role">Director &amp; Co-Founder</p>
-      <p class="team-addr">Omkar Plaza Apartment, A8, Ahilyadevi Chowk, Near Court, Rajgurunagar, Pune — 410505, Maharashtra</p>
+      <p class="team-addr">Din: 02037091a</p>
     </div>
     <div class="team-card">
       <div class="team-avatar">JM</div>
       <h3>Jayashri Nitin Mane</h3>
       <p class="team-role">Director &amp; Co-Founder</p>
-      <p class="team-addr">C-2 Navale Residency, Pimple Saudagar, Opposite Petrol Pump, Pune, Maharashtra</p>
+      <p class="team-addr">Din: 10121732</p>
     </div>
-    <div class="team-card">
-      <div class="team-avatar">SP</div>
-      <h3>Shubham Madhukar Phadtare</h3>
-      <p class="team-role">Practicing Company Secretary (ACS) — Witness</p>
-      <p class="team-addr">3rd Floor, Siyona Heights, Opposite Brick Castle Apartment, Near Sahyadri Hospital, Bhosale Garden, Hadapsar, Pune — 411028</p>
-    </div>
+    
   </div>
 </section>
 
@@ -508,13 +498,7 @@
       <h4>Certificate of Incorporation</h4>
       <p>Issued by Ministry of Corporate Affairs, Govt. of India — 25 June 2025</p>
     </div>
-    <div class="compliance-card">
-      <div class="compliance-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      </div>
-      <h4>Udyam Registration</h4>
-      <p>UDYAM-MH-26-1122728 — Micro Enterprise, Services Sector, Maharashtra</p>
-    </div>
+    
     <div class="compliance-card">
       <div class="compliance-icon">
         <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M3 7l9 6 9-6"/></svg>
@@ -540,7 +524,7 @@
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
+<section class="contact" id="contact" style="background: linear-gradient(rgba(17,24,39,0.55), rgba(17,24,39,0.55)), url('footer.png') center center / cover no-repeat;">
   <div class="section-label">
     <div class="section-label-line"></div>
     <span class="section-label-text">Contact</span>
@@ -555,8 +539,17 @@
           <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
         </div>
         <div>
-          <h4>Registered Office</h4>
+          <h4>Additional Place of Business</h4>
           <p>Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park,<br/>Sector No. 25, Vashi, Near Turbhe Station,<br/>Thane — 400703, Maharashtra</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+        </div>
+        <div>
+          <h4>Registered Office</h4>
+          <p>B.N.A3, Siddeshwar Nagari, Rajgurunagar,<br/>Khed, Pune — 410505, Maharashtra</p>
         </div>
       </div>
       <div class="contact-row">
@@ -588,27 +581,18 @@
       </div>
     </div>
 
-    <div class="contact-form">
-      <input type="text" placeholder="Your Full Name" />
-      <input type="email" placeholder="Email Address" />
-      <input type="text" placeholder="Subject / Nature of Inquiry" />
-      <textarea placeholder="Your Message..."></textarea>
-      <button class="btn-primary" style="border:none; cursor:pointer;">Send Inquiry</button>
-    </div>
+    
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer style="background: linear-gradient(rgba(10,14,26,0.85), rgba(10,14,26,0.85)), url('footer.png') center center / cover no-repeat;">
   <div class="footer-brand">
+    
     Oligarch Consilium Private Limited
     <span>Est. 25 June 2025 · Pune, Maharashtra</span>
   </div>
-  <div class="footer-ids">
-    <p><strong>CIN:</strong> U70200PN2025PTC243343</p>
-    <p><strong>Udyam:</strong> UDYAM-MH-26-1122728</p>
-    <p><strong>PAN:</strong> AAECO7763P</p>
-  </div>
+  
   <p class="footer-copy">© 2025 Oligarch Consilium Private Limited. All rights reserved. Incorporated under the Companies Act, 2013.</p>
 </footer>
 

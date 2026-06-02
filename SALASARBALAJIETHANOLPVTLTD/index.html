@@ -87,6 +87,10 @@ nav {
 .hero {
   min-height: 100vh;
   background: linear-gradient(160deg, var(--green-dark) 0%, #0f2619 40%, #162e1e 100%);
+  background-image: url('hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   padding: 100px 5% 60px;
@@ -746,9 +750,9 @@ footer .footer-links a:hover { color: var(--gold-light); }
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    Salasarbalaji Ethanol
-    <span>Private Limited</span>
+  <div class="nav-logo" style="display:flex;align-items:center;gap:10px;">
+    <img src="logo.png" style="width:55px;height:55px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,0.4);" />
+    <div>Salasarbalaji Ethanol<span>Private Limited</span></div>
   </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -910,18 +914,16 @@ footer .footer-links a:hover { color: var(--gold-light); }
         <div class="director-avatar">AG</div>
         <div class="director-info">
           <h3>Aditya Dnyaneshwar Gurav</h3>
-          <div class="role">Director — First Director</div>
-          <div class="din">DIN: <span>07037091</span></div>
-          <div class="din" style="margin-top:4px;">Occupation: <span>Advocate</span></div>
+          <div class="role">Director</div>
+          <div class="din">DIN: <span>02037091</span></div>
         </div>
       </div>
       <div class="director-card">
         <div class="director-avatar">SG</div>
         <div class="director-info">
           <h3>Suraj Dinkar Gurav</h3>
-          <div class="role">Director — First Director</div>
+          <div class="role">Director</div>
           <div class="din">DIN: <span>10121733</span></div>
-          <div class="din" style="margin-top:4px;">Occupation: <span>Advocate</span></div>
         </div>
       </div>
     </div>
@@ -978,27 +980,6 @@ footer .footer-links a:hover { color: var(--gold-light); }
         </div>
       </div>
     </div>
-    <div class="compliance-details">
-      <div class="detail-block">
-        <h4>MSME / Udyam Details</h4>
-        <ul class="detail-list">
-          <li><span class="key">Udyam Number</span><span class="val">UDYAM-MH-26-1122588</span></li>
-          <li><span class="key">Enterprise Type</span><span class="val">Micro (2026-27)</span></li>
-          <li><span class="key">Major Activity</span><span class="val">Manufacturing</span></li>
-          <li><span class="key">NIC Code</span><span class="val">20299, 20111, 20122</span></li>
-          <li><span class="key">Social Category</span><span class="val">General</span></li>
-        </ul>
-      </div>
-      <div class="detail-block">
-        <h4>Company Registration</h4>
-        <ul class="detail-list">
-          <li><span class="key">Registrar</span><span class="val">Central Registration Centre</span></li>
-          <li><span class="key">Signed By</span><span class="val">Dr. Rameshkumar (ROC)</span></li>
-          <li><span class="key">Witness (CA)</span><span class="val">Swapnil Indrabhan Theurkar (ACA)</span></li>
-          <li><span class="key">CA Membership</span><span class="val">622012</span></li>
-        </ul>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1035,43 +1016,22 @@ footer .footer-links a:hover { color: var(--gold-light); }
     </div>
     <div class="map-placeholder">
       <div class="map-header">
-        <h3>Registered Office</h3>
-        <p>Akshar Business Park, Vashi, Thane</p>
+        <h3>Offices</h3>
+        <p>Pune & Thane, Maharashtra</p>
       </div>
       <div class="address-detail">
         <div class="address-line">
-          <span class="address-icon">🏠</span>
-          <div>
-            <div class="alabel">Plot / Survey</div>
-            <div class="aval">Office No. 3074 A, 3rd Floor, V Wing</div>
-          </div>
-        </div>
-        <div class="address-line">
-          <span class="address-icon">🏘️</span>
-          <div>
-            <div class="alabel">Premises</div>
-            <div class="aval">Akshar Business Park, Sector No. 25</div>
-          </div>
-        </div>
-        <div class="address-line">
-          <span class="address-icon">🛣️</span>
-          <div>
-            <div class="alabel">Road / Lane</div>
-            <div class="aval">Vashi, Near Turbhe Station</div>
-          </div>
-        </div>
-        <div class="address-line">
-          <span class="address-icon">🏙️</span>
-          <div>
-            <div class="alabel">City / District</div>
-            <div class="aval">Thane — 400703</div>
-          </div>
-        </div>
-        <div class="address-line">
           <span class="address-icon">📍</span>
           <div>
-            <div class="alabel">State</div>
-            <div class="aval">Maharashtra, India</div>
+            <div class="alabel">Registered Office</div>
+            <div class="aval">B N A3, Siddeshwar Nagari, Taluka Khed, Rajgurunagar, Khed, Pune – 410505, MH, IN</div>
+          </div>
+        </div>
+        <div class="address-line">
+          <span class="address-icon">🏢</span>
+          <div>
+            <div class="alabel">Additional Place of Business</div>
+            <div class="aval">Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane – 400703, Maharashtra</div>
           </div>
         </div>
       </div>
@@ -1093,6 +1053,5 @@ footer .footer-links a:hover { color: var(--gold-light); }
   <p style="margin-top: 0.5rem;">Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane — 400703, Maharashtra</p>
   <p style="margin-top: 1.5rem; font-size: 0.75rem; opacity: 0.4;">© 2024 Salasarbalaji Ethanol Private Limited. All rights reserved.</p>
 </footer>
-
 </body>
 </html>
