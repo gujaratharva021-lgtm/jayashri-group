@@ -9,13 +9,14 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --gold: #b8860b; --gold2: #d4a017; --gold3: #e8c547;
+      --gold: #b8860b;  --gold2: #d4a017; --gold3: #e8c547;
       --navy: #f5f0e8; --navy2: #ede6d6; --navy3: #e0d5c0;
       --cream: #faf7f2; --cream2: #f0ebe0; --white: #ffffff;
       --text: #1a1a1a; --text2: #3a3020; --text3: #5a4a30;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Raleway', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; cursor: none; }
+    html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+    body { font-family: 'Raleway', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; cursor: none; max-width: 100vw; }
+html { overflow-x: hidden; }
     .cursor-dot { position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); }
     .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid rgba(184,134,11,0.6); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, border-color 0.3s, transform 0.12s ease-out; }
     body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 56px; height: 56px; border-color: var(--gold); }
@@ -51,8 +52,9 @@
     nav ul a:hover { color: var(--gold); }
     nav ul a:hover::after { width:100%; }
 
+
     /* HERO */
-    #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 100px 20px 80px; background: var(--cream); }
+    #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 100px 20px 80px; background: linear-gradient(135deg, var(--cream) 0%, var(--navy) 60%, var(--cream2) 100%); }
     .aurora { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
     .aurora-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25; }
     .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: radial-gradient(circle, #d4a017, transparent); top: -100px; left: -100px; animation: orbFloat1 12s ease-in-out infinite; }
@@ -67,8 +69,8 @@
     .hero-badge { position: relative; z-index: 2; display: inline-block; font-size: 0.6rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(184,134,11,0.35); padding: 7px 24px; margin-bottom: 28px; background: rgba(184,134,11,0.06); backdrop-filter: blur(10px); animation: fadeUp 0.8s ease both; }
     .hero-title { position: relative; z-index: 2; font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 400; color: var(--text); line-height: 1.0; margin-bottom: 10px; animation: fadeUp 0.8s 0.1s ease both; }
     .hero-title em { font-style: italic; color: var(--gold); }
-    .hero-sub { position: relative; z-index: 2; font-size: 0.65rem; letter-spacing: 6px; text-transform: uppercase; color: rgba(26,26,26,0.4); margin-bottom: 28px; animation: fadeUp 0.8s 0.2s ease both; }
-    .hero-desc { position: relative; z-index: 2; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: rgba(26,26,26,0.5); max-width: 500px; margin: 0 auto 44px; line-height: 1.9; animation: fadeUp 0.8s 0.3s ease both; }
+    .hero-sub { position: relative; z-index: 2; font-size: 0.65rem; letter-spacing: 6px; text-transform: uppercase; color: var(--text); margin-bottom: 28px; animation: fadeUp 0.8s 0.2s ease both; }
+    .hero-desc { position: relative; z-index: 2; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: var(--text); max-width: 500px; margin: 0 auto 44px; line-height: 1.9; animation: fadeUp 0.8s 0.3s ease both; }
     .hero-btns { position: relative; z-index: 2; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.4s ease both; }
     .btn-gold { background: var(--gold); color: var(--white); padding: 14px 42px; font-family: 'Raleway', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; border: none; cursor: none; transition: background 0.3s, transform 0.2s, box-shadow 0.3s; position: relative; overflow: hidden; }
     .btn-gold::before { content:''; position:absolute; inset:0; background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%); transform: translateX(-100%); transition: transform 0.5s; }
@@ -92,7 +94,7 @@
     #about { padding: 100px 60px; background: var(--white); }
 
     /* WHEEL */
-    #wheel { padding: 100px 20px 120px; background: linear-gradient(180deg, var(--cream) 0%, var(--navy) 100%); text-align: center; position: relative; overflow: hidden; }
+    #wheel { padding: 100px 20px 120px; background: linear-gradient(180deg, var(--cream) 0%, var(--navy) 100%); text-align: center; position: relative; overflow: hidden; width: 100%; }
     .wheel-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,134,11,0.08) 0%, transparent 70%); }
     .sec-tag { font-size: 0.58rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
     .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 400; color: var(--text); margin-bottom: 8px; }
@@ -100,7 +102,7 @@
     .sec-line { width: 50px; height: 2px; background: var(--gold); margin: 0 auto 60px; }
     .wheel-outer { position: relative; width: 820px; height: 820px; margin: 0 auto; }
     @media (max-width: 900px) { .wheel-outer { width: 360px; height: 360px; } }
-    .wheel-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 160px; height: 160px; border-radius: 50%; background: linear-gradient(135deg, var(--white), var(--cream)); border: 2px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; animation: glowPulse 3s ease-in-out infinite; overflow: hidden; }
+    .wheel-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 162px; height: 162px; border-radius: 50%; background: linear-gradient(135deg, var(--white), var(--cream)); border: 2px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; animation: glowPulse 3s ease-in-out infinite; overflow: hidden; }
     @media (max-width: 900px) { .wheel-center { width: 80px; height: 80px; } }
     @keyframes glowPulse { 0%,100%{box-shadow:0 0 0 8px rgba(184,134,11,0.06),0 0 40px rgba(184,134,11,0.1);} 50%{box-shadow:0 0 0 16px rgba(184,134,11,0.04),0 0 80px rgba(184,134,11,0.2);} }
     .ring-el { position: absolute; top: 50%; left: 50%; border-radius: 50%; transform: translate(-50%,-50%); pointer-events: none; }
@@ -144,9 +146,9 @@
     .company-card:hover .card-arrow { color: var(--gold); letter-spacing: 5px; }
 
     /* CONTACT */
-    #contact { padding: 100px 60px; background: var(--cream); position: relative; overflow: hidden; }
+    #contact { padding: 100px 0; margin-top: 0; background: var(--cream); position: relative; overflow: hidden; }
     #contact::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,134,11,0.05) 0%, transparent 70%); }
-    .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-inner { max-width: 100%; margin: 0; padding: 0 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .contact-info-items { display: flex; flex-direction: column; gap: 32px; margin-top: 40px; }
     .contact-item { display: flex; gap: 20px; align-items: flex-start; }
     .contact-icon-wrap { width: 48px; height: 48px; border-radius: 50%; background: rgba(184,134,11,0.08); border: 1px solid rgba(184,134,11,0.25); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1rem; flex-shrink: 0; transition: all 0.3s; }
@@ -194,7 +196,8 @@
     .footer-copy { font-size: 0.58rem; letter-spacing: 2px; color: rgba(26,26,26,0.35); text-align: center; line-height: 1.8; }
     .footer-ids { font-size: 0.55rem; letter-spacing: 1px; color: rgba(26,26,26,0.2); text-align: right; line-height: 2; }
 
-    @keyframes fadeUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes kenBurns { from{background-size:100%;} to{background-size:115%;} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
 
   @media (max-width: 900px) {
   nav { padding: 14px 20px; } nav ul { display: none; }
@@ -229,7 +232,7 @@
   <div class="loader-curtain-left"></div>
   <div class="loader-curtain-right"></div>
   <div class="loader-center">
-    <img class="loader-logo-img" src="ChatGPT Image May 11, 2026, 03_32_50 PM.png" alt="JG" />
+    <img class="loader-logo-img" src="JG.jfif" alt="JG" />
     <div class="loader-logo">Jayashri</div>
     <div class="loader-sub">Group of Companies</div>
     <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
@@ -240,7 +243,7 @@
 <nav>
   <a href="#" class="logo-wrap">
     <div class="logo-circle">
-      <img src="ChatGPT Image May 11, 2026, 03_32_50 PM.png" alt="JG Logo" />
+      <img src="JG.jfif" alt="JG Logo" />
     </div>
     <div class="logo-text">Jayashri <span>Group</span></div>
   </a>
@@ -324,6 +327,17 @@
     <span style="padding:10px 24px;border:1px solid rgba(184,134,11,0.25);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">🇮🇳 Made in India</span>
   </div>
 
+<!-- IMAGE BANNER -->
+<div style="width:100%; height:420px; overflow:hidden; position:relative;">
+  <img src="hero-bg.jpg" alt="Jayashri Group" style="width:100%; height:100%; object-fit:cover; object-position:center; filter:brightness(0.6) sepia(20%);" />
+  <div style="position:absolute; inset:0; background:linear-gradient(to right, rgba(184,134,11,0.45), rgba(0,0,0,0.3)); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px;">
+    <p style="font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,3rem); color:#fff; font-style:italic; letter-spacing:2px; margin-bottom:16px;">"Building India's Future, One Venture at a Time"</p>
+    <div style="width:60px; height:2px; background:var(--gold);"></div>
+  </div>
+</div>
+
+
+
 <!-- WHEEL -->
 <section id="wheel">
   <div class="wheel-bg"></div>
@@ -336,10 +350,23 @@
     <div class="ring-el"></div>
     <svg class="connector-svg" id="connectorSvg"></svg>
     <div class="wheel-center">
-      <img src="ChatGPT Image May 11, 2026, 03_32_50 PM.png" alt="JG" style="width:100%;height:100%;object-fit:cover;border-radius:50%;padding:12px;" />
+      <img src="JG.jfif" alt="JG" style="width:100%;height:100%;object-fit:cover;border-radius:50%;padding:0;" />
     </div>
   </div>
 </section>
+
+<!-- BANNER 2 -->
+<div style="display:grid; grid-template-columns:1fr 1fr; min-height:360px;">
+  <div style="background:#1a1a1a; display:flex; flex-direction:column; justify-content:center; padding:60px 52px;">
+    <p style="font-size:0.55rem; letter-spacing:5px; text-transform:uppercase; color:rgba(184,134,11,0.7); margin-bottom:20px;">Our Reach</p>
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3vw,2.4rem); color:#fff; font-weight:400; line-height:1.3; margin-bottom:24px;">23 Companies.<br/><em style="color:var(--gold); font-style:italic;">One Vision.</em></h2>
+    <div style="width:40px; height:1px; background:rgba(184,134,11,0.4); margin-bottom:28px;"></div>
+    <p style="font-size:0.85rem; color:rgba(255,255,255,0.6); line-height:1.9;">From pharma to fashion, energy to law — Jayashri Group spans every sector that matters to modern India.</p>
+  </div>
+  <div style="overflow:hidden;">
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=85" alt="Jayashri Vision" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.8);" />
+  </div>
+</div>
 
 <!-- COMPANIES -->
 <section id="companies">
@@ -371,8 +398,15 @@
         <div class="contact-item">
           <div class="contact-icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
           <div class="contact-item-text">
-            <div class="contact-item-label">Office Address</div>
+            <div class="contact-item-label">Additonal place of Business</div>
             <div class="contact-item-val">Office No. 3074 A, 3rd Floor, V Wing,<br/>Akshar Business Park, Sector No. 25,<br/>Vashi, Near Turbhe Station,<br/>Thane – 400703, Maharashtra</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="contact-item-text">
+            <div class="contact-item-label">Registered Office</div>
+            <div class="contact-item-val">B N A3, Siddeshwar Nagari, Taluka Khed,<br/>Rajgurunagar, Khed, Pune – 410505,<br/>Maharashtra, India</div>
           </div>
         </div>
         <div class="contact-item">
@@ -481,7 +515,7 @@ const companies = [
   { num:'17', symbol:'fa-boxes-stacked',       name:'Jayashri Freight Services Pvt. Ltd.', sector:'Freight & Logistics',   type:'Private Limited',               href:'JAYASHRIFRIGHTSERVICESPVTLTD/index.html' },
   { num:'18', symbol:'fa-clapperboard',        name:'Jayashri Cinematics Pvt. Ltd.',       sector:'Media & Cinema',        type:'Private Limited',               href:'JAYASHRICINEMATICSPVTLTD/index.html' },
   { num:'19', symbol:'fa-industry',            name:'Jayashri Ram Steel Corporation',      sector:'Steel & Manufacturing', type:'Private Limited',               href:'JAYASHRIRAMSTEELCORPORATIONPVTLTD/index.html' },
-  { num:'20', symbol:'fa-hands-praying',       name:'Dnyanimata Jayashri Foundation',      sector:'Foundation / NGO',      type:'Foundation',                    href:'DNYANIMATAJAYASHRIFOUNDATION/index.html' },
+  { num:'20', symbol:'fa-hands-praying',       name:'Dnyanmata Jayashri Foundation',      sector:'Foundation / NGO',      type:'Foundation',                    href:'DnyanmataJAYASHRIFOUNDATION/index.html' },
   { num:'21', symbol:'fa-landmark',            name:'Jayashri Capital Pvt. Ltd.',          sector:'Finance & Capital',     type:'Private Limited',               href:'JAYASHRICAPITALPVTLTD/index.html' },
   { num:'22', symbol:'fa-scale-balanced',      name:'Gurav Advocates LLP',                 sector:'Legal',                 type:'Limited Liability Partnership', href:'GURAVADVOCATESLLP/index.html' },
   { num:'23', symbol:'fa-briefcase',           name:'Oligarch Consultancy LLP',            sector:'Consulting',            type:'Limited Liability Partnership', href:'OLIGARCHCONSULTANCYLLP/index.html' },
@@ -524,6 +558,8 @@ function buildWheel(){
   const cx=SIZE/2,cy=SIZE/2,R=isMob?118:345,nSize=isMob?10:26;
   outer.style.width=SIZE+'px';
   outer.style.height=SIZE+'px';
+  outer.style.position='relative';
+  outer.style.margin='0 auto';
   outer.querySelectorAll('.cnode').forEach(n=>n.remove());
   svg.innerHTML='';
   companies.forEach((c,i)=>{

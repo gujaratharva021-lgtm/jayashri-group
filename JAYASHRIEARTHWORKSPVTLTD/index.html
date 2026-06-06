@@ -42,9 +42,9 @@
     /* HERO */
     .hero {
       min-height: 100vh;
-      background: linear-gradient(135deg, #1a1008 0%, #3d1f08 40%, #6b3a1f 100%);
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 100px 6% 60px;
+      background: linear-gradient(135deg, rgba(26,16,8,0.55) 0%, rgba(61,31,8,0.45) 40%, rgba(107,58,31,0.35) 100%), url('Earthwork.jpg') center center / cover no-repeat;
+      display: flex; align-items: center; justify-content: flex-start;
+      text-align: left; padding: 100px 6% 60px;
       position: relative; overflow: hidden;
     }
     .hero::before {
@@ -56,13 +56,13 @@
     .hero-badge { display: inline-block; background: rgba(200,133,26,0.15); border: 1px solid var(--gold); color: var(--sand); padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
     .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 1.2rem; }
     .hero h1 span { color: var(--gold); }
-    .hero p { font-size: 1.1rem; color: #c9b49a; max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .hero p { font-size: 1.1rem; color: #c9b49a; max-width: 580px; margin: 0 0 2.5rem; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: flex-start; flex-wrap: wrap; }
     .btn-primary { background: var(--gold); color: var(--dark); padding: 14px 32px; border-radius: 5px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.3s; }
     .btn-primary:hover { background: var(--orange); color: var(--white); transform: translateY(-2px); }
-    .btn-outline { border: 2px solid var(--sand); color: var(--sand); padding: 12px 30px; border-radius: 5px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.3s; }
+    .btn-outline { border: 2px solid var(--sand);  color: var(--sand); padding: 12px 30px; border-radius: 5px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.3s; }
     .btn-outline:hover { background: var(--sand); color: var(--dark); }
-    .hero-stats { display: flex; gap: 3rem; justify-content: center; margin-top: 4rem; flex-wrap: wrap; }
+    .hero-stats { display: flex; gap: 3rem; justify-content: flex-start; margin-top: 4rem; flex-wrap: wrap; }
     .stat { text-align: center; }
     .stat h3 { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--gold); }
     .stat p { font-size: 0.8rem; color: #998070; letter-spacing: 1px; text-transform: uppercase; }
@@ -229,7 +229,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="logo">JAYASHRI <span>EARTHWORKS</span><small>Private Limited</small></a>
+    <a href="#" class="logo" style="display:flex; align-items:center; gap:10px;"><img src="Earthwork1.jfif" alt="Logo" style="height:90px; width:90px; border-radius:50%; object-fit:cover; border:2px solid var(--gold);"><span style="display:flex; flex-direction:column;">JAYASHRI <span>EARTHWORKS</span><small>Private Limited</small></span></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
@@ -285,14 +285,14 @@
           </div>
           <div class="info-item">
             <div class="info-icon">📍</div>
-            <div><h5>Office Address</h5><p>Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane – 400703, Maharashtra.</p></div>
+            <div><h5>Additional Place of Business</h5><p>Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane – 400703, Maharashtra.</p></div>
           </div>
           <div class="info-item">
             <div class="info-icon">👥</div>
             <div><h5>Directors</h5><p>Jayashri Nitin Mane & Aditya Dnyaneshwar Gurav — leading with vision and expertise.</p></div>
           </div>
           <div class="info-item">
-            <div class="info-icon">📊</div>
+            
           </div>
         </div>
       </div>
@@ -328,49 +328,18 @@
         <div class="team-avatar">👩</div>
         <h4>Jayashri Nitin Mane</h4>
         <div class="role">Director & Founder</div>
-        <p>Visionary leader with expertise in construction management and business development. Based in Pune, Maharashtra.</p>
+        <p>Din: 10121732</p>
       </div>
       <div class="team-card fade-in">
         <div class="team-avatar">👨</div>
         <h4>Aditya Dnyaneshwar Gurav</h4>
         <div class="role">Director & Co-Founder</div>
-        <p>Expert in civil engineering and infrastructure projects. Based in Rajgurunagar, Pune.</p>
+        <p>Din: 07037091.</p>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials" id="testimonials">
-    <div class="section-label" style="color:var(--sand);">Client Feedback</div>
-    <h2 class="section-title">What Our <span>Clients Say</span></h2>
-    <p class="section-sub" style="color:#c9b49a;">Trusted by clients across Maharashtra for quality and timely delivery.</p>
-    <div class="testi-grid">
-      <div class="testi-card fade-in">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Jayashri Earthworks completed our road project ahead of schedule. Outstanding quality and professional team throughout."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">🏢</div>
-          <div><h6>Rajesh Patil</h6><span>Municipal Contractor, Pune</span></div>
-        </div>
-      </div>
-      <div class="testi-card fade-in">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Excellent civil construction work. The team is highly skilled and their attention to detail is remarkable. Highly recommended!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">🏗️</div>
-          <div><h6>Suresh Deshmukh</h6><span>Real Estate Developer, Nashik</span></div>
-        </div>
-      </div>
-      <div class="testi-card fade-in">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Professional, transparent and reliable. Jayashri Earthworks delivered our infrastructure project with zero compromise on quality."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">⚡</div>
-          <div><h6>Amit Sharma</h6><span>Project Manager, Maharashtra</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- WHY US -->
   <section class="whyus" id="whyus">
@@ -421,8 +390,15 @@
           <div class="contact-item">
             <div class="contact-icon">📍</div>
             <div>
-              <h5>Office Address</h5>
+              <h5>Additional Place of Business</h5>
               <p>Office No. 3074 A, 3rd Floor, V Wing,<br/>Akshar Business Park, Sector No. 25,<br/>Vashi, Near Turbhe Station,<br/>Thane – 400703, Maharashtra</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h5>Registered Office</h5>
+              <p>B N A3, Siddeshwar Nagari, Taluka Khed,<br/>Rajgurunagar, Khed, Pune – 410505,<br/>Maharashtra, India</p>
             </div>
           </div>
           <div class="contact-item">
@@ -439,36 +415,14 @@
           </div>
         </div>
       </div>
-      <div class="contact-form">
-        <h3>Send Us a Message</h3>
-        <div class="form-row">
-          <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your Name" /></div>
-          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" /></div>
-        </div>
-        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com" /></div>
-        <div class="form-group">
-          <label>Service Required</label>
-          <select>
-            <option value="">Select a Service</option>
-            <option>Civil Construction</option>
-            <option>Road & Highway Works</option>
-            <option>Water Infrastructure</option>
-            <option>Power & Energy Projects</option>
-            <option>Real Estate Development</option>
-            <option>Engineering Consultancy</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project..."></textarea></div>
-        <button class="submit-btn">Send Message →</button>
-      </div>
-    </div>
+      
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo">JAYASHRI <span>EARTHWORKS</span><small>Private Limited</small></a>
+        <a href="#" class="logo" style="display:flex; align-items:center; gap:10px;"><img src="Earthwork1.jfif" alt="Logo" style="height:90px; width:90px; border-radius:50%; object-fit:cover; border:2px solid var(--gold);"><span style="display:flex; flex-direction:column;">JAYASHRI <span>EARTHWORKS</span><small>Private Limited</small></span></a>
         <p>Building infrastructure and creating lasting value across Maharashtra. A registered MSME enterprise committed to quality construction and engineering excellence.</p>
       </div>
       <div class="footer-col">

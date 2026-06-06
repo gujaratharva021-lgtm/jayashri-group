@@ -9,9 +9,9 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --green: #1A5C38;
-      --green-light: #236B44;
-      --green-pale: #EDF5F0;
+      --green: #5B6FA6;
+      --green-light: #4A5E95;
+      --green-pale: #EEF0F8;
       --saffron: #D4700A;
       --saffron-pale: #FEF3E7;
       --dark: #1C1C1C;
@@ -76,7 +76,8 @@
     /* HERO */
     .hero {
   min-height: 100vh;
-  background: linear-gradient(160deg, #0F3D22 0%, #1A5C38 50%, #1e6b40 100%);
+  background: linear-gradient(160deg, rgba(45,55,120,0.50) 0%, rgba(91,111,166,0.50) 50%, rgba(74,94,149,0.50) 100%),
+              url('Dyanamata.png') center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -498,7 +499,7 @@
 
     /* FOOTER */
     footer {
-      background: #0A2617;
+      background: #1A1F3A;
       color: rgba(255,255,255,0.35);
       padding: 2rem 5%;
     }
@@ -538,9 +539,12 @@
 
   <!-- NAVBAR -->
   <nav>
-    <a href="#home" class="nav-logo">
-      Dnyanmata Jayashri Foundation
-      <span>Section 8 · Non-Profit · Pune</span>
+    <a href="#home" class="nav-logo" style="display:flex; align-items:center; gap:0.6rem;">
+      <img src="logo dymata.jfif" alt="Logo" style="height:90px; width:90px; object-fit:cover; border-radius:50%; border:2px solid var(--green); flex-shrink:0;" />
+      <div>
+        Dnyanmata Jayashri Foundation
+        <span>Section 8 · Non-Profit · Pune</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -614,13 +618,6 @@
             <div>
               <div class="reg-item-label">TAN</div>
               <div class="reg-item-value">PNED25440C</div>
-            </div>
-          </div>
-          <div class="reg-item">
-            <span class="reg-icon">📍</span>
-            <div>
-              <div class="reg-item-label">Registered Address</div>
-              <div class="reg-item-value">B. N. A3, Siddeshwar Nagari, Tal: Khed, Rajgurunagar, Khed, Pune – 410505, Maharashtra</div>
             </div>
           </div>
         </div>
@@ -761,13 +758,10 @@
           <div class="director-title">
             <h3>Ms. Jayashri Nitin Mane</h3>
             <div class="role">Director & Co-Founder</div>
+            <div style="font-size:0.72rem; color:rgba(255,255,255,0.6); margin-top:4px;">DIN: 10121732</div>
           </div>
         </div>
-        <div class="director-body">
-          <p><strong>Address:</strong> C-2 Navale Residency, Pimple Saudagar, Opposite Petrol Pump, Pune – 411027, Maharashtra</p>
-          <p style="margin-top: 0.5rem;"><strong>Occupation:</strong> Business</p>
-          <p style="margin-top: 0.5rem;">Ms. Mane co-founded the Foundation with a vision to uplift orphan girls, underprivileged students, and women through education, skill-building, and community support programmes.</p>
-        </div>
+
       </div>
 
       <div class="director-card">
@@ -776,13 +770,10 @@
           <div class="director-title">
             <h3>Mr. Aditya Dnyaneshwar Gurav</h3>
             <div class="role">Director & Co-Founder</div>
+            <div style="font-size:0.72rem; color:rgba(255,255,255,0.6); margin-top:4px;">DIN: 07037091</div>
           </div>
         </div>
-        <div class="director-body">
-          <p><strong>Address:</strong> Omkar Plaza Apartment, A8, Ahilyadevi Chauk, Near Court, Rajgurunagar, Pune – 410505, Maharashtra</p>
-          <p style="margin-top: 0.5rem;"><strong>Occupation:</strong> Business</p>
-          <p style="margin-top: 0.5rem;">Mr. Gurav co-founded the Foundation with a focus on rural development, neurodiversity inclusion, and building sustainable community institutions across Maharashtra.</p>
-        </div>
+        
       </div>
     </div>
   </section>
@@ -844,25 +835,7 @@
         </div>
       </div>
 
-      <div>
-        <div class="contact-form">
-          <input type="text" placeholder="Your Full Name" />
-          <input type="email" placeholder="Email Address" />
-          <input type="tel" placeholder="Phone Number" />
-          <select>
-            <option value="" disabled selected>How would you like to help?</option>
-            <option>Volunteer / Intern</option>
-            <option>Donate / Funding</option>
-            <option>CSR Partnership</option>
-            <option>Government / NGO Collaboration</option>
-            <option>Programme Enquiry</option>
-            <option>Media / Press</option>
-            <option>Other</option>
-          </select>
-          <textarea placeholder="Tell us about yourself or your enquiry..."></textarea>
-          <button type="submit">Send Message →</button>
-        </div>
-      </div>
+      
     </div>
   </section>
 

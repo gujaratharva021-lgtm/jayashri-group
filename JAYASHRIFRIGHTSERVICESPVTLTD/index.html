@@ -299,7 +299,7 @@
     .director-shares strong { color: var(--accent-bright); }
 
     /* CONTACT */
-    #contact { background: var(--blue); }
+    #contact { background: linear-gradient(rgba(10,22,40,0.55), rgba(10,22,40,0.55)), url('fright.png') center center / cover no-repeat; }
     .contact-wrap {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 80px; margin-top: 60px;
@@ -377,7 +377,7 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">JFSPL <span>🚢</span></div>
+    <div class="nav-logo"><img src="logo.jfif" alt="Logo" style="height:90px; width:90px; border-radius:50%; object-fit:cover; border:2px solid var(--accent-bright); vertical-align:middle; margin-right:10px;"><span>Jayashri Freight Services Pvt. Ltd.</span></div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
@@ -418,9 +418,16 @@
       <div class="stat-label">Year Founded</div>
     </div>
     <div>
-    <div>
       <div class="stat-num">MSME</div>
       <div class="stat-label">Registered Micro Enterprise</div>
+    </div>
+    <div>
+      <div class="stat-num">MCA</div>
+      <div class="stat-label">Registered</div>
+    </div>
+    <div>
+      <div class="stat-num">Micro</div>
+      <div class="stat-label">Enterprise</div>
     </div>
   </div>
 
@@ -439,10 +446,6 @@
         </p>
       </div>
       <div class="about-info-box">
-        <div class="info-row">
-          <span class="info-key">Company Name</span>
-          <span class="info-val">Jayashri Freight Services Pvt. Ltd.</span>
-        </div>
         <div class="info-row">
           <span class="info-key">CIN</span>
           <span class="info-val highlight">U52290PN2025PTC245184</span>
@@ -560,22 +563,7 @@
           <div class="reg-sub">Micro Enterprise Classification · 18 April 2026</div>
         </div>
       </div>
-      <div class="reg-card">
-        <div class="reg-badge">📃</div>
-        <div>
-          <div class="reg-label">Memorandum of Association</div>
-          <div class="reg-value">INC-33 Filed</div>
-          <div class="reg-sub">Company limited by shares · Table A</div>
-        </div>
-      </div>
-      <div class="reg-card">
-        <div class="reg-badge">📋</div>
-        <div>
-          <div class="reg-label">Articles of Association</div>
-          <div class="reg-value">INC-34 Filed</div>
-          <div class="reg-sub">F — Company limited by shares · Table F</div>
-        </div>
-      </div>
+      
     </div>
   </section>
 
@@ -595,7 +583,7 @@
         <div class="director-role">Co-Founder & Director</div>
         <div class="director-shares">
           
-          <span style="font-size:0.75rem; color:var(--gray);">Pimple Saudagar, Pune · 411027</span>
+          <span style="font-size:0.75rem; color:var(--gray);">Din: 10121732</span>
         </div>
       </div>
       <div class="director-card">
@@ -603,7 +591,7 @@
         <div class="director-name">Aditya Dnyaneshwar Gurav</div>
         <div class="director-role">Co-Founder & Director</div>
         <div class="director-shares">
-          <span style="font-size:0.75rem; color:vasr(--gray);">Rajgurunagar, Pune · 410505</span>
+          <span style="font-size:0.75rem; color:vasr(--gray);">Din: 07037091</span>
         </div>
       </div>
     </div>
@@ -621,12 +609,20 @@
     <div class="contact-wrap">
       <div>
         <div class="contact-detail">
-          <div class="contact-detail-label">Registered Address</div>
+          <div class="contact-detail-label">Additonal place of business</div>
           <div class="contact-detail-val">
   Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park,<br/>
   Sector No. 25, Vashi, Near Turbhe Station,<br/>
   Thane – 400703, Maharashtra
 </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Registered Address</div>
+          <div class="contact-detail-val">
+            B N A3, Siddeshwar Nagari, Taluka Khed,<br/>
+            Rajgurunagar, Khed, Pune – 410505,<br/>
+            Maharashtra, India
+          </div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-label">Phone</div>
@@ -645,25 +641,8 @@
           <div class="contact-detail-val" style="color:var(--accent-bright);">Services — Customs Clearing & Freight Forwarding</div>
         </div>
       </div>
-      <div>
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="Full name"/>
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="you@example.com"/>
-        </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" placeholder="+91 XXXXX XXXXX"/>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Tell us about your shipment or freight requirements…"></textarea>
-        </div>
-        <button class="btn-primary" style="width:100%; cursor:pointer;" onclick="alert('Thank you! We will contact you shortly.')">Send Enquiry</button>
-      </div>
+      
+    
     </div>
   </section>
 

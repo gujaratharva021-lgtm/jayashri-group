@@ -8,18 +8,18 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --ink:#0A0A0F;
-  --ink2:#12121A;
-  --ink3:#1C1C28;
-  --gold:#C9A84C;
-  --gold2:#E8C97A;
-  --gold3:#F5E0A0;
+  --ink:#FFFFFF;
+  --ink2:#F5F0E8;
+  --ink3:#EDE7D9;
+  --gold:#8B6008;
+  --gold2:#A07010;
+  --gold3:#C49020;
   --cream:#F7F3EC;
   --silver:#8A9BB0;
-  --text:#E8E4DC;
-  --muted:#6B7485;
-  --border:rgba(201,168,76,0.18);
-  --border2:rgba(201,168,76,0.08);
+  --text:#1C1C2E;
+  --muted:#52526B;
+  --border:rgba(139,96,8,0.25);
+  --border2:rgba(139,96,8,0.12);
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Didact Gothic',sans-serif;background:var(--ink);color:var(--text);overflow-x:hidden;}
@@ -29,7 +29,7 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
   display:flex;align-items:center;justify-content:space-between;
   padding:1.4rem 5vw;
-  background:rgba(10,10,15,0.85);
+  background:rgba(245,240,232,0.92);
   backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border2);
   transition:padding 0.4s;
@@ -71,9 +71,8 @@ nav.scrolled{padding:0.9rem 5vw;}
 }
 .hero-bg{
   position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 70% 80% at 80% 20%, rgba(201,168,76,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(74,100,165,0.05) 0%, transparent 60%);
+  background:url('hero.png') center/cover no-repeat;
+  opacity:0.45;
 }
 .hero-lines{
   position:absolute;inset:0;pointer-events:none;
@@ -84,20 +83,16 @@ nav.scrolled{padding:0.9rem 5vw;}
   mask-image:radial-gradient(ellipse 80% 80% at 80% 30%, black 0%, transparent 70%);
 }
 
-/* Animated symbol */
-.hero-symbol{
-  position:absolute;right:6%;top:50%;transform:translateY(-50%);
-  width:400px;height:400px;pointer-events:none;
-}
+
 .symbol-ring{
   position:absolute;top:50%;left:50%;
   border-radius:50%;border:1px solid rgba(201,168,76,0.12);
   transform:translate(-50%,-50%);
 }
 .symbol-ring:nth-child(1){width:150px;height:150px;border-color:rgba(201,168,76,0.3);animation:ringPulse 4s ease-in-out infinite;}
-.symbol-ring:nth-child(2){width:230px;height:230px;animation:spin1 22s linear infinite;}
-.symbol-ring:nth-child(3){width:320px;height:320px;animation:spin2 32s linear infinite;}
-.symbol-ring:nth-child(4){width:410px;height:410px;animation:spin1 48s linear infinite;}
+.symbol-ring:nth-child(2){width:230px;height:230px;}
+.symbol-ring:nth-child(3){width:320px;height:320px;}
+.symbol-ring:nth-child(4){width:410px;height:410px;}
 .symbol-ring::before{
   content:'';position:absolute;top:-5px;left:50%;
   width:10px;height:10px;border-radius:50%;
@@ -324,7 +319,7 @@ section{padding:7rem 5vw;}
 
 /* CONTACT */
 #contact{background:var(--ink2);}
-.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;margin-top:4rem;align-items:start;}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:5rem;margin-top:4rem;align-items:start;}
 .contact-items{display:flex;flex-direction:column;}
 .ci{
   display:flex;gap:1.2rem;align-items:flex-start;
@@ -397,8 +392,7 @@ footer{padding:3rem 5vw 2rem;border-top:1px solid var(--border2);background:var(
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo">
-    JAYASHRI CAPITAL
-    <small>Private Limited · Est. 2026</small>
+    <img src="logo.jfif" style="height:56px;width:56px;object-fit:contain;border-radius:50%;border:2px solid rgba(139,96,8,0.25);padding:4px;background:#fff;" alt="Jayashri Capital"/>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -413,19 +407,13 @@ footer{padding:3rem 5vw 2rem;border-top:1px solid var(--border2);background:var(
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
-  <div class="hero-symbol">
-    <div class="symbol-ring"></div>
-    <div class="symbol-ring"></div>
-    <div class="symbol-ring"></div>
-    <div class="symbol-ring"></div>
-    <div class="symbol-core">₹</div>
-  </div>
+  
   <div class="hero-eyebrow">
     <div class="hero-eyebrow-dash"></div>
     <span class="hero-eyebrow-text">Capital · Finance · Investment · Pune, Maharashtra</span>
   </div>
   <h1>Where Capital<br/><em>Meets Purpose.</em></h1>
-  <p class="hero-sub">Jayashri Capital Private Limited is a Maharashtra-incorporated financial services company — committed to delivering excellence in capital management, investment advisory, and financial solutions.</p>
+  <p class="hero-sub" style="color:#1C1C2E;font-weight:700;">Jayashri Capital Private Limited is a Maharashtra-incorporated financial services company — committed to delivering excellence in capital management, investment advisory, and financial solutions.</p>
   <div class="hero-actions">
     <a href="#services" class="btn-gold">Our Services</a>
     <a href="#contact" class="btn-border">Get in Touch</a>
@@ -463,14 +451,13 @@ footer{padding:3rem 5vw 2rem;border-top:1px solid var(--border2);background:var(
     <div class="about-card reveal-left">
       <div class="cin-lbl">Corporate Identity Number</div>
       <div class="cin-val">U64990PN2026PTC253077</div>
-      <div class="data-row"><span class="data-key">Company Name</span><span class="data-val">Jayashri Capital Private Limited</span></div>
       <div class="data-row"><span class="data-key">PAN</span><span class="data-val">AAHCJ3135F</span></div>
       <div class="data-row"><span class="data-key">TAN</span><span class="data-val">PNEJ18026B</span></div>
       <div class="data-row"><span class="data-key">Type</span><span class="data-val">Company Limited by Shares</span></div>
       <div class="data-row"><span class="data-key">Incorporated</span><span class="data-val">10 March 2026</span></div>
       <div class="data-row"><span class="data-key">Registered State</span><span class="data-val">Maharashtra, India</span></div>
       <div class="data-row"><span class="data-key">Phone</span><span class="data-val">022-6897 6194</span></div>
-      <div class="data-row"><span class="data-key">Office</span><span class="data-val">Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane – 400703</span></div>
+      
     </div>
     <div class="reveal-right">
       <p style="color:var(--muted);line-height:1.95;font-size:0.92rem;margin-bottom:1.2rem;">
@@ -564,16 +551,7 @@ footer{padding:3rem 5vw 2rem;border-top:1px solid var(--border2);background:var(
         <div><h4>TAN — Tax Deduction Account</h4><p>Income Tax Department — PNEJ18026B</p></div>
         <div class="comp-check">✓</div>
       </div>
-      <div class="comp-item reveal d4">
-        <div class="comp-ico">📑</div>
-        <div><h4>Memorandum of Association</h4><p>e-MOA · Form INC-33 Filed</p></div>
-        <div class="comp-check">✓</div>
-      </div>
-      <div class="comp-item reveal d5">
-        <div class="comp-ico">📃</div>
-        <div><h4>Articles of Association</h4><p>e-AOA · Form INC-34 Filed</p></div>
-        <div class="comp-check">✓</div>
-      </div>
+      
     </div>
     <div class="detail-blocks reveal-right">
       <div class="dblock">
@@ -601,9 +579,17 @@ footer{padding:3rem 5vw 2rem;border-top:1px solid var(--border2);background:var(
       <div class="ci">
         <div class="ci-icon">📍</div>
         <div>
-          <div class="ci-lbl">Office Address</div>
+          <div class="ci-lbl">Additional place of business</div>
           <div class="ci-val">Office No. 3074 A, 3rd Floor, V Wing,<br/>Akshar Business Park, Sector No. 25,<br/>Vashi, Near Turbhe Station,<br/>Thane – 400703, Maharashtra</div>
         </div>
+        
+        <div class="ci-icon">📍</div>
+        <div>
+          <div class="ci-lbl">Registered Office</div>
+          <div class="ci-val">B N A3, Siddeshwar Nagari,<br/>Taluka Khed, Rajgurunagar,<br/>Khed, Pune – 410505, MH, IN</div>
+        </div>
+      </div>
+      <div class="ci">
       </div>
       <div class="ci">
         <div class="ci-icon">📞</div>
@@ -627,19 +613,7 @@ footer{padding:3rem 5vw 2rem;border-top:1px solid var(--border2);background:var(
         </div>
       </div>
     </div>
-    <div class="contact-form reveal-right">
-      <div class="form-row">
-        <input type="text" placeholder="Full Name"/>
-        <input type="text" placeholder="Company / Organization"/>
-      </div>
-      <div class="form-row">
-        <input type="email" placeholder="Email Address"/>
-        <input type="tel" placeholder="Phone Number"/>
-      </div>
-      <input type="text" placeholder="Subject / Nature of Inquiry"/>
-      <textarea placeholder="Your message..."></textarea>
-      <button class="btn-gold" style="border:none;cursor:pointer;width:fit-content;" onclick="alert('Thank you! We will get back to you shortly.')">Send Enquiry →</button>
-    </div>
+    
   </div>
 </section>
 
@@ -650,11 +624,7 @@ footer{padding:3rem 5vw 2rem;border-top:1px solid var(--border2);background:var(
       <div class="footer-brand-name">Jayashri Capital Private Limited</div>
       <div class="footer-brand-sub">Est. 10 March 2026 · Pune, Maharashtra · Companies Act 2013</div>
     </div>
-    <div class="footer-ids">
-      <p><strong>CIN:</strong> U64990PN2026PTC253077</p>
-      <p><strong>PAN:</strong> AAHCJ3135F</p>
-      <p><strong>TAN:</strong> PNEJ18026B</p>
-    </div>
+    
   </div>
   <div class="footer-bottom">
     © 2026 Jayashri Capital Private Limited. All rights reserved. · Incorporated under the Companies Act, 2013

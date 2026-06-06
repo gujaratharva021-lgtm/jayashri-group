@@ -81,8 +81,9 @@
     /* HERO */
     .hero {
   min-height: 100vh;
-  background: linear-gradient(to right, rgba(107,26,26,0.85) 40%, rgba(107,26,26,0.2) 100%),
-            url('lady-justice.jpg') right center / contain no-repeat;
+  background: linear-gradient(to right, rgba(107,26,26,0.95) 40%, rgba(107,26,26,0.5) 60%, rgba(107,26,26,0.0) 75%),
+            url('lady-justice.jpg') right bottom / contain no-repeat;
+background-color: var(--maroon);
 background-color: var(--maroon);
   display: flex;
   flex-direction: column;
@@ -596,8 +597,7 @@ background-color: var(--maroon);
   <!-- NAVBAR -->
   <nav>
     <a href="#home" class="nav-logo">
-      Gurav Advocates LLP
-      <span>Legal &amp; Professional Services</span>
+      <img src="logo.jpg" style="height:72px;width:72px;object-fit:contain;border-radius:50%;border:2px solid rgba(107,26,26,0.25);padding:3px;background:#fff;" alt="Gurav Advocates LLP"/>
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -675,13 +675,7 @@ background-color: var(--maroon);
               <div class="reg-item-value">PNEG29606D</div>
             </div>
           </div>
-          <div class="reg-item">
-            <span class="reg-icon">📍</span>
-            <div>
-              <div class="reg-item-label">Registered Office</div>
-              <div class="reg-item-value">B. No. A-3, Siddheshwar Nagari, Behind District Court, Rajgurunagar, Khed, Pune – 410505</div>
-            </div>
-          </div>
+          
         </div>
       </div>
 
@@ -814,22 +808,11 @@ background-color: var(--maroon);
           <div class="partner-avatar">AG</div>
           <div class="partner-title">
             <h3>Mr. Aditya Dnyaneshwar Gurav</h3>
-            <div class="role">Designated Partner · DPIN 07037091</div>
+            <div class="role">Designated Partner</div>
           </div>
         </div>
         <div class="partner-body">
-          <div class="partner-detail">
-            <strong>PAN:</strong> APEPG5457N
-          </div>
-          <div class="partner-detail">
-            <strong>DOB:</strong> 29 July 1987
-          </div>
-          <div class="partner-detail">
-            <strong>Address:</strong> Survey No. 51/1, Panmala Tukaiwadi, Taluka Khed, Pune – 410505
-          </div>
-          <div class="partner-detail">
-            <strong>Profit Share:</strong> 50%
-          </div>
+          
           <span class="dpin-badge">DPIN: 07037091</span>
         </div>
       </div>
@@ -839,22 +822,11 @@ background-color: var(--maroon);
           <div class="partner-avatar">AG</div>
           <div class="partner-title">
             <h3>Ms. Amruta Dnyaneshwar Gurav</h3>
-            <div class="role">Designated Partner · DPIN 08897265</div>
+            <div class="role">Designated Partner</div>
           </div>
         </div>
         <div class="partner-body">
-          <div class="partner-detail">
-            <strong>PAN:</strong> APEPG5458D
-          </div>
-          <div class="partner-detail">
-            <strong>DOB:</strong> 31 May 1983
-          </div>
-          <div class="partner-detail">
-            <strong>Address:</strong> Omkar Plaza Apt., Wing A, Flat No. 3, Ahilyadevi Chowk, Near Savitribai Kanya Shala, Rajgurunagar, Pune – 410505
-          </div>
-          <div class="partner-detail">
-            <strong>Profit Share:</strong> 50%
-          </div>
+          
           <span class="dpin-badge">DPIN: 08897265</span>
         </div>
       </div>
@@ -887,10 +859,6 @@ background-color: var(--maroon);
           <tr>
             <td>Social Category</td>
             <td>General</td>
-          </tr>
-          <tr>
-            <td>NIC Code</td>
-            <td>69100 – Legal Activities</td>
           </tr>
           <tr>
             <td>Date of Incorporation</td>
@@ -926,8 +894,15 @@ background-color: var(--maroon);
         <div class="contact-item">
           <div class="contact-icon">📍</div>
           <div>
-            <h4>Office Address</h4>
+            <h4>Additional Place of Business</h4>
             <p>Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane - 400703, Maharashtra</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Registered Office</h4>
+            <p>B. No. A-3, Siddheshwar Nagari, Behind District Court, Rajgurunagar, Khed, Pune – 410505</p>
           </div>
         </div>
         <div class="contact-item">
@@ -956,25 +931,7 @@ background-color: var(--maroon);
         </div>
       </div>
 
-      <div>
-        <div class="contact-form">
-          <input type="text" placeholder="Your Full Name" />
-          <input type="email" placeholder="Email Address" />
-          <input type="tel" placeholder="Phone Number" />
-          <select>
-            <option value="" disabled selected>Nature of Legal Matter</option>
-            <option>Civil Law</option>
-            <option>Criminal Law</option>
-            <option>Property / Real Estate</option>
-            <option>Corporate & Business Law</option>
-            <option>Government Liaisoning</option>
-            <option>Documentation & Drafting</option>
-            <option>Other</option>
-          </select>
-          <textarea placeholder="Briefly describe your matter..."></textarea>
-          <button type="submit">Request Consultation →</button>
-        </div>
-      </div>
+      
     </div>
   </section>
 

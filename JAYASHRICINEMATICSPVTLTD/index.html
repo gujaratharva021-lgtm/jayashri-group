@@ -8,16 +8,16 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --red:#C0392B;
-  --red2:#E74C3C;
-  --dark:#1A0A0A;
-  --dark2:#2C1010;
-  --dark3:#3A1515;
-  --cream:#FAF6F0;
-  --cream2:#F5EDE0;
-  --cream3:#EFE4D0;
-  --text:#1A0A0A;
-  --muted:rgba(80,20,20,0.55);
+  --red:#6B1E3C;
+  --red2:#8B2A52;
+  --dark:#1A0A12;
+  --dark2:#2C1020;
+  --dark3:#3A1530;
+  --cream:#FAF6F2;
+  --cream2:#F5EEE8;
+  --cream3:#EDE0D4;
+  --text:#1A0A12;
+  --muted:rgba(80,20,50,0.55);
   --card:#FFFFFF;
 }
 html{scroll-behavior:smooth}
@@ -39,7 +39,7 @@ nav.scrolled{padding:10px 50px;border-bottom-color:rgba(192,57,43,0.35)}
 .nav-cta:hover{background:var(--red)!important;color:#fff!important}
 .nav-cta::after{display:none!important}
 
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:80px;background:linear-gradient(135deg,#FAF6F0 0%,#F5EDE0 40%,#EFE4D0 100%)}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:80px;background:linear-gradient(rgba(10,0,5,0.55),rgba(10,0,5,0.55)),url('cinema.png') center/cover no-repeat fixed}
 canvas#particles{position:absolute;inset:0;z-index:2}
 .hero-overlay{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(192,57,43,0.06) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(192,57,43,0.04) 0%,transparent 60%)}
 .film-strip-top,.film-strip-bottom{position:absolute;left:0;right:0;height:56px;z-index:3;display:flex;align-items:center;overflow:hidden}
@@ -68,6 +68,17 @@ canvas#particles{position:absolute;inset:0;z-index:2}
 @keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(192,57,43,0.6),transparent)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+#hero .hero-title{color:#fff;text-shadow:0 2px 20px rgba(0,0,0,0.5)}
+#hero .hero-title em{color:#ffb3c6}
+#hero .hero-title strong{color:rgba(255,255,255,0.9);text-shadow:0 2px 15px rgba(0,0,0,0.4)}
+#hero .hero-tagline{color:rgba(255,255,255,0.95);text-shadow:0 1px 10px rgba(0,0,0,0.5)}
+#hero .hero-desc{color:rgba(255,255,255,0.9);text-shadow:0 1px 8px rgba(0,0,0,0.4)}
+#hero .hero-scroll{color:rgba(255,255,255,0.8)}
+#hero .hero-badge span{color:#fff}
+#hero .hero-badge{border-color:rgba(255,255,255,0.4);background:rgba(0,0,0,0.2)}
+#hero .hero-badge-dot{background:#fff}
+#hero .btn-ghost{color:#fff;border-color:rgba(255,255,255,0.5)}
+#hero .btn-ghost:hover{border-color:#fff;color:#fff}
 
 .stats-bar{background:#fff;border-top:1px solid rgba(192,57,43,0.12);border-bottom:1px solid rgba(192,57,43,0.12);padding:24px 50px;display:flex;justify-content:center;gap:80px;flex-wrap:wrap;box-shadow:0 2px 20px rgba(192,57,43,0.05)}
 .stat{text-align:center}
@@ -212,7 +223,7 @@ footer{background:var(--dark);padding:40px 50px;display:flex;justify-content:spa
 
 <nav id="navbar">
   <a href="#hero" class="logo">
-    <div class="logo-icon">JC</div>
+    <img src="cinema logo.jfif" alt="JC" style="width:44px;height:44px;object-fit:cover;border-radius:50%;border:2px solid var(--red);">
     <div class="logo-text">Jayashri Cinematics<span>Private Limited · Est. 2025</span></div>
   </a>
   <ul class="nav-links">
@@ -334,26 +345,6 @@ footer{background:var(--dark);padding:40px 50px;display:flex;justify-content:spa
         <tr><td>Signed By (ROC)</td><td>Banwari Sharma, CRC</td></tr>
       </table>
     </div>
-    <div class="reveal-r">
-      <div class="reg-box">
-        <h4>Registered Office Address</h4>
-        <div class="reg-row"><span class="reg-k">Block / Unit</span><span class="reg-v">B.N.A3</span></div>
-        <div class="reg-row"><span class="reg-k">Building</span><span class="reg-v">Siddeshwar Nagari</span></div>
-        <div class="reg-row"><span class="reg-k">Taluka</span><span class="reg-v">Khed, Rajgurunagar</span></div>
-        <div class="reg-row"><span class="reg-k">City</span><span class="reg-v">Pune</span></div>
-        <div class="reg-row"><span class="reg-k">State</span><span class="reg-v">Maharashtra</span></div>
-        <div class="reg-row"><span class="reg-k">PIN Code</span><span class="reg-v">410505</span></div>
-        <div class="reg-row"><span class="reg-k">Email</span><span class="reg-v" style="font-size:0.88rem">cinematic@jayashrigroups.com</span></div>        
-        <div class="reg-row"><span class="reg-k">Phone</span><span class="reg-v">022-6897 6194</span></div>
-      </div>
-      <div class="reg-box">
-        <h4>Identity Numbers</h4>
-        <div class="reg-row"><span class="reg-k">CIN</span><span class="reg-v" style="font-size:0.9rem">U59111PN2025PTC245223</span></div>
-        <div class="reg-row"><span class="reg-k">PAN</span><span class="reg-v">AAHCJ0177H</span></div>
-        <div class="reg-row"><span class="reg-k">TAN</span><span class="reg-v">PNEJ17392E</span></div>
-        <div class="reg-row"><span class="reg-k">Udyam No.</span><span class="reg-v" style="font-size:0.88rem">UDYAM-MH-26-1121860</span></div>
-        <div class="reg-row"><span class="reg-k">NIC Code</span><span class="reg-v">59111, 59122</span></div>
-      </div>
     </div>
   </div>
 </section>
@@ -368,8 +359,7 @@ footer{background:var(--dark);padding:40px 50px;display:flex;justify-content:spa
       <div class="dir-name">Jayashri Nitin Mane</div>
       <div class="dir-role">Director & Founder</div>
       <div class="dir-info">
-        <div class="dir-info-row"><strong>Addr:</strong>C-2 Navale Residency, Pimple Saudagar, Pune, Maharashtra</div>
-        <div class="dir-info-row"><strong>Occ:</strong>Business</div>
+      <div class="dir-info-row"><strong>DIN:</strong>10121732</div>
       </div>
     </div>
     <div class="dir-card reveal d2">
@@ -378,8 +368,6 @@ footer{background:var(--dark);padding:40px 50px;display:flex;justify-content:spa
       <div class="dir-role">Director & Co-Founder</div>
       <div class="dir-info">
         <div class="dir-info-row"><strong>DIN:</strong>07037091</div>
-        <div class="dir-info-row"><strong>Addr:</strong>Omkar Plaza, A8, Ahilyadevi Chowk, Near Court, Rajgurunagar, Pune – 410505</div>
-        <div class="dir-info-row"><strong>Occ:</strong>Advocate</div>
       </div>
     </div>
   </div>
@@ -427,20 +415,12 @@ footer{background:var(--dark);padding:40px 50px;display:flex;justify-content:spa
         <div class="c-fact"><div class="c-fact-icon">📍</div><div><div class="c-fact-label">Registered Address</div><div class="c-fact-val">B.N.A3, Siddeshwar Nagari, Tal: Khed, Rajgurunagar, Pune – 410505, Maharashtra</div></div></div>
         <div class="c-fact"><div class="c-fact-icon">📧</div><div><div class="c-fact-label">Email</div><div class="c-fact-val">cinematic@jayashrigroups.com</div></div></div>
         <div class="c-fact"><div class="c-fact-icon">📞</div><div><div class="c-fact-label">Phone</div><div class="c-fact-val">022-6897 6194</div></div></div>
-        <div class="c-fact"><div class="c-fact-icon">🏢</div><div><div class="c-fact-label">Office Address</div><div class="c-fact-val">Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane - 400703, Maharashtra</div></div></div>
+        <div class="c-fact"><div class="c-fact-icon">🏢</div><div><div class="c-fact-label">Additional place of Business</div><div class="c-fact-val">Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park, Sector No. 25, Vashi, Near Turbhe Station, Thane - 400703, Maharashtra</div></div></div>
         <div class="c-fact"><div class="c-fact-icon">🪪</div><div><div class="c-fact-label">PAN / TAN</div><div class="c-fact-val">AAHCJ0177H · PNEJ17392E</div></div></div>
         <div class="c-fact"><div class="c-fact-icon">🏭</div><div><div class="c-fact-label">Udyam Number</div><div class="c-fact-val">UDYAM-MH-26-1121860</div></div></div>
       </div>
     </div>
-    <div class="contact-form reveal-r">
-      <h3>Send a Message</h3>
-      <div class="fg"><label>Your Name</label><input type="text" placeholder="Full Name"></div>
-      <div class="fg"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
-      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 00000 00000"></div>
-      <div class="fg"><label>Subject</label><input type="text" placeholder="Film production, collaboration, etc."></div>
-      <div class="fg"><label>Message</label><textarea placeholder="Tell us about your project or inquiry..."></textarea></div>
-      <button class="submit-btn" onclick="alert('Thank you! We will get back to you shortly.')">Send Message</button>
-    </div>
+    
   </div>
 </section>
 

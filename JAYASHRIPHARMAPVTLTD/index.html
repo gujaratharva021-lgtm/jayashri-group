@@ -255,7 +255,11 @@
     .director-shares strong { color: var(--green-bright); }
 
     /* CONTACT */
-    #contact { background: var(--dark); }
+    #contact {
+      background:
+        linear-gradient(to right, rgba(8,15,26,0.97) 0%, rgba(8,15,26,0.92) 45%, rgba(8,15,26,0.55) 100%),
+        url('pharma2.png') center center / cover no-repeat;
+    }
     .contact-wrap {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 80px; margin-top: 60px;
@@ -505,21 +509,7 @@
           <div class="reg-sub">Manufacturing · NIC 21002 · 18 April 2026</div>
         </div>
       </div>
-      <div class="reg-card">
-        <div class="reg-badge">📃</div>
-        <div>
-          <div class="reg-label">Memorandum of Association</div>
-          <div class="reg-value">INC-33 Filed</div>
-          <div class="reg-sub">Company limited by shares · Table A</div>
-        </div>
       </div>
-      <div class="reg-card">
-        <div class="reg-badge">📋</div>
-        <div>
-          <div class="reg-label">Articles of Association</div>
-          <div class="reg-value">INC-34 Filed</div>
-          <div class="reg-sub">F — Company limited by shares · Table F</div>
-        </div>
       </div>
     </div>
   </section>
@@ -539,7 +529,7 @@
         <div class="director-name">Aditya Dnyaneshwar Gurav</div>
         <div class="director-role">Co-Founder & Director</div>
         <div class="director-shares">
-          <span style="font-size:0.75rem; color:var(--gray);">Rajgurunagar, Pune · 410505</span>
+          <span style="font-size:0.75rem; color:var(--gray);">Din: 07037091</span>
         </div>
       </div>
       <div class="director-card">
@@ -547,7 +537,7 @@
         <div class="director-name">Jayashri Nitin Mane</div>
         <div class="director-role">Co-Founder & Director</div>
         <div class="director-shares"></div>
-          <span style="font-size:0.75rem; color:var(--gray);">Pimple Saudagar, Pune · 411027</span>
+          <span style="font-size:0.75rem; color:var(--gray);">Din: 10121732</span>
         </div>
       </div>
     </div>
@@ -565,7 +555,15 @@
     <div class="contact-wrap">
       <div>
         <div class="contact-detail">
-          <div class="contact-detail-label">Registered Address</div>
+          <div class="contact-detail-label">Registered Office</div>
+          <div class="contact-detail-val">
+            B N A3, Siddeshwar Nagari, Taluka Khed,<br/>
+            Rajgurunagar, Khed, Pune – 410505,<br/>
+            Maharashtra, India
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Additional place of Business</div>
           <div class="contact-detail-val">
             Office No. 3074 A, 3rd Floor, V Wing, Akshar Business Park,<br/>
             Sector No. 25, Vashi, Near Turbhe Station,<br/>
@@ -592,25 +590,7 @@
         </div>
       </div>
       <div>
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="Full name"/>
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="you@example.com"/>
-        </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" placeholder="+91 XXXXX XXXXX"/>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Tell us about your pharmaceutical requirements…"></textarea>
-        </div>
-        <button class="btn-primary" style="width:100%; cursor:pointer;" onclick="alert('Thank you! We will contact you shortly.')">Send Enquiry</button>
-      </div>
-    </div>
+        
   </section>
 
   <!-- FOOTER -->
