@@ -166,6 +166,14 @@ footer{background:#0D0D0D;padding:36px 40px;text-align:center;border-top:1px sol
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.hero-img-mobile{display:none}
+@media(max-width:768px){
+  .hero-img-mobile{display:block;width:100%;height:auto;object-fit:cover}
+  .hero{background-image:none!important;min-height:auto;padding:0}
+  .hero-content{background:var(--deep-green);padding:30px 20px;width:100%}
+  .hero-badge{color:#E8621A}
+  .hero h1{font-size:32px}
+}
 .mobile-menu{display:none;position:fixed;top:69px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);border-bottom:3px solid var(--saffron);padding:20px;z-index:998;flex-direction:column;gap:0}
 .mobile-menu.open{display:flex}
 .mobile-menu a{text-decoration:none;color:var(--dark);font-size:15px;font-weight:500;padding:14px 0;border-bottom:1px solid rgba(0,0,0,0.06)}
@@ -215,6 +223,7 @@ footer{background:#0D0D0D;padding:36px 40px;text-align:center;border-top:1px sol
 <section class="hero" id="hero">
   <canvas id="particles"></canvas>
   <div class="hero-bg"></div>
+  <img src="hero.jpg" class="hero-img-mobile" alt="Hero" />
   <div class="hero-content">
     <div class="hero-badge"><span></span> Registered under Companies Act, 2013</div>
     <h1>Empowering <em>Charmakar</em><br>Communities for Public</h1>
@@ -224,7 +233,6 @@ footer{background:#0D0D0D;padding:36px 40px;text-align:center;border-top:1px sol
       <a href="#legal" class="btn-outline">View Registration</a>
     </div>
   </div>
-  
 </section>
 
 <section class="about" id="about">
